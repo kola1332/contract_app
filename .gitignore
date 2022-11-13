@@ -42,3 +42,5 @@ app.*.map.json
 /android/app/debug
 /android/app/profile
 /android/app/release
+lib/feature/data/models/phone_model.freezed.dart
+lib/feature/data/models/phone_model.g.dart

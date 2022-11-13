@@ -2,7 +2,7 @@
 
 import 'package:equatable/equatable.dart';
 
-class PhoneEntity extends Equatable {
+class PhoneEntity {
   final int id;
   final String title;
   final String picture;
@@ -12,9 +12,6 @@ class PhoneEntity extends Equatable {
     required this.title,
     required this.picture,
   });
-
-  @override
-  List<Object?> get props => [id, title, picture];
 }
 
 class PhoneHSEntity extends PhoneEntity {
@@ -30,9 +27,6 @@ class PhoneHSEntity extends PhoneEntity {
     required this.is_buy,
     this.is_new = false,
   });
-
-  @override
-  List<Object?> get props => [id, title, picture, subtitle, is_buy, is_new];
 }
 
 class PhoneBSEntity extends PhoneEntity {
@@ -48,13 +42,4 @@ class PhoneBSEntity extends PhoneEntity {
     required this.price_without_discount,
     required this.discount_price,
   });
-
-  @override
-  List<Object?> get props => [
-        id,
-        picture,
-        is_favorites,
-        price_without_discount,
-        discount_price,
-      ];
 }
