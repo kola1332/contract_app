@@ -16,7 +16,7 @@ class PhoneListCubit extends Cubit<PhoneListState> {
 
   // int page = 1;
 
-  void loadPerson() async {
+  void loadPhones() async {
     if (state is PhoneListLoading) return;
 
     final currentState = state;
