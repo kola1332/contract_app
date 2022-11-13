@@ -8,12 +8,12 @@ import 'package:dartz/dartz.dart';
 
 import '../../../core/error/exception.dart';
 
-class PhoneRepositoryImp implements PhoneRepository {
+class PhoneRepositoryImpl implements PhoneRepository {
   final PhoneRemoteDataSource remoteDataSource;
   final PhonesLocalDataSource localDataSource;
   final NetworkInfo networkInfo;
 
-  PhoneRepositoryImp(
+  PhoneRepositoryImpl(
       {required this.remoteDataSource,
       required this.localDataSource,
       required this.networkInfo});
