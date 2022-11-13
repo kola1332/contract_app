@@ -1,7 +1,5 @@
 // ignore_for_file: non_constant_identifier_names, file_names
 
-import 'package:equatable/equatable.dart';
-
 class PhoneEntity {
   final int id;
   final String title;
