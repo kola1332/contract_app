@@ -1,6 +1,8 @@
+import 'package:contract_app/common/app_text_style.dart';
 import 'package:contract_app/feature/domain/entities/phone_entity.dart';
 import 'package:contract_app/feature/presentation/bloc/phone_list_cubit.dart/phone_list_cubit.dart';
 import 'package:contract_app/feature/presentation/bloc/phone_list_cubit.dart/phone_list_state.dart';
+import 'package:contract_app/feature/presentation/widgets/phone_card_widget.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
@@ -16,19 +18,50 @@ class PhonesHomePageScreen extends StatelessWidget {
           return _loadingindicator();
         } else if (state is PhoneListLoaded) {
           phonesHS = state.phonesHSList;
+          // ignore: avoid_print
           print(phonesHS);
         }
-        return ListView.separated(
-          itemBuilder: (context, index) {
-            return Text('${phonesHS[index]}');
-          },
-          scrollDirection: Axis.vertical,
-          itemCount: phonesHS.length,
-          separatorBuilder: (BuildContext context, int index) {
-            return const Divider(
-              color: Colors.grey,
-            );
-          },
+        return Padding(
+          padding: const EdgeInsets.all(15),
+          child: Column(
+            children: [
+              Row(
+                children: [
+                  const Text(
+                    'Select Category',
+                    style: AppTextStyle.header,
+                    textAlign: TextAlign.start,
+                  ),
+                  Row(
+                    mainAxisAlignment: MainAxisAlignment.end,
+                    children: const [
+                      Text(
+                        'view all',
+                        // style: TextStyle(fontFamily: 'Markro', textS),
+                        textAlign: TextAlign.end,
+                      ),
+                    ],
+                  ),
+                ],
+              ),
+              Expanded(
+                child: ListView.separated(
+                  itemBuilder: (context, index) {
+                    // return Text('${phonesHS[index]}');
+                    return PhoneCard(phoneHS: phonesHS[index]);
+                  },
+                  scrollDirection: Axis.horizontal,
+                  itemCount: phonesHS.length,
+                  separatorBuilder: (BuildContext context, int index) {
+                    return const Divider(
+                      height: 10,
+                      color: Colors.grey,
+                    );
+                  },
+                ),
+              ),
+            ],
+          ),
         );
       },
     );

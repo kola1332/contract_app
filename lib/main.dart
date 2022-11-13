@@ -6,6 +6,7 @@ import 'package:contract_app/locator_service.dart' as di;
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
+import 'common/app_colors.dart';
 import 'feature/presentation/pages/first_screen.dart';
 import 'locator_service.dart';
 
@@ -28,10 +29,10 @@ class MyApp extends StatelessWidget {
         ],
         child: MaterialApp(
           theme: ThemeData.light().copyWith(
-            backgroundColor: Colors.green,
-            scaffoldBackgroundColor: Colors.green,
+            backgroundColor: AppColors.mainBacgkround,
+            // scaffoldBackgroundColor: AppColors.mainBacgkround,
           ),
-          home: HomePage(),
+          home: const HomePage(),
         ));
   }
 }
