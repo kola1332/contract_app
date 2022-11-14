@@ -31,7 +31,7 @@ class PhoneRemoteDataSourceImpl implements PhoneRemoteDataSource {
     if (response.statusCode == 200) {
       final phones = json.decode(response.body);
       return (phones['home_store'] as List)
-          .map((person) => PhoneHSModel.fromJson(person))
+          .map((phone) => PhoneHSModel.fromJson(phone))
           .toList();
     } else {
       throw ServerException();
