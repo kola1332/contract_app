@@ -8,19 +8,19 @@ class PhoneCard extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-        // decoration: BoxDecoration(
-        //   borderRadius: BorderRadius.circular(8),
-        // ),
-        // child: Row(
-        //   children: [
-        //     // ignore: sized_box_for_whitespace
-        //     Container(
-        //       height: 348,
-        //       width: 221,
-        //       child: Image.network(phoneHS.picture),
-        //     ),
-        //   ],
-        // ),
-        );
+      decoration: BoxDecoration(
+        borderRadius: BorderRadius.circular(8),
+      ),
+      child: Row(
+        children: [
+          // ignore: sized_box_for_whitespace
+          Container(
+            height: 348,
+            width: 221,
+            child: Image.network(phoneHS.picture),
+          ),
+        ],
+      ),
+    );
   }
 }

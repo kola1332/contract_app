@@ -37,7 +37,7 @@ class PhonesHomePageScreen extends StatelessWidget {
                     children: const [
                       Text(
                         'view all',
-                        // style: TextStyle(fontFamily: 'Markro', textS),
+                        style: TextStyle(fontFamily: 'Markro', fontSize: 15),
                         textAlign: TextAlign.end,
                       ),
                     ],
@@ -54,7 +54,7 @@ class PhonesHomePageScreen extends StatelessWidget {
                   itemCount: phonesHS.length,
                   separatorBuilder: (BuildContext context, int index) {
                     return const Divider(
-                      height: 10,
+                      // height: 10,
                       color: Colors.grey,
                     );
                   },
