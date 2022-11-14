@@ -17,7 +17,7 @@ class HomePage extends StatelessWidget {
           systemNavigationBarDividerColor: Colors.amber,
           systemNavigationBarIconBrightness: Brightness.light,
           systemNavigationBarContrastEnforced: true,
-          statusBarColor: AppColors.mainBacgkround,
+          statusBarColor: AppColors.mainBackground,
           statusBarBrightness: Brightness.light,
           statusBarIconBrightness: Brightness.dark,
         ),

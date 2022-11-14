@@ -29,8 +29,8 @@ class MyApp extends StatelessWidget {
         ],
         child: MaterialApp(
           theme: ThemeData.light().copyWith(
-            backgroundColor: AppColors.mainBacgkround,
-            // scaffoldBackgroundColor: AppColors.mainBacgkround,
+            backgroundColor: AppColors.mainBackground,
+            // scaffoldBackgroundColor: AppColors.mainBackground,
           ),
           home: const HomePage(),
         ));
