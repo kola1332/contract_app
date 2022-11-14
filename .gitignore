@@ -44,3 +44,7 @@ app.*.map.json
 /android/app/release
 lib/feature/data/models/phone_model.freezed.dart
 lib/feature/data/models/phone_model.g.dart
+lib/test/market_entity.dart
+lib/test/market_model.dart
+lib/test/market_model.freezed.dart
+lib/test/market_model.g.dart
