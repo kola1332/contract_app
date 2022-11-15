@@ -43,9 +43,12 @@ class HomePage extends StatelessWidget {
           ],
         ),
         actions: const [
-          Icon(
-            Icons.filter_alt_outlined,
-            color: AppColors.accentColorBlue,
+          Padding(
+            padding: EdgeInsets.only(right: 15),
+            child: Icon(
+              Icons.filter_alt_outlined,
+              color: AppColors.accentColorBlue,
+            ),
           )
         ],
         centerTitle: true,

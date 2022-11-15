@@ -46,23 +46,23 @@ class PhonesHomePageScreen extends StatelessWidget {
                   ),
                 ],
               ),
-              Expanded(
-                child: ListView.separated(
-                  itemBuilder: (context, index) {
-                    // return Text('${phonesHS[index]}');
-                    return PhoneCard(phoneHS: phonesHS[index]);
-                  },
-                  scrollDirection: Axis.vertical,
-                  itemCount: phonesHS.length,
-                  separatorBuilder: (BuildContext context, int index) {
-                    return const Divider(
-                      height: 10,
-                      color: Colors.grey,
-                    );
-                  },
-                ),
-              ),
-              Cont(phoneHS: phonesHS),
+              // Expanded(
+              //   child: ListView.separated(
+              //     itemBuilder: (context, index) {
+              //       // return Text('${phonesHS[index]}');
+              //       return PhoneCard(phoneHS: phonesHS[index]);
+              //     },
+              //     scrollDirection: Axis.vertical,
+              //     itemCount: phonesHS.length,
+              //     separatorBuilder: (BuildContext context, int index) {
+              //       return const Divider(
+              //         height: 10,
+              //         color: Colors.grey,
+              //       );
+              //     },
+              //   ),
+              // ),
+              // Cont(phoneHS: phonesHS),
             ],
           ),
         );
