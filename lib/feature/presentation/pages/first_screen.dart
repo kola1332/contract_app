@@ -2,7 +2,7 @@ import 'package:contract_app/common/app_colors.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 
-import '../widgets/phones_home_page_widget.dart';
+import '../widgets/first_screen.dart/phones_home_page_widget.dart';
 
 class HomePage extends StatelessWidget {
   const HomePage({super.key});
@@ -17,7 +17,7 @@ class HomePage extends StatelessWidget {
           systemNavigationBarDividerColor: Colors.amber,
           systemNavigationBarIconBrightness: Brightness.light,
           systemNavigationBarContrastEnforced: true,
-          statusBarColor: AppColors.mainBackground,
+          statusBarColor: AppColors.mainBackground2,
           statusBarBrightness: Brightness.light,
           statusBarIconBrightness: Brightness.dark,
         ),

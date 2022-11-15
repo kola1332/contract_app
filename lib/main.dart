@@ -30,7 +30,7 @@ class MyApp extends StatelessWidget {
         child: MaterialApp(
           debugShowCheckedModeBanner: false,
           theme: ThemeData.light().copyWith(
-            backgroundColor: AppColors.mainBackground,
+            backgroundColor: AppColors.mainBackground2,
             // scaffoldBackgroundColor: AppColors.mainBackground,
           ),
           home: const HomePage(),
