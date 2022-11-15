@@ -3,7 +3,6 @@ import 'package:contract_app/common/app_text_style.dart';
 import 'package:contract_app/feature/domain/entities/phone_entity.dart';
 import 'package:contract_app/feature/presentation/bloc/phone_list_cubit.dart/phone_list_cubit.dart';
 import 'package:contract_app/feature/presentation/bloc/phone_list_cubit.dart/phone_list_state.dart';
-import 'package:contract_app/feature/presentation/widgets/first_screen.dart/phone_card_widget.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
