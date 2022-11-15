@@ -29,25 +29,23 @@ class PhonesHomePageScreen extends StatelessWidget {
             Expanded(
               child: ListView(
                 children: [
-                  Container(
-                    child: Row(
-                      mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                      children: const [
-                        Text(
-                          'Select Category',
-                          style: AppTextStyle.header,
-                          textAlign: TextAlign.start,
-                        ),
-                        Text(
-                          'view all',
-                          style: TextStyle(
-                              fontFamily: 'MarkPro',
-                              fontSize: 15,
-                              color: AppColors.accentColorOrange),
-                          textAlign: TextAlign.end,
-                        ),
-                      ],
-                    ),
+                  Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceAround,
+                    children: const [
+                      Text(
+                        'Select Category',
+                        style: AppTextStyle.header,
+                        textAlign: TextAlign.start,
+                      ),
+                      Text(
+                        'view all',
+                        style: TextStyle(
+                            fontFamily: 'MarkPro',
+                            fontSize: 15,
+                            color: AppColors.accentColorOrange),
+                        textAlign: TextAlign.end,
+                      ),
+                    ],
                   ),
                   const Rounded(),
                   Container(height: 400, color: Colors.amber),

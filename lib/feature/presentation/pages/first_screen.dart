@@ -13,13 +13,10 @@ class HomePage extends StatelessWidget {
       appBar: AppBar(
         elevation: 0,
         systemOverlayStyle: const SystemUiOverlayStyle(
-          systemNavigationBarColor: Colors.black,
-          systemNavigationBarDividerColor: Colors.amber,
-          systemNavigationBarIconBrightness: Brightness.light,
-          systemNavigationBarContrastEnforced: true,
-          statusBarColor: AppColors.mainBackground2,
-          statusBarBrightness: Brightness.light,
+          statusBarColor: AppColors.mainBackground,
+          statusBarBrightness: Brightness.dark,
           statusBarIconBrightness: Brightness.dark,
+          systemStatusBarContrastEnforced: true,
         ),
         backgroundColor: Colors.transparent,
         title: Row(
@@ -32,9 +29,9 @@ class HomePage extends StatelessWidget {
             Text(
               'Zihuatanejo, Gro',
               style: TextStyle(
-                color: AppColors.accentColorBlue,
-                fontFamily: 'MarkPro',
-              ),
+                  color: AppColors.accentColorBlue,
+                  fontFamily: 'MarkPro',
+                  fontSize: 15),
             ),
             Icon(
               Icons.keyboard_arrow_down,

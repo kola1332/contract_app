@@ -31,7 +31,6 @@ class MyApp extends StatelessWidget {
           debugShowCheckedModeBanner: false,
           theme: ThemeData.light().copyWith(
             backgroundColor: AppColors.mainBackground2,
-            // scaffoldBackgroundColor: AppColors.mainBackground,
           ),
           home: const HomePage(),
         ));
