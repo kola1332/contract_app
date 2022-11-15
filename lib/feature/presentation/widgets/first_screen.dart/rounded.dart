@@ -2,6 +2,7 @@
 
 import 'package:contract_app/common/app_colors.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_svg/svg.dart';
 
 class Rounded extends StatefulWidget {
   const Rounded({super.key});
@@ -11,10 +12,11 @@ class Rounded extends StatefulWidget {
 }
 
 class _RoundedState extends State<Rounded> {
-  late bool _focus1 = false;
+  late bool _focus1 = true;
   late bool _focus2 = false;
   late bool _focus3 = false;
   late bool _focus4 = false;
+  MaterialStatesController? statesController;
 
   @override
   Widget build(BuildContext context) {
@@ -76,6 +78,8 @@ class _RoundedState extends State<Rounded> {
                             _focus4 = false;
                           });
                         },
+                        autofocus: true,
+                        statesController: statesController,
                         style: ButtonStyle(
                           minimumSize:
                               MaterialStateProperty.all(const Size(75, 75)),
@@ -107,6 +111,8 @@ class _RoundedState extends State<Rounded> {
                                 ? AppColors.accentColorOrange
                                 : AppColors.accentColorBlue),
                       ),
+                      // SvgPicture.asset('lib/assets/images/phone.svg'),
+                      // Image.asset('lib/assets/images/phone.svg'),
                     ],
                   ),
                 ),
@@ -115,16 +121,40 @@ class _RoundedState extends State<Rounded> {
                   padding: const EdgeInsets.all(8),
                   child: Column(
                     children: [
-                      TextButton(
-                        key: const Key('2'),
-                        onPressed: () {
-                          setState(() {
-                            _focus1 = false;
-                            _focus2 = true;
-                            _focus3 = false;
-                            _focus4 = false;
-                          });
-                        },
+                      // TextButton(
+                      //   key: const Key('2'),
+                      //   onPressed: () {
+                      //     setState(() {
+                      //       _focus2 = true;
+                      //       _focus1 = false;
+                      //       _focus3 = false;
+                      //       _focus4 = false;
+                      //     });
+                      //   },
+                      //   style: ButtonStyle(
+                      //     minimumSize:
+                      //         MaterialStateProperty.all(const Size(75, 75)),
+                      //     backgroundColor: _focus2 != false
+                      //         ? MaterialStateProperty.all(
+                      //             (AppColors.accentColorOrange))
+                      //         : MaterialStateProperty.all((Colors.white)),
+                      //     foregroundColor: MaterialStateProperty.all(
+                      //         AppColors.accentColorBlue),
+                      //     shape: MaterialStateProperty.all(
+                      //         RoundedRectangleBorder(
+                      //             borderRadius: BorderRadius.circular(80))),
+                      //   ),
+                      //   child: Icon(
+                      //     Icons.computer,
+                      //     size: 35,
+                      //     color: _focus2 != false
+                      //         ? Colors.white
+                      //         : AppColors.accentGray,
+                      //   ),
+                      // ),
+                      IconButton(
+                        onPressed: () {},
+                        icon: SvgPicture.asset('lib/assets/images/phone.svg'),
                         style: ButtonStyle(
                           minimumSize:
                               MaterialStateProperty.all(const Size(75, 75)),
@@ -138,13 +168,9 @@ class _RoundedState extends State<Rounded> {
                               RoundedRectangleBorder(
                                   borderRadius: BorderRadius.circular(80))),
                         ),
-                        child: Icon(
-                          Icons.computer,
-                          size: 35,
-                          color: _focus2 != false
-                              ? Colors.white
-                              : AppColors.accentGray,
-                        ),
+                        color: _focus3 != false
+                            ? Colors.white
+                            : AppColors.accentGray,
                       ),
                       Text(
                         'Computer',

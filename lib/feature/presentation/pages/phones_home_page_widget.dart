@@ -5,14 +5,19 @@ import 'package:contract_app/feature/presentation/bloc/phone_list_cubit.dart/pho
 import 'package:contract_app/feature/presentation/bloc/phone_list_cubit.dart/phone_list_state.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:flutter_svg/flutter_svg.dart';
 
-import 'rounded.dart';
+import '../widgets/first_screen.dart/rounded.dart';
 
 class PhonesHomePageScreen extends StatelessWidget {
   const PhonesHomePageScreen({super.key});
 
   @override
   Widget build(BuildContext context) {
+    final String assetName = 'lib/assets/images/phone.svg';
+    final Widget svg = SvgPicture.asset(assetName, semanticsLabel: 'Acme Logo');
+    final Widget sv = SvgPicture.asset('lib/assets/images/phone.svg');
+
     return BlocBuilder<PhoneListCubit, PhoneListState>(
       builder: (context, state) {
         // int index = 0;
@@ -48,7 +53,11 @@ class PhonesHomePageScreen extends StatelessWidget {
                     ],
                   ),
                   const Rounded(),
-                  Container(height: 400, color: Colors.amber),
+                  Container(
+                    height: 400,
+                    color: Colors.amber,
+                    child: svg,
+                  ),
                   Container(height: 400, color: Colors.blue),
                   Container(height: 400, color: Colors.green),
                 ],
