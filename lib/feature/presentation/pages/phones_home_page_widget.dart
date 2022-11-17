@@ -5,8 +5,8 @@ import 'package:contract_app/feature/presentation/bloc/phone_list_cubit.dart/pho
 import 'package:contract_app/feature/presentation/bloc/phone_list_cubit.dart/phone_list_state.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:flutter_svg/flutter_svg.dart';
 
+import '../widgets/first_screen.dart/card_sales.dart';
 import '../widgets/first_screen.dart/rounded.dart';
 
 class PhonesHomePageScreen extends StatelessWidget {
@@ -14,10 +14,6 @@ class PhonesHomePageScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final String assetName = 'lib/assets/images/phone.svg';
-    final Widget svg = SvgPicture.asset(assetName, semanticsLabel: 'Acme Logo');
-    final Widget sv = SvgPicture.asset('lib/assets/images/phone.svg');
-
     return BlocBuilder<PhoneListCubit, PhoneListState>(
       builder: (context, state) {
         // int index = 0;
@@ -35,31 +31,72 @@ class PhonesHomePageScreen extends StatelessWidget {
               child: ListView(
                 children: [
                   Row(
-                    mainAxisAlignment: MainAxisAlignment.spaceAround,
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: const [
-                      Text(
-                        'Select Category',
-                        style: AppTextStyle.header,
-                        textAlign: TextAlign.start,
+                      Padding(
+                        padding: EdgeInsets.only(left: 15),
+                        child: Text(
+                          'Select Category',
+                          style: AppTextStyle.header,
+                          textAlign: TextAlign.start,
+                        ),
                       ),
-                      Text(
-                        'view all',
-                        style: TextStyle(
-                            fontFamily: 'MarkPro',
-                            fontSize: 15,
-                            color: AppColors.accentColorOrange),
-                        textAlign: TextAlign.end,
+                      Padding(
+                        padding: EdgeInsets.only(right: 15),
+                        child: Text(
+                          'view all',
+                          style: TextStyle(
+                              fontFamily: 'MarkPro',
+                              fontSize: 15,
+                              color: AppColors.accentColorOrange),
+                          textAlign: TextAlign.end,
+                        ),
                       ),
                     ],
                   ),
                   const Rounded(),
                   Container(
-                    height: 400,
-                    color: Colors.amber,
-                    child: svg,
+                    height: 50,
+                    // color: Colors.amber,
+                    child: const Text(
+                      'Hot sales',
+                      style: AppTextStyle.header,
+                      textAlign: TextAlign.start,
+                    ),
                   ),
-                  Container(height: 400, color: Colors.blue),
-                  Container(height: 400, color: Colors.green),
+                  Container(
+                    height: 400,
+                    // color: Colors.blue,
+                    child: ListView.builder(
+                      scrollDirection: Axis.horizontal,
+                      itemCount: phonesHS.length,
+                      itemBuilder: (context, index) {
+                        final phone = phonesHS[index];
+                        return ListViewViewer(phone.picture, phone.title,
+                            phone.subtitle, phone.is_new);
+                      },
+                    ),
+                  ),
+                  Container(
+                    height: 400,
+                    color: Colors.green,
+                    child: Row(
+                      children: [
+                        const Text('Best Seller'),
+                        const Text('see more'),
+                      ],
+                    ),
+                  ),
+                  // Row(
+                  //   children: [
+                  //     Column(
+                  //       children: [ListView()],
+                  //     ),
+                  //     Column(
+                  //       children: [ListView()],
+                  //     ),
+                  //   ],
+                  // ),
                 ],
               ),
             ),
