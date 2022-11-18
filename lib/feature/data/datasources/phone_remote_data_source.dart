@@ -31,7 +31,7 @@ class PhoneRemoteDataSourceImpl implements PhoneRemoteDataSource {
     if (response.statusCode == 200) {
       final phones = json.decode(response.body);
       return (phones['home_store'] as List)
-          .map((person) => PhoneHSModel.fromJson(person))
+          .map((phone) => PhoneHSModel.fromJson(phone))
           .toList();
     } else {
       throw ServerException();
@@ -44,7 +44,7 @@ class PhoneRemoteDataSourceImpl implements PhoneRemoteDataSource {
         .get(Uri.parse(url), headers: {'Content-Type': 'application/json'});
     if (response.statusCode == 200) {
       final persons = json.decode(response.body);
-      return (persons['results'] as List)
+      return (persons['best_seller'] as List)
           .map((person) => PhoneBSModel.fromJson(person))
           .toList();
     } else {

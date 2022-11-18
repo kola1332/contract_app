@@ -1,0 +1,26 @@
+{
+    "cSpell.words": [
+        "usecases",
+        "Zihuatanejo"
+    ],
+    "workbench.colorCustomizations": {
+        "activityBar.activeBackground": "#368c4d",
+        "activityBar.background": "#368c4d",
+        "activityBar.foreground": "#e7e7e7",
+        "activityBar.inactiveForeground": "#e7e7e799",
+        "commandCenter.border": "#e7e7e799",
+        "sash.hoverBorder": "#368c4d",
+        "statusBar.background": "#286739",
+        "statusBar.foreground": "#e7e7e7",
+        "statusBarItem.hoverBackground": "#368c4d",
+        "statusBarItem.remoteBackground": "#286739",
+        "statusBarItem.remoteForeground": "#e7e7e7",
+        "titleBar.activeBackground": "#286739",
+        "titleBar.activeForeground": "#e7e7e7",
+        "titleBar.inactiveBackground": "#28673999",
+        "titleBar.inactiveForeground": "#e7e7e799",
+        "activityBarBadge.background": "#c5bae4",
+        "activityBarBadge.foreground": "#15202b"
+    },
+    "peacock.color": "#286739"
+}

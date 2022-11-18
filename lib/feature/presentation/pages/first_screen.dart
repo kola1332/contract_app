@@ -2,7 +2,7 @@ import 'package:contract_app/common/app_colors.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 
-import '../widgets/phones_home_page_widget.dart';
+import 'phones_home_page_widget.dart';
 
 class HomePage extends StatelessWidget {
   const HomePage({super.key});
@@ -13,13 +13,10 @@ class HomePage extends StatelessWidget {
       appBar: AppBar(
         elevation: 0,
         systemOverlayStyle: const SystemUiOverlayStyle(
-          systemNavigationBarColor: Colors.black,
-          systemNavigationBarDividerColor: Colors.amber,
-          systemNavigationBarIconBrightness: Brightness.light,
-          systemNavigationBarContrastEnforced: true,
-          statusBarColor: AppColors.mainBacgkround,
-          statusBarBrightness: Brightness.light,
+          statusBarColor: AppColors.mainBackground,
+          statusBarBrightness: Brightness.dark,
           statusBarIconBrightness: Brightness.dark,
+          systemStatusBarContrastEnforced: true,
         ),
         backgroundColor: Colors.transparent,
         title: Row(
@@ -32,9 +29,9 @@ class HomePage extends StatelessWidget {
             Text(
               'Zihuatanejo, Gro',
               style: TextStyle(
-                color: AppColors.accentColorBlue,
-                fontFamily: 'MarkPro',
-              ),
+                  color: AppColors.accentColorBlue,
+                  fontFamily: 'MarkPro',
+                  fontSize: 15),
             ),
             Icon(
               Icons.keyboard_arrow_down,
@@ -43,9 +40,12 @@ class HomePage extends StatelessWidget {
           ],
         ),
         actions: const [
-          Icon(
-            Icons.filter_alt_outlined,
-            color: AppColors.accentColorBlue,
+          Padding(
+            padding: EdgeInsets.only(right: 15),
+            child: Icon(
+              Icons.filter_alt_outlined,
+              color: AppColors.accentColorBlue,
+            ),
           )
         ],
         centerTitle: true,

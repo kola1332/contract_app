@@ -19,7 +19,7 @@ final sl = GetIt.instance;
 Future<void> init() async {
   //BLOC / Cubit
   sl.registerFactory(
-    () => PhoneListCubit(getPhonesHS: sl()),
+    () => PhoneListCubit(getPhonesHS: sl(), getPhonesBS: sl()),
   );
   sl.registerFactory(
     () => PhoneBloc(getPhonesHS: sl()),

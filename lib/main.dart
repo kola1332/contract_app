@@ -28,9 +28,9 @@ class MyApp extends StatelessWidget {
           BlocProvider<PhoneBloc>(create: (context) => sl<PhoneBloc>()),
         ],
         child: MaterialApp(
+          debugShowCheckedModeBanner: false,
           theme: ThemeData.light().copyWith(
-            backgroundColor: AppColors.mainBacgkround,
-            // scaffoldBackgroundColor: AppColors.mainBacgkround,
+            backgroundColor: AppColors.mainBackground3,
           ),
           home: const HomePage(),
         ));

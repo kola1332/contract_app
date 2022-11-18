@@ -1,6 +1,7 @@
 // ignore_for_file: constant_identifier_names, avoid_print
 
 import 'package:flutter_bloc/flutter_bloc.dart';
+import '../../../domain/usecases/get_phonesBS.dart';
 import '/core/error/failure.dart';
 import '/feature/domain/entities/phone_entity.dart';
 import '/feature/domain/usecases/get_phonesHS.dart';
@@ -11,33 +12,48 @@ const CACHED_FAILURE_MESSAGE = 'Cache Failure';
 
 class PhoneListCubit extends Cubit<PhoneListState> {
   final GetPhonesHS getPhonesHS;
+  final GetPhonesBS getPhonesBS;
 
-  PhoneListCubit({required this.getPhonesHS}) : super(PhoneListEmpty());
-
-  // int page = 1;
+  PhoneListCubit({required this.getPhonesHS, required this.getPhonesBS})
+      : super(PhoneListEmpty());
 
   void loadPhones() async {
     if (state is PhoneListLoading) return;
 
     final currentState = state;
 
-    var oldPhones = <PhoneHSEntity>[];
+    var oldPhonesHS = <PhoneHSEntity>[];
+    var oldPhonesBS = <PhoneBSEntity>[];
+
     if (currentState is PhoneListLoaded) {
-      oldPhones = currentState.phonesHSList;
+      oldPhonesHS = currentState.phonesHSList;
+      oldPhonesBS = currentState.phonesBSList;
     }
 
-    emit(PhoneListLoading(oldPhones));
+    emit(PhoneListLoading(oldPhonesHS, oldPhonesBS));
 
-    final failureOrPerson = await getPhonesHS();
+    final failureOrPhoneHS = await getPhonesHS();
+    final failureOrPhoneBS = await getPhonesBS();
+    final phonesHS = (state as PhoneListLoading).oldPhonesHSList;
+    final phonesBS = (state as PhoneListLoading).oldPhonesBSList;
 
-    failureOrPerson.fold(
+    failureOrPhoneHS.fold(
         (error) => emit(PhoneListError(message: _mapFailureToMessage(error))),
-        (phone) {
-      final phones = (state as PhoneListLoading).oldPhonesList;
-      phones.addAll(phone);
-      print('List length: ${phones.length.toString()}');
-      emit(PhoneListLoaded(phones));
+        (phoneHS) {
+      // final phonesHS = (state as PhoneListLoading).oldPhonesHSList;
+      phonesHS.addAll(phoneHS);
+      // print('List length: ${phonesHS.length.toString()}');
     });
+
+    failureOrPhoneBS.fold(
+        (error) => emit(PhoneListError(message: _mapFailureToMessage(error))),
+        (phoneBS) {
+      // final phonesBS = (state as PhoneListLoading).oldPhonesBSList;
+      phonesBS.addAll(phoneBS);
+      // print('List length: ${phonesBS.length.toString()}');
+    });
+
+    emit(PhoneListLoaded(phonesHS, phonesBS));
   }
 
   String _mapFailureToMessage(Failure failure) {

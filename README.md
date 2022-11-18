@@ -1,6 +1,6 @@
 # contract_app
 
-A new Flutter project.
+Test Flutter App for marketplace
 
 ## Getting Started
 

@@ -19,8 +19,8 @@ class PhoneBloc extends Bloc<PhoneEvent, PhoneState> {
 
   Future<void> _onEvent(GetPhones event, Emitter<PhoneState> emit) async {
     emit(PhoneLoading());
-    final failureOrPerson = await getPhonesHS();
-    emit(failureOrPerson.fold(
+    final failureOrPhone = await getPhonesHS();
+    emit(failureOrPhone.fold(
       (failure) => PhoneError(message: _mapFailureToMessage(failure)),
       (phone) => PhoneLoaded(phonesHS: phone),
     ));
