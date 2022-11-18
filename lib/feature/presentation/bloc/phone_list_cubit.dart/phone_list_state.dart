@@ -15,10 +15,11 @@ class PhoneListEmpty extends PhoneListState {
 }
 
 class PhoneListLoading extends PhoneListState {
-  final List<PhoneHSEntity> oldPhonesList;
+  final List<PhoneHSEntity> oldPhonesHSList;
+  final List<PhoneBSEntity> oldPhonesBSList;
   // final bool isFirstFetch;
 
-  const PhoneListLoading(this.oldPhonesList);
+  const PhoneListLoading(this.oldPhonesHSList, this.oldPhonesBSList);
 
   @override
   List<Object?> get props => [];
@@ -26,11 +27,12 @@ class PhoneListLoading extends PhoneListState {
 
 class PhoneListLoaded extends PhoneListState {
   final List<PhoneHSEntity> phonesHSList;
+  final List<PhoneBSEntity> phonesBSList;
 
-  const PhoneListLoaded(this.phonesHSList);
+  const PhoneListLoaded(this.phonesHSList, this.phonesBSList);
 
   @override
-  List<Object?> get props => [phonesHSList];
+  List<Object?> get props => [phonesHSList, phonesBSList];
 }
 
 class PhoneListError extends PhoneListState {

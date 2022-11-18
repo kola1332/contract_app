@@ -44,7 +44,7 @@ class PhoneRemoteDataSourceImpl implements PhoneRemoteDataSource {
         .get(Uri.parse(url), headers: {'Content-Type': 'application/json'});
     if (response.statusCode == 200) {
       final persons = json.decode(response.body);
-      return (persons['results'] as List)
+      return (persons['best_seller'] as List)
           .map((person) => PhoneBSModel.fromJson(person))
           .toList();
     } else {

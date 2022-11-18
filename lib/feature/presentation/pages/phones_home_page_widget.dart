@@ -7,6 +7,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
 import '../widgets/first_screen.dart/card_sales.dart';
+import '../widgets/first_screen.dart/phone_card.dart';
 import '../widgets/first_screen.dart/rounded.dart';
 
 class PhonesHomePageScreen extends StatelessWidget {
@@ -16,14 +17,15 @@ class PhonesHomePageScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     return BlocBuilder<PhoneListCubit, PhoneListState>(
       builder: (context, state) {
-        // int index = 0;
         List<PhoneHSEntity> phonesHS = [];
+        // List<PhoneBSEntity> phonesBS = [];
         if (state is PhoneListLoading) {
           return _loadingIndicator();
         } else if (state is PhoneListLoaded) {
           phonesHS = state.phonesHSList;
-          // ignore: avoid_print
-          print(phonesHS);
+          // phonesBS = state.phonesBSList;
+          // print(phonesBS);
+          // print(phonesBS.length);
         }
         return Column(
           children: [
@@ -56,44 +58,74 @@ class PhonesHomePageScreen extends StatelessWidget {
                   ),
                   const Rounded(),
                   Container(
+                    padding: const EdgeInsets.only(left: 15, right: 15),
                     height: 50,
-                    // color: Colors.amber,
-                    child: const Text(
-                      'Hot sales',
-                      style: AppTextStyle.header,
-                      textAlign: TextAlign.start,
+                    child: Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                      children: const [
+                        Text(
+                          'Hot sales',
+                          style: AppTextStyle.header,
+                        ),
+                        Text(
+                          'see more',
+                          style: AppTextStyle.standard,
+                        ),
+                      ],
                     ),
                   ),
                   Container(
-                    height: 400,
-                    // color: Colors.blue,
+                    height: 224,
                     child: ListView.builder(
                       scrollDirection: Axis.horizontal,
                       itemCount: phonesHS.length,
                       itemBuilder: (context, index) {
                         final phone = phonesHS[index];
-                        return ListViewViewer(phone.picture, phone.title,
+                        return listViewViewer(phone.picture, phone.title,
                             phone.subtitle, phone.is_new);
                       },
                     ),
                   ),
                   Container(
-                    height: 400,
-                    color: Colors.green,
+                    padding: const EdgeInsets.only(left: 15, right: 15),
+                    // height: 400,
+                    // color: Colors.green,
                     child: Row(
-                      children: [
-                        const Text('Best Seller'),
-                        const Text('see more'),
+                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                      children: const [
+                        Text(
+                          'Best Seller',
+                          style: AppTextStyle.header,
+                        ),
+                        Text(
+                          'see more',
+                          style: AppTextStyle.standard,
+                        ),
                       ],
                     ),
                   ),
                   // Row(
                   //   children: [
                   //     Column(
-                  //       children: [ListView()],
+                  //       children: [
+                  //         // Expanded(
+                  //         //   child: ListView.builder(
+                  //         //       itemCount: phonesHS.length,
+                  //         //       itemBuilder: (context, index) {
+                  //         //         final phone = phonesBS[index];
+                  //         //         return phoneCard(
+                  //         //           phone.picture,
+                  //         //           phone.title,
+                  //         //           phone.discount_price,
+                  //         //           phone.price_without_discount,
+                  //         //           phone.is_favorites,
+                  //         //         );
+                  //         //       }),
+                  //         // )
+                  //       ],
                   //     ),
                   //     Column(
-                  //       children: [ListView()],
+                  //       children: [Expanded(child: ListView())],
                   //     ),
                   //   ],
                   // ),
