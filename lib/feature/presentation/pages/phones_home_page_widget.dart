@@ -18,15 +18,19 @@ class PhonesHomePageScreen extends StatelessWidget {
     return BlocBuilder<PhoneListCubit, PhoneListState>(
       builder: (context, state) {
         List<PhoneHSEntity> phonesHS = [];
-        // List<PhoneBSEntity> phonesBS = [];
+        List<PhoneBSEntity> phonesBS = [];
         if (state is PhoneListLoading) {
           return _loadingIndicator();
         } else if (state is PhoneListLoaded) {
           phonesHS = state.phonesHSList;
-          // phonesBS = state.phonesBSList;
-          // print(phonesBS);
-          // print(phonesBS.length);
+          phonesBS = state.phonesBSList;
+          print(phonesBS);
+          print(phonesBS.length);
         }
+        final phone1 = phonesBS[0];
+        final phone2 = phonesBS[1];
+        final phone3 = phonesBS[3];
+        final phone4 = phonesBS[3];
         return Column(
           children: [
             Expanded(
@@ -104,31 +108,104 @@ class PhonesHomePageScreen extends StatelessWidget {
                       ],
                     ),
                   ),
-                  // Row(
-                  //   children: [
-                  //     Column(
-                  //       children: [
-                  //         // Expanded(
-                  //         //   child: ListView.builder(
-                  //         //       itemCount: phonesHS.length,
-                  //         //       itemBuilder: (context, index) {
-                  //         //         final phone = phonesBS[index];
-                  //         //         return phoneCard(
-                  //         //           phone.picture,
-                  //         //           phone.title,
-                  //         //           phone.discount_price,
-                  //         //           phone.price_without_discount,
-                  //         //           phone.is_favorites,
-                  //         //         );
-                  //         //       }),
-                  //         // )
-                  //       ],
-                  //     ),
-                  //     Column(
-                  //       children: [Expanded(child: ListView())],
-                  //     ),
-                  //   ],
+                  // Container(
+                  //   child: Row(
+                  //     children: [
+                  //       Column(
+                  //         children: [
+                  //           Expanded(
+                  //             child: ListView.builder(
+                  //                 itemCount: phonesHS.length,
+                  //                 itemBuilder: (context, index) {
+                  //                   final phone = phonesBS[index];
+                  //                   return phoneCard(
+                  //                     phone.picture,
+                  //                     phone.title,
+                  //                     phone.discount_price,
+                  //                     phone.price_without_discount,
+                  //                     phone.is_favorites,
+                  //                   );
+                  //                 }),
+                  //           )
+                  //         ],
+                  //       ),
+                  //       // Column(
+                  //       //   children: [Expanded(child: ListView())],
+                  //       // ),
+                  //     ],
+                  //   ),
                   // ),
+                  // Container(
+                  //   child: ListView.builder(
+                  //       itemCount: phonesHS.length,
+                  //       itemBuilder: (context, index) {
+                  //         final phone = phonesBS[index];
+                  //         return phoneCard(
+                  //           phone.picture,
+                  //           phone.title,
+                  //           phone.discount_price,
+                  //           phone.price_without_discount,
+                  //           phone.is_favorites,
+                  //         );
+                  //       }),
+                  // ),
+                  Row(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: [
+                      Column(
+                        children: [
+                          Container(
+                            // height: 400,
+                            // width: 150,
+                            child: phoneCard(
+                              phone1.picture,
+                              phone1.title,
+                              phone1.discount_price,
+                              phone1.price_without_discount,
+                              phone1.is_favorites,
+                            ),
+                          ),
+                          Container(
+                            // height: 400,
+                            // width: 150,
+                            child: phoneCard(
+                              phone4.picture,
+                              phone3.title,
+                              phone3.discount_price,
+                              phone3.price_without_discount,
+                              phone3.is_favorites,
+                            ),
+                          ),
+                        ],
+                      ),
+                      Column(
+                        children: [
+                          Container(
+                            // height: 400,
+                            // width: 150,
+                            child: phoneCard(
+                              phone2.picture,
+                              phone2.title,
+                              phone2.discount_price,
+                              phone2.price_without_discount,
+                              phone2.is_favorites,
+                            ),
+                          ),
+                          Container(
+                            // height: 400,
+                            // width: 150,
+                            child: phoneCard(
+                              phone4.picture,
+                              phone4.title,
+                              phone4.discount_price,
+                              phone4.price_without_discount,
+                              phone4.is_favorites,
+                            ),
+                          ),
+                        ],
+                      )
+                    ],
+                  ),
                 ],
               ),
             ),
