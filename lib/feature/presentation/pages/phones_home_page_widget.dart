@@ -1,3 +1,5 @@
+// ignore_for_file: sized_box_for_whitespace
+
 import 'package:contract_app/common/app_colors.dart';
 import 'package:contract_app/common/app_text_style.dart';
 import 'package:contract_app/feature/domain/entities/phone_entity.dart';
