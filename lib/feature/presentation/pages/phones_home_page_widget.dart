@@ -5,10 +5,11 @@ import 'package:contract_app/feature/presentation/bloc/phone_list_cubit.dart/pho
 import 'package:contract_app/feature/presentation/bloc/phone_list_cubit.dart/phone_list_state.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:flutter_svg/svg.dart';
 
-import '../widgets/first_screen.dart/card_sales.dart';
-import '../widgets/first_screen.dart/phone_card.dart';
-import '../widgets/first_screen.dart/rounded.dart';
+import '../widgets/first_screen/card_sales.dart';
+import '../widgets/first_screen/phone_card.dart';
+import '../widgets/first_screen/rounded.dart';
 
 class PhonesHomePageScreen extends StatelessWidget {
   const PhonesHomePageScreen({super.key});
@@ -24,12 +25,12 @@ class PhonesHomePageScreen extends StatelessWidget {
         } else if (state is PhoneListLoaded) {
           phonesHS = state.phonesHSList;
           phonesBS = state.phonesBSList;
-          print(phonesBS);
-          print(phonesBS.length);
+          // print(phonesBS);
+          // print(phonesBS.length);
         }
         final phone1 = phonesBS[0];
         final phone2 = phonesBS[1];
-        final phone3 = phonesBS[3];
+        final phone3 = phonesBS[2];
         final phone4 = phonesBS[3];
         return Column(
           children: [
@@ -61,6 +62,45 @@ class PhonesHomePageScreen extends StatelessWidget {
                     ],
                   ),
                   const Rounded(),
+                  Padding(
+                    padding: const EdgeInsets.symmetric(horizontal: 15),
+                    child: TextField(
+                      decoration: InputDecoration(
+                        filled: true,
+                        fillColor: Colors.white,
+                        border: OutlineInputBorder(
+                          borderRadius: BorderRadius.circular(30),
+                          borderSide: BorderSide.none,
+                          gapPadding: 15,
+                        ),
+                        // border: const OutlineInputBorder(
+                        //     borderSide: BorderSide(
+                        //   width: 0.3,
+                        //   strokeAlign: StrokeAlign.center,
+                        // )),
+                        // disabledBorder: InputBorder.none,
+                        // border: OutlineInputBorder(),
+                        labelText: 'Search',
+                        prefixIcon: SvgPicture.asset(
+                          'lib/assets/images/search.svg',
+                          height: 10,
+                          width: 10,
+                          fit: BoxFit.none,
+                        ),
+                        suffixIcon: SvgPicture.asset(
+                          'lib/assets/images/search.svg',
+                          fit: BoxFit.none,
+                        ),
+                      ),
+                    ),
+                    // IconButton(
+                    //   onPressed: () {},
+                    //   icon: SvgPicture.asset(
+                    //     'lib/assets/images/qr.svg',
+                    //     // fit: BoxFit.none,
+                    //   ),
+                    // ),
+                  ),
                   Container(
                     padding: const EdgeInsets.only(left: 15, right: 15),
                     height: 50,

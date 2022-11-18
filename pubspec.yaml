@@ -47,6 +47,7 @@ dependencies:
   json_serializable: ^6.5.4
   get_it: ^7.2.0
   flutter_svg: ^1.1.6
+  google_nav_bar: ^5.0.6
 
 dev_dependencies:
   flutter_test:
@@ -78,6 +79,8 @@ flutter:
     - lib/assets/images/books.svg
     - lib/assets/images/favorite.svg
     - lib/assets/images/favorite_splash.svg
+    - lib/assets/images/search.svg
+    - lib/assets/images/qr.svg
   #   - images/a_dot_ham.jpeg
 
   # An image asset can refer to one or more resolution-specific "variants", see
