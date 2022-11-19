@@ -4,23 +4,23 @@
         "Zihuatanejo"
     ],
     "workbench.colorCustomizations": {
-        "activityBar.activeBackground": "#21562f",
-        "activityBar.background": "#21562f",
+        "activityBar.activeBackground": "#3d9e57",
+        "activityBar.background": "#3d9e57",
         "activityBar.foreground": "#e7e7e7",
         "activityBar.inactiveForeground": "#e7e7e799",
         "commandCenter.border": "#e7e7e799",
-        "sash.hoverBorder": "#21562f",
-        "statusBar.background": "#13311b",
+        "sash.hoverBorder": "#3d9e57",
+        "statusBar.background": "#2f7943",
         "statusBar.foreground": "#e7e7e7",
-        "statusBarItem.hoverBackground": "#21562f",
-        "statusBarItem.remoteBackground": "#13311b",
+        "statusBarItem.hoverBackground": "#3d9e57",
+        "statusBarItem.remoteBackground": "#2f7943",
         "statusBarItem.remoteForeground": "#e7e7e7",
-        "titleBar.activeBackground": "#13311b",
+        "titleBar.activeBackground": "#2f7943",
         "titleBar.activeForeground": "#e7e7e7",
-        "titleBar.inactiveBackground": "#13311b99",
+        "titleBar.inactiveBackground": "#2f794399",
         "titleBar.inactiveForeground": "#e7e7e799",
-        "activityBarBadge.background": "#19122e",
-        "activityBarBadge.foreground": "#e7e7e7"
+        "activityBarBadge.background": "#d9d1ed",
+        "activityBarBadge.foreground": "#15202b"
     },
-    "peacock.color": "#13311b"
+    "peacock.color": "#2f7943"
 }
