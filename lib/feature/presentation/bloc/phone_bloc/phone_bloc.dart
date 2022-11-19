@@ -5,24 +5,24 @@ import 'dart:async';
 import 'package:contract_app/feature/presentation/bloc/phone_bloc/phone_event.dart';
 import 'package:contract_app/feature/presentation/bloc/phone_bloc/phone_state.dart';
 import '../../../../core/error/failure.dart';
-import '../../../domain/usecases/get_phonesHS.dart';
+import '../../../domain/usecases/get_phonesHomeStore.dart';
 
 const SERVER_FAILURE_MESSAGE = 'Server Failure';
 const CACHED_FAILURE_MESSAGE = 'Cache Failure';
 
 class PhoneBloc extends Bloc<PhoneEvent, PhoneState> {
-  final GetPhonesHS getPhonesHS;
+  final GetPhonesHomeStore getPhonesHomeStore;
 
-  PhoneBloc({required this.getPhonesHS}) : super(PhoneEmpty()) {
+  PhoneBloc({required this.getPhonesHomeStore}) : super(PhoneEmpty()) {
     on<GetPhones>(_onEvent);
   }
 
   Future<void> _onEvent(GetPhones event, Emitter<PhoneState> emit) async {
     emit(PhoneLoading());
-    final failureOrPhone = await getPhonesHS();
+    final failureOrPhone = await getPhonesHomeStore();
     emit(failureOrPhone.fold(
       (failure) => PhoneError(message: _mapFailureToMessage(failure)),
-      (phone) => PhoneLoaded(phonesHS: phone),
+      (phone) => PhoneLoaded(phonesHomeStore: phone),
     ));
   }
 

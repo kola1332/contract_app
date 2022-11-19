@@ -7,13 +7,13 @@ import 'package:dartz/dartz.dart';
 
 import '../../../core/usecases/usecase.dart';
 
-class GetPhonesHS extends Usecase<List<PhoneEntity>> {
+class GetPhonesBestSeller extends Usecase<List<PhoneEntity>> {
   final PhoneRepository phoneRepository;
 
-  GetPhonesHS(this.phoneRepository);
+  GetPhonesBestSeller(this.phoneRepository);
 
   @override
-  Future<Either<Failure, List<PhoneHSEntity>>> call() async {
-    return await phoneRepository.getPhonesHS();
+  Future<Either<Failure, List<PhoneBestSellerEntity>>> call() async {
+    return await phoneRepository.getPhonesBestSeller();
   }
 }

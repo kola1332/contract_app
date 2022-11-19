@@ -1,20 +1,21 @@
 // ignore_for_file: constant_identifier_names, avoid_print
 
 import 'package:flutter_bloc/flutter_bloc.dart';
-import '../../../domain/usecases/get_phonesBS.dart';
+import '../../../domain/usecases/get_phonesBestSeller.dart';
 import '/core/error/failure.dart';
 import '/feature/domain/entities/phone_entity.dart';
-import '/feature/domain/usecases/get_phonesHS.dart';
+import '/feature/domain/usecases/get_phonesHomeStore.dart';
 import '/feature/presentation/bloc/phone_list_cubit.dart/phone_list_state.dart';
 
 const SERVER_FAILURE_MESSAGE = 'Server Failure';
 const CACHED_FAILURE_MESSAGE = 'Cache Failure';
 
 class PhoneListCubit extends Cubit<PhoneListState> {
-  final GetPhonesHS getPhonesHS;
-  final GetPhonesBS getPhonesBS;
+  final GetPhonesHomeStore getPhonesHomeStore;
+  final GetPhonesBestSeller getPhonesBestSeller;
 
-  PhoneListCubit({required this.getPhonesHS, required this.getPhonesBS})
+  PhoneListCubit(
+      {required this.getPhonesHomeStore, required this.getPhonesBestSeller})
       : super(PhoneListEmpty());
 
   void loadPhones() async {
@@ -22,38 +23,39 @@ class PhoneListCubit extends Cubit<PhoneListState> {
 
     final currentState = state;
 
-    var oldPhonesHS = <PhoneHSEntity>[];
-    var oldPhonesBS = <PhoneBSEntity>[];
+    var oldPhonesHomeStore = <PhoneHomeStoreEntity>[];
+    var oldPhonesBestSeller = <PhoneBestSellerEntity>[];
 
     if (currentState is PhoneListLoaded) {
-      oldPhonesHS = currentState.phonesHSList;
-      oldPhonesBS = currentState.phonesBSList;
+      oldPhonesHomeStore = currentState.phonesHomeStoreList;
+      oldPhonesBestSeller = currentState.phonesBestSellerList;
     }
 
-    emit(PhoneListLoading(oldPhonesHS, oldPhonesBS));
+    emit(PhoneListLoading(oldPhonesHomeStore, oldPhonesBestSeller));
 
-    final failureOrPhoneHS = await getPhonesHS();
-    final failureOrPhoneBS = await getPhonesBS();
-    final phonesHS = (state as PhoneListLoading).oldPhonesHSList;
-    final phonesBS = (state as PhoneListLoading).oldPhonesBSList;
+    final failureOrPhoneHomeStore = await getPhonesHomeStore();
+    final failureOrPhoneBestSeller = await getPhonesBestSeller();
+    final phonesHomeStore = (state as PhoneListLoading).oldPhonesHomeStoreList;
+    final phonesBestSeller =
+        (state as PhoneListLoading).oldPhonesBestSellerList;
 
-    failureOrPhoneHS.fold(
+    failureOrPhoneHomeStore.fold(
         (error) => emit(PhoneListError(message: _mapFailureToMessage(error))),
-        (phoneHS) {
-      // final phonesHS = (state as PhoneListLoading).oldPhonesHSList;
-      phonesHS.addAll(phoneHS);
-      // print('List length: ${phonesHS.length.toString()}');
+        (phoneHomeStore) {
+      // final phonesHomeStore = (state as PhoneListLoading).oldPhonesHomeStoreList;
+      phonesHomeStore.addAll(phoneHomeStore);
+      // print('List length: ${phonesHomeStore.length.toString()}');
     });
 
-    failureOrPhoneBS.fold(
+    failureOrPhoneBestSeller.fold(
         (error) => emit(PhoneListError(message: _mapFailureToMessage(error))),
-        (phoneBS) {
-      // final phonesBS = (state as PhoneListLoading).oldPhonesBSList;
-      phonesBS.addAll(phoneBS);
-      // print('List length: ${phonesBS.length.toString()}');
+        (phoneBestSeller) {
+      // final phonesBestSeller = (state as PhoneListLoading).oldPhonesBestSellerList;
+      phonesBestSeller.addAll(phoneBestSeller);
+      // print('List length: ${phonesBestSeller.length.toString()}');
     });
 
-    emit(PhoneListLoaded(phonesHS, phonesBS));
+    emit(PhoneListLoaded(phonesHomeStore, phonesBestSeller));
   }
 
   String _mapFailureToMessage(Failure failure) {

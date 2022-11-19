@@ -6,6 +6,6 @@ import 'package:contract_app/core/error/failure.dart';
 import 'package:contract_app/feature/domain/entities/phone_entity.dart';
 
 abstract class PhoneRepository {
-  Future<Either<Failure, List<PhoneHSEntity>>> getPhonesHS();
-  Future<Either<Failure, List<PhoneBSEntity>>> getPhonesBS();
+  Future<Either<Failure, List<PhoneHomeStoreEntity>>> getPhonesHomeStore();
+  Future<Either<Failure, List<PhoneBestSellerEntity>>> getPhonesBestSeller();
 }

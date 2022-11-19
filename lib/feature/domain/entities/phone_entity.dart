@@ -12,12 +12,12 @@ class PhoneEntity {
   });
 }
 
-class PhoneHSEntity extends PhoneEntity {
+class PhoneHomeStoreEntity extends PhoneEntity {
   final String subtitle;
   final bool is_buy;
   final bool is_new;
 
-  const PhoneHSEntity({
+  const PhoneHomeStoreEntity({
     required super.id,
     required super.title,
     required super.picture,
@@ -27,12 +27,12 @@ class PhoneHSEntity extends PhoneEntity {
   });
 }
 
-class PhoneBSEntity extends PhoneEntity {
+class PhoneBestSellerEntity extends PhoneEntity {
   final bool is_favorites;
   final int price_without_discount;
   final int discount_price;
 
-  const PhoneBSEntity({
+  const PhoneBestSellerEntity({
     required super.id,
     required super.title,
     required super.picture,

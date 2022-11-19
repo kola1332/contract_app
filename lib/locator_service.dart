@@ -7,8 +7,8 @@ import 'package:contract_app/feature/data/datasources/phone_remote_data_source.d
 import 'package:contract_app/feature/data/models/phone_model.dart';
 import 'package:contract_app/feature/data/repositories/phone_repository_impl.dart';
 import 'package:contract_app/feature/domain/repositories/phone_repository.dart';
-import 'package:contract_app/feature/domain/usecases/get_phonesBS.dart';
-import 'package:contract_app/feature/domain/usecases/get_phonesHS.dart';
+import 'package:contract_app/feature/domain/usecases/get_phonesBestSeller.dart';
+import 'package:contract_app/feature/domain/usecases/get_phonesHomeStore.dart';
 import 'package:contract_app/feature/presentation/bloc/phone_list_cubit.dart/phone_list_cubit.dart';
 import 'package:internet_connection_checker/internet_connection_checker.dart';
 import 'package:shared_preferences/shared_preferences.dart';
@@ -19,19 +19,19 @@ final sl = GetIt.instance;
 Future<void> init() async {
   //BLOC / Cubit
   sl.registerFactory(
-    () => PhoneListCubit(getPhonesHS: sl(), getPhonesBS: sl()),
+    () => PhoneListCubit(getPhonesHomeStore: sl(), getPhonesBestSeller: sl()),
   );
   sl.registerFactory(
-    () => PhoneBloc(getPhonesHS: sl()),
+    () => PhoneBloc(getPhonesHomeStore: sl()),
   );
 
   //Freezed
-  sl.registerFactory(() => PhoneHSModel(
+  sl.registerFactory(() => PhoneHomeStoreModel(
       id: sl(), title: sl(), picture: sl(), subtitle: sl(), is_buy: sl()));
 
   //UseCases
-  sl.registerLazySingleton(() => GetPhonesHS(sl()));
-  sl.registerLazySingleton(() => GetPhonesBS(sl()));
+  sl.registerLazySingleton(() => GetPhonesHomeStore(sl()));
+  sl.registerLazySingleton(() => GetPhonesBestSeller(sl()));
 
   //Repository
   sl.registerLazySingleton<PhoneRepository>(() => PhoneRepositoryImpl(

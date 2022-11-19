@@ -7,8 +7,8 @@ import 'package:contract_app/feature/data/models/phone_model.dart';
 import 'package:http/http.dart' as http;
 
 abstract class PhoneRemoteDataSource {
-  Future<List<PhoneHSModel>> getPhonesHS();
-  Future<List<PhoneBSModel>> getPhonesBS();
+  Future<List<PhoneHomeStoreModel>> getPhonesHomeStore();
+  Future<List<PhoneBestSellerModel>> getPhonesBestSeller();
 }
 
 class PhoneRemoteDataSourceImpl implements PhoneRemoteDataSource {
@@ -17,35 +17,39 @@ class PhoneRemoteDataSourceImpl implements PhoneRemoteDataSource {
   PhoneRemoteDataSourceImpl({required this.client});
 
   @override
-  Future<List<PhoneHSModel>> getPhonesHS() => _getPhoneHSFromUrl(
-      'https://run.mocky.io/v3/654bd15e-b121-49ba-a588-960956b15175');
+  Future<List<PhoneHomeStoreModel>> getPhonesHomeStore() =>
+      _getPhoneHomeStoreFromUrl(
+          'https://run.mocky.io/v3/654bd15e-b121-49ba-a588-960956b15175');
 
   @override
-  Future<List<PhoneBSModel>> getPhonesBS() => _getPhoneBSFromUrl(
-      'https://run.mocky.io/v3/654bd15e-b121-49ba-a588-960956b15175');
+  Future<List<PhoneBestSellerModel>> getPhonesBestSeller() =>
+      _getPhoneBestSellerFromUrl(
+          'https://run.mocky.io/v3/654bd15e-b121-49ba-a588-960956b15175');
 
-  Future<List<PhoneHSModel>> _getPhoneHSFromUrl(String url) async {
+  Future<List<PhoneHomeStoreModel>> _getPhoneHomeStoreFromUrl(
+      String url) async {
     print(url);
     final response = await client
         .get(Uri.parse(url), headers: {'Content-Type': 'application/json'});
     if (response.statusCode == 200) {
       final phones = json.decode(response.body);
       return (phones['home_store'] as List)
-          .map((phone) => PhoneHSModel.fromJson(phone))
+          .map((phone) => PhoneHomeStoreModel.fromJson(phone))
           .toList();
     } else {
       throw ServerException();
     }
   }
 
-  Future<List<PhoneBSModel>> _getPhoneBSFromUrl(String url) async {
+  Future<List<PhoneBestSellerModel>> _getPhoneBestSellerFromUrl(
+      String url) async {
     print(url);
     final response = await client
         .get(Uri.parse(url), headers: {'Content-Type': 'application/json'});
     if (response.statusCode == 200) {
       final persons = json.decode(response.body);
       return (persons['best_seller'] as List)
-          .map((person) => PhoneBSModel.fromJson(person))
+          .map((person) => PhoneBestSellerModel.fromJson(person))
           .toList();
     } else {
       throw ServerException();

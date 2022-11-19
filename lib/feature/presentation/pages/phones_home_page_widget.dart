@@ -20,20 +20,20 @@ class PhonesHomePageScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     return BlocBuilder<PhoneListCubit, PhoneListState>(
       builder: (context, state) {
-        List<PhoneHSEntity> phonesHS = [];
-        List<PhoneBSEntity> phonesBS = [];
+        List<PhoneHomeStoreEntity> phonesHomeStore = [];
+        List<PhoneBestSellerEntity> phonesBestSeller = [];
         if (state is PhoneListLoading) {
           return _loadingIndicator();
         } else if (state is PhoneListLoaded) {
-          phonesHS = state.phonesHSList;
-          phonesBS = state.phonesBSList;
-          // print(phonesBS);
-          // print(phonesBS.length);
+          phonesHomeStore = state.phonesHomeStoreList;
+          phonesBestSeller = state.phonesBestSellerList;
+          // print(phonesBestSeller);
+          // print(phonesBestSeller.length);
         }
-        final phone1 = phonesBS[0];
-        final phone2 = phonesBS[1];
-        final phone3 = phonesBS[2];
-        final phone4 = phonesBS[3];
+        final phone1 = phonesBestSeller[0];
+        final phone2 = phonesBestSeller[1];
+        final phone3 = phonesBestSeller[2];
+        final phone4 = phonesBestSeller[3];
         return Column(
           children: [
             Expanded(
@@ -124,9 +124,9 @@ class PhonesHomePageScreen extends StatelessWidget {
                     height: 224,
                     child: ListView.builder(
                       scrollDirection: Axis.horizontal,
-                      itemCount: phonesHS.length,
+                      itemCount: phonesHomeStore.length,
                       itemBuilder: (context, index) {
-                        final phone = phonesHS[index];
+                        final phone = phonesHomeStore[index];
                         return listViewViewer(phone.picture, phone.title,
                             phone.subtitle, phone.is_new);
                       },
@@ -157,9 +157,9 @@ class PhonesHomePageScreen extends StatelessWidget {
                   //         children: [
                   //           Expanded(
                   //             child: ListView.builder(
-                  //                 itemCount: phonesHS.length,
+                  //                 itemCount: phonesHomeStore.length,
                   //                 itemBuilder: (context, index) {
-                  //                   final phone = phonesBS[index];
+                  //                   final phone = phonesBestSeller[index];
                   //                   return phoneCard(
                   //                     phone.picture,
                   //                     phone.title,
@@ -179,9 +179,9 @@ class PhonesHomePageScreen extends StatelessWidget {
                   // ),
                   // Container(
                   //   child: ListView.builder(
-                  //       itemCount: phonesHS.length,
+                  //       itemCount: phonesHomeStore.length,
                   //       itemBuilder: (context, index) {
-                  //         final phone = phonesBS[index];
+                  //         final phone = phonesBestSeller[index];
                   //         return phoneCard(
                   //           phone.picture,
                   //           phone.title,
@@ -254,11 +254,11 @@ class PhonesHomePageScreen extends StatelessWidget {
             // Expanded(
             //   child: ListView.separated(
             //     itemBuilder: (context, index) {
-            //       // return Text('${phonesHS[index]}');
-            //       return PhoneCard(phoneHS: phonesHS[index]);
+            //       // return Text('${phonesHomeStore[index]}');
+            //       return PhoneCard(phoneHomeStore: phonesHomeStore[index]);
             //     },
             //     scrollDirection: Axis.vertical,
-            //     itemCount: phonesHS.length,
+            //     itemCount: phonesHomeStore.length,
             //     separatorBuilder: (BuildContext context, int index) {
             //       return const Divider(
             //         height: 10,
@@ -267,7 +267,7 @@ class PhonesHomePageScreen extends StatelessWidget {
             //     },
             //   ),
             // ),
-            // Cont(phoneHS: phonesHS),
+            // Cont(phoneHomeStore: phonesHomeStore),
           ],
         );
       },
