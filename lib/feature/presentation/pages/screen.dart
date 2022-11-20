@@ -12,25 +12,26 @@ class Page2 extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    List<PhoneHomeStoreEntity> phonesHomeStore = [];
-    return BlocBuilder<PhoneBloc, PhoneState>(
-      builder: ((context, state) {
-        List<PhoneHomeStoreEntity> phonesHomeStore = [];
-        if (state is PhoneLoading) {
-          return Center(child: CircularProgressIndicator());
-        } else if (state is PhoneLoaded) {
-          phonesHomeStore = state.phonesHomeStore;
-          print(phonesHomeStore);
-          print(phonesHomeStore.length);
-        }
-        print(phonesHomeStore);
-        print(phonesHomeStore.length);
-        return Scaffold(
-          body: Container(
-            child: Center(child: Text('${phonesHomeStore.length}')),
-          ),
-        );
-      }),
-    );
+    return Container();
+    // List<PhoneHomeStoreEntity> phonesHomeStore = [];
+    // return BlocBuilder<PhoneBloc, PhoneState>(
+    //   builder: ((context, state) {
+    //     List<PhoneHomeStoreEntity> phonesHomeStore = [];
+    //     if (state is PhoneLoading) {
+    //       return Center(child: CircularProgressIndicator());
+    //     } else if (state is PhoneLoaded) {
+    //       phonesHomeStore = state.phonesHomeStore;
+    //       print(phonesHomeStore);
+    //       print(phonesHomeStore.length);
+    //     }
+    //     print(phonesHomeStore);
+    //     print(phonesHomeStore.length);
+    //     return Scaffold(
+    //       body: Container(
+    //         child: Center(child: Text('${phonesHomeStore.length}')),
+    //       ),
+    //     );
+    //   }),
+    // );
   }
 }
