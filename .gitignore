@@ -48,3 +48,4 @@ lib/feature/data/models/phone_model.g.dart
 lib/feature/presentation/widgets/container_builder.dart
 .vscode/settings.json
 
+*.cc
