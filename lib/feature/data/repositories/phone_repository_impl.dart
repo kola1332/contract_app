@@ -5,7 +5,6 @@ import 'package:contract_app/feature/data/models/basket_model.dart';
 import 'package:contract_app/feature/data/models/phone_detail_model.dart';
 import 'package:contract_app/feature/data/models/phone_model.dart';
 import 'package:contract_app/core/error/failure.dart';
-import 'package:contract_app/feature/domain/entities/phone_detail_entity.dart';
 import 'package:contract_app/feature/domain/repositories/phone_repository.dart';
 import 'package:dartz/dartz.dart';
 
@@ -26,9 +25,8 @@ class PhoneRepositoryImpl implements PhoneRepository {
       getPhonesHomeStore() async {
     if (await networkInfo.isConnected) {
       try {
-        List<PhoneHomeStoreModel> remotePhoneHD =
-            await remoteDataSource.getPhonesHomeStore();
-        localDataSource.phonesHomeStoreToCache(remotePhoneHD);
+        final remotePhoneHD = await remoteDataSource.getPhonesHomeStore();
+        localDataSource.phonesHomeStoreToCache(remotePhoneHD); //
         return Right(remotePhoneHD);
       } on ServerFailure {
         return Left(ServerFailure());

@@ -20,10 +20,10 @@ BasketModel _$BasketModelFromJson(Map<String, dynamic> json) {
 
 /// @nodoc
 mixin _$BasketModel {
-  int get id => throw _privateConstructorUsedError;
+  List<BasketItemsModel> get basket => throw _privateConstructorUsedError;
+  String get id => throw _privateConstructorUsedError;
   String get delivery => throw _privateConstructorUsedError;
   int get total => throw _privateConstructorUsedError;
-  List<BasketItemsModel> get basketItems => throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
@@ -38,7 +38,7 @@ abstract class $BasketModelCopyWith<$Res> {
       _$BasketModelCopyWithImpl<$Res, BasketModel>;
   @useResult
   $Res call(
-      {int id, String delivery, int total, List<BasketItemsModel> basketItems});
+      {List<BasketItemsModel> basket, String id, String delivery, int total});
 }
 
 /// @nodoc
@@ -54,16 +54,20 @@ class _$BasketModelCopyWithImpl<$Res, $Val extends BasketModel>
   @pragma('vm:prefer-inline')
   @override
   $Res call({
+    Object? basket = null,
     Object? id = null,
     Object? delivery = null,
     Object? total = null,
-    Object? basketItems = null,
   }) {
     return _then(_value.copyWith(
+      basket: null == basket
+          ? _value.basket
+          : basket // ignore: cast_nullable_to_non_nullable
+              as List<BasketItemsModel>,
       id: null == id
           ? _value.id
           : id // ignore: cast_nullable_to_non_nullable
-              as int,
+              as String,
       delivery: null == delivery
           ? _value.delivery
           : delivery // ignore: cast_nullable_to_non_nullable
@@ -72,10 +76,6 @@ class _$BasketModelCopyWithImpl<$Res, $Val extends BasketModel>
           ? _value.total
           : total // ignore: cast_nullable_to_non_nullable
               as int,
-      basketItems: null == basketItems
-          ? _value.basketItems
-          : basketItems // ignore: cast_nullable_to_non_nullable
-              as List<BasketItemsModel>,
     ) as $Val);
   }
 }
@@ -89,7 +89,7 @@ abstract class _$$_BasketModelCopyWith<$Res>
   @override
   @useResult
   $Res call(
-      {int id, String delivery, int total, List<BasketItemsModel> basketItems});
+      {List<BasketItemsModel> basket, String id, String delivery, int total});
 }
 
 /// @nodoc
@@ -103,16 +103,20 @@ class __$$_BasketModelCopyWithImpl<$Res>
   @pragma('vm:prefer-inline')
   @override
   $Res call({
+    Object? basket = null,
     Object? id = null,
     Object? delivery = null,
     Object? total = null,
-    Object? basketItems = null,
   }) {
     return _then(_$_BasketModel(
+      null == basket
+          ? _value._basket
+          : basket // ignore: cast_nullable_to_non_nullable
+              as List<BasketItemsModel>,
       id: null == id
           ? _value.id
           : id // ignore: cast_nullable_to_non_nullable
-              as int,
+              as String,
       delivery: null == delivery
           ? _value.delivery
           : delivery // ignore: cast_nullable_to_non_nullable
@@ -121,10 +125,6 @@ class __$$_BasketModelCopyWithImpl<$Res>
           ? _value.total
           : total // ignore: cast_nullable_to_non_nullable
               as int,
-      basketItems: null == basketItems
-          ? _value._basketItems
-          : basketItems // ignore: cast_nullable_to_non_nullable
-              as List<BasketItemsModel>,
     ));
   }
 }
@@ -132,32 +132,30 @@ class __$$_BasketModelCopyWithImpl<$Res>
 /// @nodoc
 @JsonSerializable()
 class _$_BasketModel with DiagnosticableTreeMixin implements _BasketModel {
-  const _$_BasketModel(
-      {required this.id,
-      required this.delivery,
-      required this.total,
-      required final List<BasketItemsModel> basketItems})
-      : _basketItems = basketItems;
+  const _$_BasketModel(final List<BasketItemsModel> basket,
+      {required this.id, required this.delivery, required this.total})
+      : _basket = basket;
 
   factory _$_BasketModel.fromJson(Map<String, dynamic> json) =>
       _$$_BasketModelFromJson(json);
 
+  final List<BasketItemsModel> _basket;
   @override
-  final int id;
+  List<BasketItemsModel> get basket {
+    // ignore: implicit_dynamic_type
+    return EqualUnmodifiableListView(_basket);
+  }
+
+  @override
+  final String id;
   @override
   final String delivery;
   @override
   final int total;
-  final List<BasketItemsModel> _basketItems;
-  @override
-  List<BasketItemsModel> get basketItems {
-    // ignore: implicit_dynamic_type
-    return EqualUnmodifiableListView(_basketItems);
-  }
 
   @override
   String toString({DiagnosticLevel minLevel = DiagnosticLevel.info}) {
-    return 'BasketModel(id: $id, delivery: $delivery, total: $total, basketItems: $basketItems)';
+    return 'BasketModel(basket: $basket, id: $id, delivery: $delivery, total: $total)';
   }
 
   @override
@@ -165,10 +163,10 @@ class _$_BasketModel with DiagnosticableTreeMixin implements _BasketModel {
     super.debugFillProperties(properties);
     properties
       ..add(DiagnosticsProperty('type', 'BasketModel'))
+      ..add(DiagnosticsProperty('basket', basket))
       ..add(DiagnosticsProperty('id', id))
       ..add(DiagnosticsProperty('delivery', delivery))
-      ..add(DiagnosticsProperty('total', total))
-      ..add(DiagnosticsProperty('basketItems', basketItems));
+      ..add(DiagnosticsProperty('total', total));
   }
 
   @override
@@ -176,18 +174,17 @@ class _$_BasketModel with DiagnosticableTreeMixin implements _BasketModel {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$_BasketModel &&
+            const DeepCollectionEquality().equals(other._basket, _basket) &&
             (identical(other.id, id) || other.id == id) &&
             (identical(other.delivery, delivery) ||
                 other.delivery == delivery) &&
-            (identical(other.total, total) || other.total == total) &&
-            const DeepCollectionEquality()
-                .equals(other._basketItems, _basketItems));
+            (identical(other.total, total) || other.total == total));
   }
 
   @JsonKey(ignore: true)
   @override
-  int get hashCode => Object.hash(runtimeType, id, delivery, total,
-      const DeepCollectionEquality().hash(_basketItems));
+  int get hashCode => Object.hash(runtimeType,
+      const DeepCollectionEquality().hash(_basket), id, delivery, total);
 
   @JsonKey(ignore: true)
   @override
@@ -204,23 +201,22 @@ class _$_BasketModel with DiagnosticableTreeMixin implements _BasketModel {
 }
 
 abstract class _BasketModel implements BasketModel {
-  const factory _BasketModel(
-      {required final int id,
+  const factory _BasketModel(final List<BasketItemsModel> basket,
+      {required final String id,
       required final String delivery,
-      required final int total,
-      required final List<BasketItemsModel> basketItems}) = _$_BasketModel;
+      required final int total}) = _$_BasketModel;
 
   factory _BasketModel.fromJson(Map<String, dynamic> json) =
       _$_BasketModel.fromJson;
 
   @override
-  int get id;
+  List<BasketItemsModel> get basket;
+  @override
+  String get id;
   @override
   String get delivery;
   @override
   int get total;
-  @override
-  List<BasketItemsModel> get basketItems;
   @override
   @JsonKey(ignore: true)
   _$$_BasketModelCopyWith<_$_BasketModel> get copyWith =>

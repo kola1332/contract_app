@@ -7,11 +7,11 @@ part 'basket_model.g.dart';
 
 @freezed
 class BasketModel extends BasketEntity with _$BasketModel {
-  const factory BasketModel({
-    required int id,
+  const factory BasketModel(
+    List<BasketItemsModel> basket, {
+    required String id,
     required String delivery,
     required int total,
-    required List<BasketItemsModel> basketItems,
   }) = _BasketModel;
 
   factory BasketModel.fromJson(Map<String, dynamic> json) =>

@@ -8,20 +8,20 @@ part of 'basket_model.dart';
 
 _$_BasketModel _$$_BasketModelFromJson(Map<String, dynamic> json) =>
     _$_BasketModel(
-      id: json['id'] as int,
-      delivery: json['delivery'] as String,
-      total: json['total'] as int,
-      basketItems: (json['basketItems'] as List<dynamic>)
+      (json['basket'] as List<dynamic>)
           .map((e) => BasketItemsModel.fromJson(e as Map<String, dynamic>))
           .toList(),
+      id: json['id'] as String,
+      delivery: json['delivery'] as String,
+      total: json['total'] as int,
     );
 
 Map<String, dynamic> _$$_BasketModelToJson(_$_BasketModel instance) =>
     <String, dynamic>{
+      'basket': instance.basket,
       'id': instance.id,
       'delivery': instance.delivery,
       'total': instance.total,
-      'basketItems': instance.basketItems,
     };
 
 _$_BasketItemsModel _$$_BasketItemsModelFromJson(Map<String, dynamic> json) =>

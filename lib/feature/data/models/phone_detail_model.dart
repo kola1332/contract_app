@@ -10,18 +10,18 @@ part 'phone_detail_model.g.dart';
 @freezed
 class PhoneDetailModel extends PhoneDetailEntity with _$PhoneDetailModel {
   const factory PhoneDetailModel({
-    required int id,
-    required String title,
+    required String CPU,
     required String camera,
     required List<String> capacity,
     required List<String> color,
-    required String CPU,
+    required String id,
     required List<String> images,
     required bool isFavorites,
     required int price,
     required double rating,
     required String sd,
     required String ssd,
+    required String title,
   }) = _PhoneDetailModel;
 
   factory PhoneDetailModel.fromJson(Map<String, dynamic> json) =>

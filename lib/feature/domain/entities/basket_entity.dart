@@ -1,10 +1,10 @@
 class BasketEntity {
-  final int id;
+  final String id;
   final String delivery;
   final int total;
-  final List<BasketItemsEntity> basketItems;
+  final List<BasketItemsEntity> basket;
 
-  BasketEntity(this.id, this.delivery, this.total, this.basketItems);
+  BasketEntity(this.id, this.delivery, this.total, this.basket);
 }
 
 class BasketItemsEntity {

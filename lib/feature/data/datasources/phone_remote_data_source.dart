@@ -28,8 +28,8 @@ class PhoneRemoteDataSourceImpl implements PhoneRemoteDataSource {
             'https://run.mocky.io/v3/654bd15e-b121-49ba-a588-960956b15175'),
         headers: {'Content-Type': 'application/json'});
     if (response.statusCode == 200) {
-      final phones = json.decode(response.body);
-      return (phones['home_store'] as List)
+      final phonesHomeStore = json.decode(response.body);
+      return (phonesHomeStore['home_store'] as List)
           .map((phone) => PhoneHomeStoreModel.fromJson(phone))
           .toList();
     } else {
@@ -44,8 +44,8 @@ class PhoneRemoteDataSourceImpl implements PhoneRemoteDataSource {
             'https://run.mocky.io/v3/654bd15e-b121-49ba-a588-960956b15175'),
         headers: {'Content-Type': 'application/json'});
     if (response.statusCode == 200) {
-      final phones = json.decode(response.body);
-      return (phones['best_seller'] as List)
+      final phonesBestSeller = json.decode(response.body);
+      return (phonesBestSeller['best_seller'] as List)
           .map((phone) => PhoneBestSellerModel.fromJson(phone))
           .toList();
     } else {
@@ -60,25 +60,12 @@ class PhoneRemoteDataSourceImpl implements PhoneRemoteDataSource {
             'https://run.mocky.io/v3/6c14c560-15c6-4248-b9d2-b4508df7d4f5'),
         headers: {'Content-Type': 'application/json'});
     if (response.statusCode == 200) {
-      final phones = json.decode(response.body);
-      return (phones[''] as List)
+      final phonesDetail = json.decode(response.body);
+      final m = {
+        'test': [phonesDetail]
+      };
+      return (m['test'] as List)
           .map((phone) => PhoneDetailModel.fromJson(phone))
-          .toList();
-    } else {
-      throw ServerException();
-    }
-  }
-
-  @override
-  Future<List<BasketItemsModel>> getBasketItem() async {
-    final response = await client.get(
-        Uri.parse(
-            'https://run.mocky.io/v3/53539a72-3c5f-4f30-bbb1-6ca10d42c149'),
-        headers: {'Content-Type': 'application/json'});
-    if (response.statusCode == 200) {
-      final phones = json.decode(response.body);
-      return (phones[''] as List)
-          .map((phone) => BasketItemsModel.fromJson(phone))
           .toList();
     } else {
       throw ServerException();
@@ -92,9 +79,28 @@ class PhoneRemoteDataSourceImpl implements PhoneRemoteDataSource {
             'https://run.mocky.io/v3/53539a72-3c5f-4f30-bbb1-6ca10d42c149'),
         headers: {'Content-Type': 'application/json'});
     if (response.statusCode == 200) {
-      final phones = json.decode(response.body);
-      return (phones[''] as List)
+      final baskets = json.decode(response.body);
+      final m1 = {
+        'test': [baskets]
+      };
+      return (m1['test'] as List)
           .map((phone) => BasketModel.fromJson(phone))
+          .toList();
+    } else {
+      throw ServerException();
+    }
+  }
+
+  @override
+  Future<List<BasketItemsModel>> getBasketItem() async {
+    final response = await client.get(
+        Uri.parse(
+            'https://run.mocky.io/v3/53539a72-3c5f-4f30-bbb1-6ca10d42c149'),
+        headers: {'Content-Type': 'application/json'});
+    if (response.statusCode == 200) {
+      final basketItems = json.decode(response.body);
+      return (basketItems['basket'] as List)
+          .map((phone) => BasketItemsModel.fromJson(phone))
           .toList();
     } else {
       throw ServerException();

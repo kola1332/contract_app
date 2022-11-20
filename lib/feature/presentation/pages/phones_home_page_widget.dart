@@ -2,6 +2,8 @@
 
 import 'package:contract_app/common/app_colors.dart';
 import 'package:contract_app/common/app_text_style.dart';
+import 'package:contract_app/feature/domain/entities/basket_entity.dart';
+import 'package:contract_app/feature/domain/entities/phone_detail_entity.dart';
 import 'package:contract_app/feature/domain/entities/phone_entity.dart';
 import 'package:contract_app/feature/presentation/bloc/phone_list_cubit.dart/phone_list_cubit.dart';
 import 'package:contract_app/feature/presentation/bloc/phone_list_cubit.dart/phone_list_state.dart';
@@ -22,13 +24,23 @@ class PhonesHomePageScreen extends StatelessWidget {
       builder: (context, state) {
         List<PhoneHomeStoreEntity> phonesHomeStore = [];
         List<PhoneBestSellerEntity> phonesBestSeller = [];
+        List<PhoneDetailEntity> phonesDetail = [];
+        List<BasketItemsEntity> basketItems = [];
+        List<BasketEntity> baskets = [];
         if (state is PhoneListLoading) {
           return _loadingIndicator();
         } else if (state is PhoneListLoaded) {
           phonesHomeStore = state.phonesHomeStoreList;
           phonesBestSeller = state.phonesBestSellerList;
+          phonesDetail = state.phonesDetail;
+          basketItems = state.basketItems;
+          baskets = state.baskets;
+
           // print(phonesBestSeller);
-          // print(phonesBestSeller.length);
+
+          print(phonesDetail.length);
+          print(basketItems.length);
+          print(baskets.length);
         }
         final phone1 = phonesBestSeller[0];
         final phone2 = phonesBestSeller[1];

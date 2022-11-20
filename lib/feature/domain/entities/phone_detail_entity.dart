@@ -1,7 +1,7 @@
 // ignore_for_file: non_constant_identifier_names
 
 class PhoneDetailEntity {
-  final int id;
+  final String id;
   final String title;
   final String camera;
   final List<String> capacity;

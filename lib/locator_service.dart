@@ -1,5 +1,7 @@
 import 'package:contract_app/core/platform/network_info.dart';
 import 'package:contract_app/feature/data/datasources/phone_local_data_source.dart';
+import 'package:contract_app/feature/domain/usecases/get_basket.dart';
+import 'package:contract_app/feature/domain/usecases/get_phones_detail.dart';
 import 'package:get_it/get_it.dart';
 import 'package:http/http.dart' as http;
 
@@ -19,7 +21,13 @@ final sl = GetIt.instance;
 Future<void> init() async {
   //BLOC / Cubit
   sl.registerFactory(
-    () => PhoneListCubit(getPhonesHomeStore: sl(), getPhonesBestSeller: sl()),
+    () => PhoneListCubit(
+      getPhonesHomeStore: sl(),
+      getPhonesBestSeller: sl(),
+      getPhonesDetail: sl(),
+      getBasketItems: sl(),
+      getBasket: sl(),
+    ),
   );
   sl.registerFactory(
     () => PhoneBloc(getPhonesHomeStore: sl()),
@@ -32,6 +40,9 @@ Future<void> init() async {
   //UseCases
   sl.registerLazySingleton(() => GetPhonesHomeStore(sl()));
   sl.registerLazySingleton(() => GetPhonesBestSeller(sl()));
+  sl.registerLazySingleton(() => GetPhonesDetail(sl()));
+  sl.registerLazySingleton(() => GetBasketItems(sl()));
+  sl.registerLazySingleton(() => GetBasket(sl()));
 
   //Repository
   sl.registerLazySingleton<PhoneRepository>(() => PhoneRepositoryImpl(

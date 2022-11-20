@@ -20,18 +20,18 @@ PhoneDetailModel _$PhoneDetailModelFromJson(Map<String, dynamic> json) {
 
 /// @nodoc
 mixin _$PhoneDetailModel {
-  int get id => throw _privateConstructorUsedError;
-  String get title => throw _privateConstructorUsedError;
+  String get CPU => throw _privateConstructorUsedError;
   String get camera => throw _privateConstructorUsedError;
   List<String> get capacity => throw _privateConstructorUsedError;
   List<String> get color => throw _privateConstructorUsedError;
-  String get CPU => throw _privateConstructorUsedError;
+  String get id => throw _privateConstructorUsedError;
   List<String> get images => throw _privateConstructorUsedError;
   bool get isFavorites => throw _privateConstructorUsedError;
   int get price => throw _privateConstructorUsedError;
   double get rating => throw _privateConstructorUsedError;
   String get sd => throw _privateConstructorUsedError;
   String get ssd => throw _privateConstructorUsedError;
+  String get title => throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
@@ -46,18 +46,18 @@ abstract class $PhoneDetailModelCopyWith<$Res> {
       _$PhoneDetailModelCopyWithImpl<$Res, PhoneDetailModel>;
   @useResult
   $Res call(
-      {int id,
-      String title,
+      {String CPU,
       String camera,
       List<String> capacity,
       List<String> color,
-      String CPU,
+      String id,
       List<String> images,
       bool isFavorites,
       int price,
       double rating,
       String sd,
-      String ssd});
+      String ssd,
+      String title});
 }
 
 /// @nodoc
@@ -73,27 +73,23 @@ class _$PhoneDetailModelCopyWithImpl<$Res, $Val extends PhoneDetailModel>
   @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? id = null,
-    Object? title = null,
+    Object? CPU = null,
     Object? camera = null,
     Object? capacity = null,
     Object? color = null,
-    Object? CPU = null,
+    Object? id = null,
     Object? images = null,
     Object? isFavorites = null,
     Object? price = null,
     Object? rating = null,
     Object? sd = null,
     Object? ssd = null,
+    Object? title = null,
   }) {
     return _then(_value.copyWith(
-      id: null == id
-          ? _value.id
-          : id // ignore: cast_nullable_to_non_nullable
-              as int,
-      title: null == title
-          ? _value.title
-          : title // ignore: cast_nullable_to_non_nullable
+      CPU: null == CPU
+          ? _value.CPU
+          : CPU // ignore: cast_nullable_to_non_nullable
               as String,
       camera: null == camera
           ? _value.camera
@@ -107,9 +103,9 @@ class _$PhoneDetailModelCopyWithImpl<$Res, $Val extends PhoneDetailModel>
           ? _value.color
           : color // ignore: cast_nullable_to_non_nullable
               as List<String>,
-      CPU: null == CPU
-          ? _value.CPU
-          : CPU // ignore: cast_nullable_to_non_nullable
+      id: null == id
+          ? _value.id
+          : id // ignore: cast_nullable_to_non_nullable
               as String,
       images: null == images
           ? _value.images
@@ -135,6 +131,10 @@ class _$PhoneDetailModelCopyWithImpl<$Res, $Val extends PhoneDetailModel>
           ? _value.ssd
           : ssd // ignore: cast_nullable_to_non_nullable
               as String,
+      title: null == title
+          ? _value.title
+          : title // ignore: cast_nullable_to_non_nullable
+              as String,
     ) as $Val);
   }
 }
@@ -148,18 +148,18 @@ abstract class _$$_PhoneDetailModelCopyWith<$Res>
   @override
   @useResult
   $Res call(
-      {int id,
-      String title,
+      {String CPU,
       String camera,
       List<String> capacity,
       List<String> color,
-      String CPU,
+      String id,
       List<String> images,
       bool isFavorites,
       int price,
       double rating,
       String sd,
-      String ssd});
+      String ssd,
+      String title});
 }
 
 /// @nodoc
@@ -173,27 +173,23 @@ class __$$_PhoneDetailModelCopyWithImpl<$Res>
   @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? id = null,
-    Object? title = null,
+    Object? CPU = null,
     Object? camera = null,
     Object? capacity = null,
     Object? color = null,
-    Object? CPU = null,
+    Object? id = null,
     Object? images = null,
     Object? isFavorites = null,
     Object? price = null,
     Object? rating = null,
     Object? sd = null,
     Object? ssd = null,
+    Object? title = null,
   }) {
     return _then(_$_PhoneDetailModel(
-      id: null == id
-          ? _value.id
-          : id // ignore: cast_nullable_to_non_nullable
-              as int,
-      title: null == title
-          ? _value.title
-          : title // ignore: cast_nullable_to_non_nullable
+      CPU: null == CPU
+          ? _value.CPU
+          : CPU // ignore: cast_nullable_to_non_nullable
               as String,
       camera: null == camera
           ? _value.camera
@@ -207,9 +203,9 @@ class __$$_PhoneDetailModelCopyWithImpl<$Res>
           ? _value._color
           : color // ignore: cast_nullable_to_non_nullable
               as List<String>,
-      CPU: null == CPU
-          ? _value.CPU
-          : CPU // ignore: cast_nullable_to_non_nullable
+      id: null == id
+          ? _value.id
+          : id // ignore: cast_nullable_to_non_nullable
               as String,
       images: null == images
           ? _value._images
@@ -235,6 +231,10 @@ class __$$_PhoneDetailModelCopyWithImpl<$Res>
           ? _value.ssd
           : ssd // ignore: cast_nullable_to_non_nullable
               as String,
+      title: null == title
+          ? _value.title
+          : title // ignore: cast_nullable_to_non_nullable
+              as String,
     ));
   }
 }
@@ -245,18 +245,18 @@ class _$_PhoneDetailModel
     with DiagnosticableTreeMixin
     implements _PhoneDetailModel {
   const _$_PhoneDetailModel(
-      {required this.id,
-      required this.title,
+      {required this.CPU,
       required this.camera,
       required final List<String> capacity,
       required final List<String> color,
-      required this.CPU,
+      required this.id,
       required final List<String> images,
       required this.isFavorites,
       required this.price,
       required this.rating,
       required this.sd,
-      required this.ssd})
+      required this.ssd,
+      required this.title})
       : _capacity = capacity,
         _color = color,
         _images = images;
@@ -265,9 +265,7 @@ class _$_PhoneDetailModel
       _$$_PhoneDetailModelFromJson(json);
 
   @override
-  final int id;
-  @override
-  final String title;
+  final String CPU;
   @override
   final String camera;
   final List<String> _capacity;
@@ -285,7 +283,7 @@ class _$_PhoneDetailModel
   }
 
   @override
-  final String CPU;
+  final String id;
   final List<String> _images;
   @override
   List<String> get images {
@@ -303,10 +301,12 @@ class _$_PhoneDetailModel
   final String sd;
   @override
   final String ssd;
+  @override
+  final String title;
 
   @override
   String toString({DiagnosticLevel minLevel = DiagnosticLevel.info}) {
-    return 'PhoneDetailModel(id: $id, title: $title, camera: $camera, capacity: $capacity, color: $color, CPU: $CPU, images: $images, isFavorites: $isFavorites, price: $price, rating: $rating, sd: $sd, ssd: $ssd)';
+    return 'PhoneDetailModel(CPU: $CPU, camera: $camera, capacity: $capacity, color: $color, id: $id, images: $images, isFavorites: $isFavorites, price: $price, rating: $rating, sd: $sd, ssd: $ssd, title: $title)';
   }
 
   @override
@@ -314,18 +314,18 @@ class _$_PhoneDetailModel
     super.debugFillProperties(properties);
     properties
       ..add(DiagnosticsProperty('type', 'PhoneDetailModel'))
-      ..add(DiagnosticsProperty('id', id))
-      ..add(DiagnosticsProperty('title', title))
+      ..add(DiagnosticsProperty('CPU', CPU))
       ..add(DiagnosticsProperty('camera', camera))
       ..add(DiagnosticsProperty('capacity', capacity))
       ..add(DiagnosticsProperty('color', color))
-      ..add(DiagnosticsProperty('CPU', CPU))
+      ..add(DiagnosticsProperty('id', id))
       ..add(DiagnosticsProperty('images', images))
       ..add(DiagnosticsProperty('isFavorites', isFavorites))
       ..add(DiagnosticsProperty('price', price))
       ..add(DiagnosticsProperty('rating', rating))
       ..add(DiagnosticsProperty('sd', sd))
-      ..add(DiagnosticsProperty('ssd', ssd));
+      ..add(DiagnosticsProperty('ssd', ssd))
+      ..add(DiagnosticsProperty('title', title));
   }
 
   @override
@@ -333,37 +333,37 @@ class _$_PhoneDetailModel
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$_PhoneDetailModel &&
-            (identical(other.id, id) || other.id == id) &&
-            (identical(other.title, title) || other.title == title) &&
+            (identical(other.CPU, CPU) || other.CPU == CPU) &&
             (identical(other.camera, camera) || other.camera == camera) &&
             const DeepCollectionEquality().equals(other._capacity, _capacity) &&
             const DeepCollectionEquality().equals(other._color, _color) &&
-            (identical(other.CPU, CPU) || other.CPU == CPU) &&
+            (identical(other.id, id) || other.id == id) &&
             const DeepCollectionEquality().equals(other._images, _images) &&
             (identical(other.isFavorites, isFavorites) ||
                 other.isFavorites == isFavorites) &&
             (identical(other.price, price) || other.price == price) &&
             (identical(other.rating, rating) || other.rating == rating) &&
             (identical(other.sd, sd) || other.sd == sd) &&
-            (identical(other.ssd, ssd) || other.ssd == ssd));
+            (identical(other.ssd, ssd) || other.ssd == ssd) &&
+            (identical(other.title, title) || other.title == title));
   }
 
   @JsonKey(ignore: true)
   @override
   int get hashCode => Object.hash(
       runtimeType,
-      id,
-      title,
+      CPU,
       camera,
       const DeepCollectionEquality().hash(_capacity),
       const DeepCollectionEquality().hash(_color),
-      CPU,
+      id,
       const DeepCollectionEquality().hash(_images),
       isFavorites,
       price,
       rating,
       sd,
-      ssd);
+      ssd,
+      title);
 
   @JsonKey(ignore: true)
   @override
@@ -381,26 +381,24 @@ class _$_PhoneDetailModel
 
 abstract class _PhoneDetailModel implements PhoneDetailModel {
   const factory _PhoneDetailModel(
-      {required final int id,
-      required final String title,
+      {required final String CPU,
       required final String camera,
       required final List<String> capacity,
       required final List<String> color,
-      required final String CPU,
+      required final String id,
       required final List<String> images,
       required final bool isFavorites,
       required final int price,
       required final double rating,
       required final String sd,
-      required final String ssd}) = _$_PhoneDetailModel;
+      required final String ssd,
+      required final String title}) = _$_PhoneDetailModel;
 
   factory _PhoneDetailModel.fromJson(Map<String, dynamic> json) =
       _$_PhoneDetailModel.fromJson;
 
   @override
-  int get id;
-  @override
-  String get title;
+  String get CPU;
   @override
   String get camera;
   @override
@@ -408,7 +406,7 @@ abstract class _PhoneDetailModel implements PhoneDetailModel {
   @override
   List<String> get color;
   @override
-  String get CPU;
+  String get id;
   @override
   List<String> get images;
   @override
@@ -421,6 +419,8 @@ abstract class _PhoneDetailModel implements PhoneDetailModel {
   String get sd;
   @override
   String get ssd;
+  @override
+  String get title;
   @override
   @JsonKey(ignore: true)
   _$$_PhoneDetailModelCopyWith<_$_PhoneDetailModel> get copyWith =>

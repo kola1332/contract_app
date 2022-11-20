@@ -8,13 +8,12 @@ part of 'phone_detail_model.dart';
 
 _$_PhoneDetailModel _$$_PhoneDetailModelFromJson(Map<String, dynamic> json) =>
     _$_PhoneDetailModel(
-      id: json['id'] as int,
-      title: json['title'] as String,
+      CPU: json['CPU'] as String,
       camera: json['camera'] as String,
       capacity:
           (json['capacity'] as List<dynamic>).map((e) => e as String).toList(),
       color: (json['color'] as List<dynamic>).map((e) => e as String).toList(),
-      CPU: json['CPU'] as String,
+      id: json['id'] as String,
       images:
           (json['images'] as List<dynamic>).map((e) => e as String).toList(),
       isFavorites: json['isFavorites'] as bool,
@@ -22,20 +21,21 @@ _$_PhoneDetailModel _$$_PhoneDetailModelFromJson(Map<String, dynamic> json) =>
       rating: (json['rating'] as num).toDouble(),
       sd: json['sd'] as String,
       ssd: json['ssd'] as String,
+      title: json['title'] as String,
     );
 
 Map<String, dynamic> _$$_PhoneDetailModelToJson(_$_PhoneDetailModel instance) =>
     <String, dynamic>{
-      'id': instance.id,
-      'title': instance.title,
+      'CPU': instance.CPU,
       'camera': instance.camera,
       'capacity': instance.capacity,
       'color': instance.color,
-      'CPU': instance.CPU,
+      'id': instance.id,
       'images': instance.images,
       'isFavorites': instance.isFavorites,
       'price': instance.price,
       'rating': instance.rating,
       'sd': instance.sd,
       'ssd': instance.ssd,
+      'title': instance.title,
     };
