@@ -12,13 +12,8 @@ class Page2 extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    List<PhoneHomeStoreEntity> phonesHomeStore = [];
-    return BlocProvider<PhoneBloc, PhoneState>(
-      create: (context) {
-        PhoneBloc(getPhonesHomeStore: phonesHomeStore))
-      },
-      child: Scaffold(),
-    );
+    return Container();
+    // List<PhoneHomeStoreEntity> phonesHomeStore = [];
     // return BlocBuilder<PhoneBloc, PhoneState>(
     //   builder: ((context, state) {
     //     List<PhoneHomeStoreEntity> phonesHomeStore = [];
