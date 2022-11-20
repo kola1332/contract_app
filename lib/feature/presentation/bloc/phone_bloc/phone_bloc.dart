@@ -14,7 +14,12 @@ class PhoneBloc extends Bloc<PhoneEvent, PhoneState> {
   final GetPhonesHomeStore getPhonesHomeStore;
 
   PhoneBloc({required this.getPhonesHomeStore}) : super(PhoneEmpty()) {
+    go();
     on<GetPhones>(_onEvent);
+  }
+
+  Future<void> go() async {
+    final failureOrPhone = await getPhonesHomeStore();
   }
 
   Future<void> _onEvent(GetPhones event, Emitter<PhoneState> emit) async {

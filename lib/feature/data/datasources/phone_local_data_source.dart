@@ -3,20 +3,31 @@
 import 'dart:convert';
 
 import 'package:contract_app/core/error/exception.dart';
+import 'package:contract_app/feature/data/models/basket_model.dart';
+import 'package:contract_app/feature/data/models/phone_detail_model.dart';
 import 'package:contract_app/feature/data/models/phone_model.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
 abstract class PhonesLocalDataSource {
   Future<List<PhoneHomeStoreModel>> getLastPhonesHomeStoreFromCache();
   Future<List<PhoneBestSellerModel>> getLastPhonesBestSellerFromCache();
+  Future<List<PhoneDetailModel>> getLastPhonesDetailFromCache();
+  Future<List<BasketItemsModel>> getLastBasketItemFromCache();
+  Future<List<BasketModel>> getLastBasketFromCache();
   Future<void> phonesHomeStoreToCache(
       List<PhoneHomeStoreModel> phonesHomeStore);
   Future<void> phonesBestSellerToCache(
       List<PhoneBestSellerModel> phonesBestSeller);
+  Future<void> phonesDetailToCache(List<PhoneDetailModel> phonesDetail);
+  Future<void> basketItemToCache(List<BasketItemsModel> basketItems);
+  Future<void> basketToCache(List<BasketModel> baskets);
 }
 
-const CACHED_PHONESHomeStore_LIST = 'CACHED_PHONESHomeStore_LIST';
-const CACHED_PHONESBestSeller_LIST = 'CACHED_PHONESBestSeller_LIST';
+const CACHED_PHONESHOMESTORE_LIST = 'CACHED_PHONESHOMESTORE_LIST';
+const CACHED_PHONESBESTSELLER_LIST = 'CACHED_PHONESBESTSELLER_LIST';
+const CACHED_PHONESDETAIL_LIST = 'CACHED_PHONESDETAIL_LIST';
+const CACHED_BASKETITEMS_LIST = 'CACHED_BASKETITEMS_LIST';
+const CACHED_BASKET_LIST = 'CACHED_BASKET_LIST';
 
 class PhonesLocalDataSourceImpl implements PhonesLocalDataSource {
   final SharedPreferences sharedPreferences;
@@ -26,7 +37,7 @@ class PhonesLocalDataSourceImpl implements PhonesLocalDataSource {
   @override
   Future<List<PhoneHomeStoreModel>> getLastPhonesHomeStoreFromCache() {
     final jsonPhonesHomeStoreList =
-        sharedPreferences.getStringList(CACHED_PHONESHomeStore_LIST);
+        sharedPreferences.getStringList(CACHED_PHONESHOMESTORE_LIST);
     if (jsonPhonesHomeStoreList != null) {
       return Future.value(jsonPhonesHomeStoreList
           .map((phoneHomeStore) =>
@@ -40,11 +51,51 @@ class PhonesLocalDataSourceImpl implements PhonesLocalDataSource {
   @override
   Future<List<PhoneBestSellerModel>> getLastPhonesBestSellerFromCache() {
     final jsonPhonesBestSellerList =
-        sharedPreferences.getStringList(CACHED_PHONESHomeStore_LIST);
+        sharedPreferences.getStringList(CACHED_PHONESBESTSELLER_LIST);
     if (jsonPhonesBestSellerList != null) {
       return Future.value(jsonPhonesBestSellerList
           .map((phoneBestSeller) =>
               PhoneBestSellerModel.fromJson(json.decode(phoneBestSeller)))
+          .toList());
+    } else {
+      throw CacheException();
+    }
+  }
+
+  @override
+  Future<List<PhoneDetailModel>> getLastPhonesDetailFromCache() {
+    final jsonPhonesDetailList =
+        sharedPreferences.getStringList(CACHED_PHONESDETAIL_LIST);
+    if (jsonPhonesDetailList != null) {
+      return Future.value(jsonPhonesDetailList
+          .map((phonesDetail) =>
+              PhoneDetailModel.fromJson(json.decode(phonesDetail)))
+          .toList());
+    } else {
+      throw CacheException();
+    }
+  }
+
+  @override
+  Future<List<BasketItemsModel>> getLastBasketItemFromCache() {
+    final jsonBasketItemList =
+        sharedPreferences.getStringList(CACHED_PHONESDETAIL_LIST);
+    if (jsonBasketItemList != null) {
+      return Future.value(jsonBasketItemList
+          .map((basketItem) =>
+              BasketItemsModel.fromJson(json.decode(basketItem)))
+          .toList());
+    } else {
+      throw CacheException();
+    }
+  }
+
+  @override
+  Future<List<BasketModel>> getLastBasketFromCache() {
+    final jsonBasketList = sharedPreferences.getStringList(CACHED_BASKET_LIST);
+    if (jsonBasketList != null) {
+      return Future.value(jsonBasketList
+          .map((basket) => BasketModel.fromJson(json.decode(basket)))
           .toList());
     } else {
       throw CacheException();
@@ -58,8 +109,8 @@ class PhonesLocalDataSourceImpl implements PhonesLocalDataSource {
         phonesBestSeller.map((phone) => json.encode(phone.toJson())).toList();
 
     sharedPreferences.setStringList(
-        CACHED_PHONESHomeStore_LIST, jsonPhonesHomeStoreList);
-    print('PhonesHomeStore to write cashe: ${jsonPhonesHomeStoreList.length}');
+        CACHED_PHONESHOMESTORE_LIST, jsonPhonesHomeStoreList);
+    print('PhonesHomeStore to write cache: ${jsonPhonesHomeStoreList.length}');
     return Future.value(jsonPhonesHomeStoreList);
   }
 
@@ -70,9 +121,41 @@ class PhonesLocalDataSourceImpl implements PhonesLocalDataSource {
         phonesBestSeller.map((phone) => json.encode(phone.toJson())).toList();
 
     sharedPreferences.setStringList(
-        CACHED_PHONESBestSeller_LIST, jsonPhonesBestSellerList);
+        CACHED_PHONESBESTSELLER_LIST, jsonPhonesBestSellerList);
     print(
-        'PhonesBestSeller to write cashe: ${jsonPhonesBestSellerList.length}');
+        'PhonesBestSeller to write cache: ${jsonPhonesBestSellerList.length}');
     return Future.value(jsonPhonesBestSellerList);
+  }
+
+  @override
+  Future<void> phonesDetailToCache(List<PhoneDetailModel> phonesDetail) {
+    final List<String> jsonPhonesDetailList =
+        phonesDetail.map((phone) => json.encode(phone.toJson())).toList();
+
+    sharedPreferences.setStringList(
+        CACHED_PHONESDETAIL_LIST, jsonPhonesDetailList);
+    print('PhonesDetail to write cache: ${jsonPhonesDetailList.length}');
+    return Future.value(jsonPhonesDetailList);
+  }
+
+  @override
+  Future<void> basketItemToCache(List<BasketItemsModel> basketItems) {
+    final List<String> jsonBasketItemsList =
+        basketItems.map((phone) => json.encode(phone.toJson())).toList();
+
+    sharedPreferences.setStringList(
+        CACHED_BASKETITEMS_LIST, jsonBasketItemsList);
+    print('BasketItems to write cache: ${jsonBasketItemsList.length}');
+    return Future.value(jsonBasketItemsList);
+  }
+
+  @override
+  Future<void> basketToCache(List<BasketModel> baskets) {
+    final List<String> jsonBasketsList =
+        baskets.map((phone) => json.encode(phone.toJson())).toList();
+
+    sharedPreferences.setStringList(CACHED_BASKET_LIST, jsonBasketsList);
+    print('Baskets to write cache: ${jsonBasketsList.length}');
+    return Future.value(jsonBasketsList);
   }
 }

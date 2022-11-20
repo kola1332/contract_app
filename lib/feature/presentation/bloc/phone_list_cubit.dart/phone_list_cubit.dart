@@ -42,7 +42,6 @@ class PhoneListCubit extends Cubit<PhoneListState> {
     failureOrPhoneHomeStore.fold(
         (error) => emit(PhoneListError(message: _mapFailureToMessage(error))),
         (phoneHomeStore) {
-      // final phonesHomeStore = (state as PhoneListLoading).oldPhonesHomeStoreList;
       phonesHomeStore.addAll(phoneHomeStore);
       // print('List length: ${phonesHomeStore.length.toString()}');
     });
@@ -50,7 +49,6 @@ class PhoneListCubit extends Cubit<PhoneListState> {
     failureOrPhoneBestSeller.fold(
         (error) => emit(PhoneListError(message: _mapFailureToMessage(error))),
         (phoneBestSeller) {
-      // final phonesBestSeller = (state as PhoneListLoading).oldPhonesBestSellerList;
       phonesBestSeller.addAll(phoneBestSeller);
       // print('List length: ${phonesBestSeller.length.toString()}');
     });
