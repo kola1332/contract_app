@@ -49,3 +49,4 @@ lib/feature/presentation/widgets/container_builder.dart
 .vscode/settings.json
 
 *.cc
+test/widget_test.dart
