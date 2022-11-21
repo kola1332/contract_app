@@ -2,8 +2,6 @@ import 'package:contract_app/common/app_colors.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 
-import 'phones_home_page_widget.dart';
-
 class HomePage extends StatelessWidget {
   const HomePage({super.key});
 
@@ -50,7 +48,7 @@ class HomePage extends StatelessWidget {
         ],
         centerTitle: true,
       ),
-      body: const PhonesHomePageScreen(),
+      body: const HomePage(),
     );
   }
 }

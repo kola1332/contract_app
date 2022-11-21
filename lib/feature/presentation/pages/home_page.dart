@@ -15,8 +15,8 @@ import '../widgets/first_screen/card_sales.dart';
 import '../widgets/first_screen/phone_card.dart';
 import '../widgets/first_screen/rounded.dart';
 
-class PhonesHomePageScreen extends StatelessWidget {
-  const PhonesHomePageScreen({super.key});
+class HomePage extends StatelessWidget {
+  const HomePage({super.key});
 
   @override
   Widget build(BuildContext context) {
