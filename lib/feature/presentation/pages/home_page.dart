@@ -7,6 +7,7 @@ import 'package:contract_app/feature/domain/entities/phone_detail_entity.dart';
 import 'package:contract_app/feature/domain/entities/phone_entity.dart';
 import 'package:contract_app/feature/presentation/bloc/phone_list_cubit.dart/phone_list_cubit.dart';
 import 'package:contract_app/feature/presentation/bloc/phone_list_cubit.dart/phone_list_state.dart';
+import 'package:contract_app/feature/presentation/widgets/loading.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_svg/svg.dart';
@@ -28,7 +29,7 @@ class HomePage extends StatelessWidget {
         List<BasketItemsEntity> basketItems = [];
         List<BasketEntity> baskets = [];
         if (state is PhoneListLoading) {
-          return _loadingIndicator();
+          return loadingIndicator();
         } else if (state is PhoneListLoaded) {
           phonesHomeStore = state.phonesHomeStoreList;
           phonesBestSeller = state.phonesBestSellerList;
@@ -283,13 +284,6 @@ class HomePage extends StatelessWidget {
           ],
         );
       },
-    );
-  }
-
-  Widget _loadingIndicator() {
-    return const Padding(
-      padding: EdgeInsets.all(8),
-      child: Center(child: CircularProgressIndicator()),
     );
   }
 }
