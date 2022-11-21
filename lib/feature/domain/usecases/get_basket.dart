@@ -2,7 +2,6 @@
 
 import 'package:contract_app/core/error/failure.dart';
 import 'package:contract_app/feature/domain/entities/basket_entity.dart';
-import 'package:contract_app/feature/domain/entities/phone_detail_entity.dart';
 import 'package:contract_app/feature/domain/repositories/phone_repository.dart';
 import 'package:dartz/dartz.dart';
 
