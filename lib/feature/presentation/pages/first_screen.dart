@@ -1,11 +1,10 @@
 import 'package:contract_app/common/app_colors.dart';
+import 'package:contract_app/feature/presentation/pages/home_page.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 
-import 'phones_home_page_widget.dart';
-
-class HomePage extends StatelessWidget {
-  const HomePage({super.key});
+class FirstScreen extends StatelessWidget {
+  const FirstScreen({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -50,7 +49,7 @@ class HomePage extends StatelessWidget {
         ],
         centerTitle: true,
       ),
-      body: const PhonesHomePageScreen(),
+      body: const HomePage(),
     );
   }
 }

@@ -9,12 +9,14 @@
 .history
 .svn/
 migrate_working_dir/
+*.g.dart
+*.freezed.dart
 
 # IntelliJ related
 *.iml
 *.ipr
 *.iws
-.idea/
+/.idea/
 
 # The .vscode folder contains launch configuration and tasks you configure in
 # VS Code which you may wish to be included in version control, so this line
@@ -31,6 +33,7 @@ migrate_working_dir/
 .pub-cache/
 .pub/
 /build/
+**/.vscode/
 
 # Symbolication related
 app.*.symbols
@@ -42,12 +45,11 @@ app.*.map.json
 /android/app/debug
 /android/app/profile
 /android/app/release
-lib/feature/data/models/phone_model.freezed.dart
-lib/feature/data/models/phone_model.g.dart
-lib/test/market_entity.dart
-lib/test/market_model.dart
-lib/test/market_model.freezed.dart
-lib/test/market_model.g.dart
-lib/feature/presentation/widgets/container_builder.dart
+
+# freezed
 .vscode/settings.json
-.vscode/settings.json
+*.cc
+*.g.dart
+*.freezed.dart
+/models/*.freezed.dart
+/models/*.g.dart

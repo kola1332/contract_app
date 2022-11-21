@@ -8,30 +8,32 @@ part 'phone_model.freezed.dart';
 part 'phone_model.g.dart';
 
 @freezed
-class PhoneHSModel extends PhoneHSEntity with _$PhoneHSModel {
-  const factory PhoneHSModel({
+class PhoneHomeStoreModel extends PhoneHomeStoreEntity
+    with _$PhoneHomeStoreModel {
+  const factory PhoneHomeStoreModel({
     required int id,
     required String title,
     required String picture,
     required String subtitle,
     required bool is_buy,
     @Default(false) bool is_new,
-  }) = _PhoneHSModel;
+  }) = _PhoneHomeStoreModel;
 
-  factory PhoneHSModel.fromJson(Map<String, dynamic> json) =>
-      _$PhoneHSModelFromJson(json);
+  factory PhoneHomeStoreModel.fromJson(Map<String, dynamic> json) =>
+      _$PhoneHomeStoreModelFromJson(json);
 }
 
 @freezed
-class PhoneBSModel extends PhoneBSEntity with _$PhoneBSModel {
-  const factory PhoneBSModel(
+class PhoneBestSellerModel extends PhoneBestSellerEntity
+    with _$PhoneBestSellerModel {
+  const factory PhoneBestSellerModel(
       {required int id,
       required String title,
       required String picture,
       required bool is_favorites,
       required int price_without_discount,
-      required int discount_price}) = _PhoneBSModel;
+      required int discount_price}) = _PhoneBestSellerModel;
 
-  factory PhoneBSModel.fromJson(Map<String, dynamic> json) =>
-      _$PhoneBSModelFromJson(json);
+  factory PhoneBestSellerModel.fromJson(Map<String, dynamic> json) =>
+      _$PhoneBestSellerModelFromJson(json);
 }

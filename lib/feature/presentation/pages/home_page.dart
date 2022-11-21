@@ -1,36 +1,51 @@
+// ignore_for_file: sized_box_for_whitespace
+
 import 'package:contract_app/common/app_colors.dart';
 import 'package:contract_app/common/app_text_style.dart';
+import 'package:contract_app/feature/domain/entities/basket_entity.dart';
+import 'package:contract_app/feature/domain/entities/phone_detail_entity.dart';
 import 'package:contract_app/feature/domain/entities/phone_entity.dart';
 import 'package:contract_app/feature/presentation/bloc/phone_list_cubit.dart/phone_list_cubit.dart';
 import 'package:contract_app/feature/presentation/bloc/phone_list_cubit.dart/phone_list_state.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:flutter_svg/svg.dart';
 
-import '../widgets/first_screen.dart/card_sales.dart';
-import '../widgets/first_screen.dart/phone_card.dart';
-import '../widgets/first_screen.dart/rounded.dart';
+import '../widgets/first_screen/card_sales.dart';
+import '../widgets/first_screen/phone_card.dart';
+import '../widgets/first_screen/rounded.dart';
 
-class PhonesHomePageScreen extends StatelessWidget {
-  const PhonesHomePageScreen({super.key});
+class HomePage extends StatelessWidget {
+  const HomePage({super.key});
 
   @override
   Widget build(BuildContext context) {
     return BlocBuilder<PhoneListCubit, PhoneListState>(
       builder: (context, state) {
-        List<PhoneHSEntity> phonesHS = [];
-        List<PhoneBSEntity> phonesBS = [];
+        List<PhoneHomeStoreEntity> phonesHomeStore = [];
+        List<PhoneBestSellerEntity> phonesBestSeller = [];
+        List<PhoneDetailEntity> phonesDetail = [];
+        List<BasketItemsEntity> basketItems = [];
+        List<BasketEntity> baskets = [];
         if (state is PhoneListLoading) {
           return _loadingIndicator();
         } else if (state is PhoneListLoaded) {
-          phonesHS = state.phonesHSList;
-          phonesBS = state.phonesBSList;
-          print(phonesBS);
-          print(phonesBS.length);
+          phonesHomeStore = state.phonesHomeStoreList;
+          phonesBestSeller = state.phonesBestSellerList;
+          phonesDetail = state.phonesDetail;
+          basketItems = state.basketItems;
+          baskets = state.baskets;
+
+          // print(phonesBestSeller);
+
+          print(phonesDetail.length);
+          print(basketItems.length);
+          print(baskets.length);
         }
-        final phone1 = phonesBS[0];
-        final phone2 = phonesBS[1];
-        final phone3 = phonesBS[3];
-        final phone4 = phonesBS[3];
+        final phone1 = phonesBestSeller[0];
+        final phone2 = phonesBestSeller[1];
+        final phone3 = phonesBestSeller[2];
+        final phone4 = phonesBestSeller[3];
         return Column(
           children: [
             Expanded(
@@ -61,6 +76,45 @@ class PhonesHomePageScreen extends StatelessWidget {
                     ],
                   ),
                   const Rounded(),
+                  Padding(
+                    padding: const EdgeInsets.symmetric(horizontal: 15),
+                    child: TextField(
+                      decoration: InputDecoration(
+                        filled: true,
+                        fillColor: Colors.white,
+                        border: OutlineInputBorder(
+                          borderRadius: BorderRadius.circular(30),
+                          borderSide: BorderSide.none,
+                          gapPadding: 15,
+                        ),
+                        // border: const OutlineInputBorder(
+                        //     borderSide: BorderSide(
+                        //   width: 0.3,
+                        //   strokeAlign: StrokeAlign.center,
+                        // )),
+                        // disabledBorder: InputBorder.none,
+                        // border: OutlineInputBorder(),
+                        labelText: 'Search',
+                        prefixIcon: SvgPicture.asset(
+                          'lib/assets/images/search.svg',
+                          height: 10,
+                          width: 10,
+                          fit: BoxFit.none,
+                        ),
+                        suffixIcon: SvgPicture.asset(
+                          'lib/assets/images/search.svg',
+                          fit: BoxFit.none,
+                        ),
+                      ),
+                    ),
+                    // IconButton(
+                    //   onPressed: () {},
+                    //   icon: SvgPicture.asset(
+                    //     'lib/assets/images/qr.svg',
+                    //     // fit: BoxFit.none,
+                    //   ),
+                    // ),
+                  ),
                   Container(
                     padding: const EdgeInsets.only(left: 15, right: 15),
                     height: 50,
@@ -82,9 +136,9 @@ class PhonesHomePageScreen extends StatelessWidget {
                     height: 224,
                     child: ListView.builder(
                       scrollDirection: Axis.horizontal,
-                      itemCount: phonesHS.length,
+                      itemCount: phonesHomeStore.length,
                       itemBuilder: (context, index) {
-                        final phone = phonesHS[index];
+                        final phone = phonesHomeStore[index];
                         return listViewViewer(phone.picture, phone.title,
                             phone.subtitle, phone.is_new);
                       },
@@ -115,9 +169,9 @@ class PhonesHomePageScreen extends StatelessWidget {
                   //         children: [
                   //           Expanded(
                   //             child: ListView.builder(
-                  //                 itemCount: phonesHS.length,
+                  //                 itemCount: phonesHomeStore.length,
                   //                 itemBuilder: (context, index) {
-                  //                   final phone = phonesBS[index];
+                  //                   final phone = phonesBestSeller[index];
                   //                   return phoneCard(
                   //                     phone.picture,
                   //                     phone.title,
@@ -137,9 +191,9 @@ class PhonesHomePageScreen extends StatelessWidget {
                   // ),
                   // Container(
                   //   child: ListView.builder(
-                  //       itemCount: phonesHS.length,
+                  //       itemCount: phonesHomeStore.length,
                   //       itemBuilder: (context, index) {
-                  //         final phone = phonesBS[index];
+                  //         final phone = phonesBestSeller[index];
                   //         return phoneCard(
                   //           phone.picture,
                   //           phone.title,
@@ -212,11 +266,11 @@ class PhonesHomePageScreen extends StatelessWidget {
             // Expanded(
             //   child: ListView.separated(
             //     itemBuilder: (context, index) {
-            //       // return Text('${phonesHS[index]}');
-            //       return PhoneCard(phoneHS: phonesHS[index]);
+            //       // return Text('${phonesHomeStore[index]}');
+            //       return PhoneCard(phoneHomeStore: phonesHomeStore[index]);
             //     },
             //     scrollDirection: Axis.vertical,
-            //     itemCount: phonesHS.length,
+            //     itemCount: phonesHomeStore.length,
             //     separatorBuilder: (BuildContext context, int index) {
             //       return const Divider(
             //         height: 10,
@@ -225,7 +279,7 @@ class PhonesHomePageScreen extends StatelessWidget {
             //     },
             //   ),
             // ),
-            // Cont(phoneHS: phonesHS),
+            // Cont(phoneHomeStore: phonesHomeStore),
           ],
         );
       },

@@ -1,59 +1,106 @@
 // ignore_for_file: constant_identifier_names, avoid_print
 
+import 'package:contract_app/feature/domain/entities/basket_entity.dart';
+import 'package:contract_app/feature/domain/entities/phone_detail_entity.dart';
+import 'package:contract_app/feature/domain/usecases/get_basket.dart';
+import 'package:contract_app/feature/domain/usecases/get_phones_detail.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import '../../../domain/usecases/get_phonesBS.dart';
+import '../../../domain/usecases/get_phonesBestSeller.dart';
 import '/core/error/failure.dart';
 import '/feature/domain/entities/phone_entity.dart';
-import '/feature/domain/usecases/get_phonesHS.dart';
+import '/feature/domain/usecases/get_phonesHomeStore.dart';
 import '/feature/presentation/bloc/phone_list_cubit.dart/phone_list_state.dart';
 
 const SERVER_FAILURE_MESSAGE = 'Server Failure';
 const CACHED_FAILURE_MESSAGE = 'Cache Failure';
 
 class PhoneListCubit extends Cubit<PhoneListState> {
-  final GetPhonesHS getPhonesHS;
-  final GetPhonesBS getPhonesBS;
+  final GetPhonesHomeStore getPhonesHomeStore;
+  final GetPhonesBestSeller getPhonesBestSeller;
+  final GetPhonesDetail getPhonesDetail;
+  final GetBasketItems getBasketItems;
+  final GetBasket getBasket;
 
-  PhoneListCubit({required this.getPhonesHS, required this.getPhonesBS})
-      : super(PhoneListEmpty());
+  PhoneListCubit({
+    required this.getPhonesHomeStore,
+    required this.getPhonesBestSeller,
+    required this.getPhonesDetail,
+    required this.getBasketItems,
+    required this.getBasket,
+  }) : super(PhoneListEmpty());
 
   void loadPhones() async {
     if (state is PhoneListLoading) return;
 
     final currentState = state;
 
-    var oldPhonesHS = <PhoneHSEntity>[];
-    var oldPhonesBS = <PhoneBSEntity>[];
+    var oldPhonesHomeStore = <PhoneHomeStoreEntity>[];
+    var oldPhonesBestSeller = <PhoneBestSellerEntity>[];
+    var oldPhonesDetail = <PhoneDetailEntity>[];
+    var oldBasketItems = <BasketItemsEntity>[];
+    var oldBasket = <BasketEntity>[];
 
     if (currentState is PhoneListLoaded) {
-      oldPhonesHS = currentState.phonesHSList;
-      oldPhonesBS = currentState.phonesBSList;
+      oldPhonesHomeStore = currentState.phonesHomeStoreList;
+      oldPhonesBestSeller = currentState.phonesBestSellerList;
+      oldPhonesDetail = currentState.phonesDetail;
+      oldBasketItems = currentState.basketItems;
+      oldBasket = currentState.baskets;
     }
 
-    emit(PhoneListLoading(oldPhonesHS, oldPhonesBS));
+    emit(PhoneListLoading(oldPhonesHomeStore, oldPhonesBestSeller,
+        oldPhonesDetail, oldBasketItems, oldBasket));
 
-    final failureOrPhoneHS = await getPhonesHS();
-    final failureOrPhoneBS = await getPhonesBS();
-    final phonesHS = (state as PhoneListLoading).oldPhonesHSList;
-    final phonesBS = (state as PhoneListLoading).oldPhonesBSList;
+    final failureOrPhoneHomeStore = await getPhonesHomeStore();
+    final failureOrPhoneBestSeller = await getPhonesBestSeller();
+    final failureOrPhoneDetail = await getPhonesDetail();
+    final failureOrBasketItems = await getBasketItems();
+    final failureOrBasket = await getBasket();
 
-    failureOrPhoneHS.fold(
+    final phonesHomeStore = (state as PhoneListLoading).oldPhonesHomeStoreList;
+    final phonesBestSeller =
+        (state as PhoneListLoading).oldPhonesBestSellerList;
+    final phoneDetails = (state as PhoneListLoading).oldPhonesDetailList;
+    final basketItems = (state as PhoneListLoading).oldBasketItemsList;
+    final baskets = (state as PhoneListLoading).oldBasketList;
+
+    failureOrPhoneHomeStore.fold(
         (error) => emit(PhoneListError(message: _mapFailureToMessage(error))),
-        (phoneHS) {
-      // final phonesHS = (state as PhoneListLoading).oldPhonesHSList;
-      phonesHS.addAll(phoneHS);
-      // print('List length: ${phonesHS.length.toString()}');
+        (phoneHomeStore) {
+      phonesHomeStore.addAll(phoneHomeStore);
+      // print('List length: ${phonesHomeStore.length.toString()}');
     });
 
-    failureOrPhoneBS.fold(
+    failureOrPhoneBestSeller.fold(
         (error) => emit(PhoneListError(message: _mapFailureToMessage(error))),
-        (phoneBS) {
-      // final phonesBS = (state as PhoneListLoading).oldPhonesBSList;
-      phonesBS.addAll(phoneBS);
-      // print('List length: ${phonesBS.length.toString()}');
+        (phoneBestSeller) {
+      phonesBestSeller.addAll(phoneBestSeller);
+      // print('List length: ${phonesBestSeller.length.toString()}');
     });
 
-    emit(PhoneListLoaded(phonesHS, phonesBS));
+    failureOrPhoneDetail.fold(
+        (error) => emit(PhoneListError(message: _mapFailureToMessage(error))),
+        (phoneDetail) {
+      phoneDetails.addAll(phoneDetail);
+      // print('List length: ${phonesBestSeller.length.toString()}');
+    });
+
+    failureOrBasketItems.fold(
+        (error) => emit(PhoneListError(message: _mapFailureToMessage(error))),
+        (basketItem) {
+      basketItems.addAll(basketItem);
+      // print('List length: ${phonesBestSeller.length.toString()}');
+    });
+
+    failureOrBasket.fold(
+        (error) => emit(PhoneListError(message: _mapFailureToMessage(error))),
+        (basket) {
+      baskets.addAll(basket);
+      // print('List length: ${phonesBestSeller.length.toString()}');
+    });
+
+    emit(PhoneListLoaded(
+        phonesHomeStore, phonesBestSeller, phoneDetails, basketItems, baskets));
   }
 
   String _mapFailureToMessage(Failure failure) {

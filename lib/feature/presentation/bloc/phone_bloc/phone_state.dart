@@ -13,13 +13,13 @@ class PhoneEmpty extends PhoneState {}
 class PhoneLoading extends PhoneState {}
 
 class PhoneLoaded extends PhoneState {
-  final List<PhoneHSEntity> phonesHS;
+  final List<PhoneHomeStoreEntity> phonesHomeStore;
 
   // ignore: prefer_const_constructors_in_immutables
-  PhoneLoaded({required this.phonesHS});
+  PhoneLoaded({required this.phonesHomeStore});
 
   @override
-  List<Object?> get props => [phonesHS];
+  List<Object?> get props => [phonesHomeStore];
 }
 
 class PhoneError extends PhoneState {

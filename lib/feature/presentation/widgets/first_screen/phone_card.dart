@@ -1,3 +1,5 @@
+// ignore_for_file: sized_box_for_whitespace
+
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 
@@ -12,6 +14,17 @@ Widget phoneCard(
       padding: const EdgeInsets.all(15),
       height: 290,
       width: 185,
+      // decoration: BoxDecoration(
+      //   shape: BoxShape.rectangle,
+      //   boxShadow: <BoxShadow>[
+      //     BoxShadow(
+      //       color: Colors.grey.shade300,
+      //       blurRadius: 0.1,
+      //       // offset: Offset.fromDirection(),
+      //       blurStyle: BlurStyle.outer,
+      //     ),
+      //   ],
+      // ),
       child: Column(
         children: [
           Stack(
