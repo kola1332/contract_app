@@ -1,4 +1,4 @@
-// ignore_for_file: avoid_unnecessary_containers
+// ignore_for_file: avoid_unnecessary_containers, prefer_interpolation_to_compose_strings, unnecessary_cast
 
 import 'package:carousel_slider/carousel_slider.dart';
 import 'package:contract_app/common/app_colors.dart';
@@ -12,9 +12,16 @@ import 'package:flutter/services.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 
-class SecondScreen extends StatelessWidget {
-  const SecondScreen({super.key});
+class SecondScreen extends StatefulWidget {
+  SecondScreen({super.key});
 
+  @override
+  State<SecondScreen> createState() => _SecondScreenState();
+}
+
+class _SecondScreenState extends State<SecondScreen> {
+  bool _focus = false;
+  bool _focus1 = false;
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -36,6 +43,13 @@ class SecondScreen extends StatelessWidget {
           phonesDetail = state.phonesDetail;
         }
         PhoneDetailEntity phone = phonesDetail[0];
+        List<Color> paint = [];
+        List<String> g = [];
+        for (int i = 0; i < phone.color.length; i++) {
+          g.add(phone.color[i].substring(1));
+          g[i] = '0xFF' + g[i];
+          paint.add(Color(int.parse(g[i]) as int));
+        }
         return SafeArea(
           child: Padding(
             padding: const EdgeInsets.symmetric(horizontal: 32, vertical: 12),
@@ -48,7 +62,9 @@ class SecondScreen extends StatelessWidget {
                         mainAxisAlignment: MainAxisAlignment.spaceBetween,
                         children: [
                           TextButton(
-                            onPressed: () {},
+                            onPressed: () {
+                              Navigator.pop(context);
+                            },
                             style: ButtonStyle(
                               minimumSize:
                                   MaterialStateProperty.all(const Size(40, 40)),
@@ -70,7 +86,13 @@ class SecondScreen extends StatelessWidget {
                             ),
                           ),
                           TextButton(
-                            onPressed: () {},
+                            onPressed: () {
+                              Navigator.push(
+                                context,
+                                MaterialPageRoute(
+                                    builder: (context) => const Card()),
+                              );
+                            },
                             style: ButtonStyle(
                               minimumSize:
                                   MaterialStateProperty.all(const Size(40, 40)),
@@ -173,6 +195,167 @@ class SecondScreen extends StatelessWidget {
                           _icon('sd', phone.sd),
                         ],
                       ),
+                      const SizedBox(height: 20),
+                      const Text(
+                        'Select color and capacity',
+                        style: TextStyle(
+                          fontFamily: 'MarkPro',
+                          fontSize: 18,
+                          fontWeight: FontWeight.w600,
+                        ),
+                      ),
+                      SizedBox(height: 15),
+                      Row(
+                        children: [
+                          TextButton(
+                            onPressed: () {
+                              setState(() {
+                                _focus = false;
+                              });
+                            },
+                            style: ButtonStyle(
+                              minimumSize:
+                                  MaterialStateProperty.all(const Size(50, 50)),
+                              backgroundColor:
+                                  MaterialStateProperty.all(paint[0]),
+                              foregroundColor: MaterialStateProperty.all(
+                                  AppColors.accentColorBlue),
+                              shape: MaterialStateProperty.all(
+                                  RoundedRectangleBorder(
+                                      borderRadius: BorderRadius.circular(80))),
+                            ),
+                            child: SvgPicture.asset(
+                              'lib/assets/images/second_screen/ok.svg',
+                              color: _focus == false
+                                  ? Colors.white
+                                  : Colors.transparent,
+                              height: 18,
+                              width: 18,
+                            ),
+                          ),
+                          const SizedBox(width: 15),
+                          TextButton(
+                            onPressed: () {
+                              setState(() {
+                                _focus = true;
+                              });
+                            },
+                            style: ButtonStyle(
+                              minimumSize:
+                                  MaterialStateProperty.all(const Size(50, 50)),
+                              backgroundColor:
+                                  MaterialStateProperty.all(paint[1]),
+                              foregroundColor: MaterialStateProperty.all(
+                                  AppColors.accentColorBlue),
+                              shape: MaterialStateProperty.all(
+                                  RoundedRectangleBorder(
+                                      borderRadius: BorderRadius.circular(80))),
+                            ),
+                            child: SvgPicture.asset(
+                              'lib/assets/images/second_screen/ok.svg',
+                              color: _focus == true
+                                  ? Colors.white
+                                  : Colors.transparent,
+                              height: 18,
+                              width: 18,
+                            ),
+                          ),
+                          const SizedBox(width: 30),
+                          TextButton(
+                            onPressed: () {
+                              setState(() {
+                                _focus1 = false;
+                              });
+                            },
+                            style: ButtonStyle(
+                              maximumSize: MaterialStateProperty.all(
+                                  const Size(120, 40)),
+                              minimumSize:
+                                  MaterialStateProperty.all(const Size(80, 40)),
+                              backgroundColor: _focus1 == false
+                                  ? MaterialStateProperty.all(
+                                      AppColors.accentColorOrange)
+                                  : MaterialStateProperty.all(
+                                      Colors.transparent),
+                              foregroundColor: MaterialStateProperty.all(
+                                  AppColors.accentColorBlue),
+                              shape: MaterialStateProperty.all(
+                                  RoundedRectangleBorder(
+                                      borderRadius: BorderRadius.circular(15))),
+                            ),
+                            child: Text(
+                              '128 GB',
+                              style: TextStyle(
+                                fontFamily: 'MarkPro',
+                                fontSize: 16,
+                                fontWeight: FontWeight.w600,
+                                color: _focus1 == false
+                                    ? Colors.white
+                                    : Colors.grey,
+                              ),
+                            ),
+                          ),
+                          SizedBox(width: 15),
+                          TextButton(
+                            onPressed: () {
+                              setState(() {
+                                _focus1 = true;
+                              });
+                            },
+                            style: ButtonStyle(
+                              maximumSize: MaterialStateProperty.all(
+                                  const Size(120, 40)),
+                              minimumSize:
+                                  MaterialStateProperty.all(const Size(80, 40)),
+                              backgroundColor: _focus1 == true
+                                  ? MaterialStateProperty.all(
+                                      AppColors.accentColorOrange)
+                                  : MaterialStateProperty.all(
+                                      Colors.transparent),
+                              foregroundColor: MaterialStateProperty.all(
+                                  AppColors.accentColorBlue),
+                              shape: MaterialStateProperty.all(
+                                  RoundedRectangleBorder(
+                                      borderRadius: BorderRadius.circular(15))),
+                            ),
+                            child: Text(
+                              '256 GB',
+                              style: TextStyle(
+                                fontFamily: 'MarkPro',
+                                fontSize: 16,
+                                fontWeight: FontWeight.w600,
+                                color: _focus1 == true
+                                    ? Colors.white
+                                    : Colors.grey,
+                              ),
+                            ),
+                          ),
+                        ],
+                      ),
+                      SizedBox(height: 25),
+                      TextButton(
+                          style: ButtonStyle(
+                            maximumSize:
+                                MaterialStateProperty.all(const Size(120, 60)),
+                            minimumSize:
+                                MaterialStateProperty.all(const Size(80, 50)),
+                            backgroundColor: MaterialStateProperty.all(
+                                AppColors.accentColorOrange),
+                            foregroundColor: MaterialStateProperty.all(
+                                AppColors.accentColorBlue),
+                            shape: MaterialStateProperty.all(
+                                RoundedRectangleBorder(
+                                    borderRadius: BorderRadius.circular(9))),
+                          ),
+                          onPressed: () {},
+                          child: Text(
+                            'Add to Card            \$${phone.price}.00',
+                            style: const TextStyle(
+                                fontFamily: 'MarkPro',
+                                color: Colors.white,
+                                fontSize: 19,
+                                fontWeight: FontWeight.w700),
+                          ))
                     ],
                   ),
                 ),
@@ -218,5 +401,9 @@ class SecondScreen extends StatelessWidget {
         )
       ],
     );
+  }
+
+  Widget _svg(String path) {
+    return SvgPicture.asset('lib/assets/images/second_screen/$path.svg');
   }
 }

@@ -72,7 +72,7 @@ class _RoundedState extends State<Rounded> {
                                     borderRadius: BorderRadius.circular(80))),
                           ),
                           child: SvgPicture.asset(
-                            'lib/assets/images/phone.svg',
+                            'lib/assets/images/first_screen/phone.svg',
                             color: _focus1 != false
                                 ? Colors.white
                                 : AppColors.accentGray,
@@ -130,7 +130,7 @@ class _RoundedState extends State<Rounded> {
                                     borderRadius: BorderRadius.circular(80))),
                           ),
                           child: SvgPicture.asset(
-                            'lib/assets/images/computer.svg',
+                            'lib/assets/images/first_screen/computer.svg',
                             color: _focus2 != false
                                 ? Colors.white
                                 : AppColors.accentGray,
@@ -188,7 +188,7 @@ class _RoundedState extends State<Rounded> {
                                     borderRadius: BorderRadius.circular(80))),
                           ),
                           child: SvgPicture.asset(
-                            'lib/assets/images/heart.svg',
+                            'lib/assets/images/first_screen/heart.svg',
                             color: _focus3 != false
                                 ? Colors.white
                                 : AppColors.accentGray,
@@ -246,7 +246,7 @@ class _RoundedState extends State<Rounded> {
                                     borderRadius: BorderRadius.circular(80))),
                           ),
                           child: SvgPicture.asset(
-                            'lib/assets/images/books.svg',
+                            'lib/assets/images/first_screen/books.svg',
                             color: _focus4 != false
                                 ? Colors.white
                                 : AppColors.accentGray,

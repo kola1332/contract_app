@@ -97,13 +97,13 @@ class HomePage extends StatelessWidget {
                         // border: OutlineInputBorder(),
                         labelText: 'Search',
                         prefixIcon: SvgPicture.asset(
-                          'lib/assets/images/search.svg',
+                          'lib/assets/images/first_screen/search.svg',
                           height: 10,
                           width: 10,
                           fit: BoxFit.none,
                         ),
                         suffixIcon: SvgPicture.asset(
-                          'lib/assets/images/search.svg',
+                          'lib/assets/images/first_screen/search.svg',
                           fit: BoxFit.none,
                         ),
                       ),

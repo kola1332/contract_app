@@ -91,6 +91,9 @@ flutter:
     - lib/assets/images/second_screen/camera.svg
     - lib/assets/images/second_screen/ssd.svg
     - lib/assets/images/second_screen/sd.svg
+    - lib/assets/images/second_screen/ok.svg
+    - lib/assets/images/location.svg
+    - lib/assets/images/delete.svg
   #   - images/a_dot_ham.jpeg
 
   # An image asset can refer to one or more resolution-specific "variants", see
