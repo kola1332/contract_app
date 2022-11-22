@@ -4,12 +4,12 @@ import 'package:contract_app/feature/domain/entities/basket_entity.dart';
 import 'package:contract_app/feature/domain/entities/phone_detail_entity.dart';
 import 'package:contract_app/feature/domain/usecases/get_basket.dart';
 import 'package:contract_app/feature/domain/usecases/get_phones_detail.dart';
+import 'package:contract_app/feature/presentation/bloc/phone_list_cubit/phone_list_state.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import '../../../domain/usecases/get_phonesBestSeller.dart';
 import '/core/error/failure.dart';
 import '/feature/domain/entities/phone_entity.dart';
 import '/feature/domain/usecases/get_phonesHomeStore.dart';
-import '/feature/presentation/bloc/phone_list_cubit.dart/phone_list_state.dart';
 
 const SERVER_FAILURE_MESSAGE = 'Server Failure';
 const CACHED_FAILURE_MESSAGE = 'Cache Failure';

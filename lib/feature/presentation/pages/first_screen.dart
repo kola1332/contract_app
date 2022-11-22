@@ -3,8 +3,8 @@
 import 'package:contract_app/common/app_colors.dart';
 import 'package:contract_app/common/app_text_style.dart';
 import 'package:contract_app/feature/domain/entities/phone_entity.dart';
-import 'package:contract_app/feature/presentation/bloc/phone_list_cubit.dart/phone_list_cubit.dart';
-import 'package:contract_app/feature/presentation/bloc/phone_list_cubit.dart/phone_list_state.dart';
+import 'package:contract_app/feature/presentation/bloc/phone_list_cubit/phone_list_cubit.dart';
+import 'package:contract_app/feature/presentation/bloc/phone_list_cubit/phone_list_state.dart';
 import 'package:contract_app/feature/presentation/pages/second_screen.dart';
 import 'package:contract_app/feature/presentation/widgets/loading.dart';
 import 'package:flutter/material.dart';
@@ -157,52 +157,89 @@ class FIrstScreen extends StatelessWidget {
                     children: [
                       Column(
                         children: [
-                          Container(
-                            child: phoneCard(
-                              phone1.picture,
-                              phone1.title,
-                              phone1.discount_price,
-                              phone1.price_without_discount,
-                              phone1.is_favorites,
-                              // (() {
-                              //   Navigator.of(context).push(
-                              //     MaterialPageRoute(
-                              //       builder: (context) => const SecondScreen(),
-                              //     ),
-                              //   );
-                              // }),
+                          GestureDetector(
+                            onTap: () {
+                              (() {
+                                Navigator.of(context).push(
+                                  MaterialPageRoute(
+                                    builder: (context) => const SecondScreen(),
+                                  ),
+                                );
+                              });
+                            },
+                            child: Container(
+                              child: phoneCard(
+                                phone1.picture,
+                                phone1.title,
+                                phone1.discount_price,
+                                phone1.price_without_discount,
+                                phone1.is_favorites,
+                              ),
                             ),
                           ),
-                          Container(
-                            child: phoneCard(
-                              phone4.picture,
-                              phone3.title,
-                              phone3.discount_price,
-                              phone3.price_without_discount,
-                              phone3.is_favorites,
+                          GestureDetector(
+                            onTap: () {
+                              (() {
+                                Navigator.of(context).push(
+                                  MaterialPageRoute(
+                                    builder: (context) => const SecondScreen(),
+                                  ),
+                                );
+                              });
+                            },
+                            child: Container(
+                              child: phoneCard(
+                                phone4.picture,
+                                phone3.title,
+                                phone3.discount_price,
+                                phone3.price_without_discount,
+                                phone3.is_favorites,
+                              ),
                             ),
                           )
                         ],
                       ),
                       Column(
                         children: [
-                          Container(
-                            child: phoneCard(
-                              phone2.picture,
-                              phone2.title,
-                              phone2.discount_price,
-                              phone2.price_without_discount,
-                              phone2.is_favorites,
+                          GestureDetector(
+                            onTap: () {
+                              (() {
+                                Navigator.of(context).push(
+                                  MaterialPageRoute(
+                                    builder: (context) => const SecondScreen(),
+                                  ),
+                                );
+                              });
+                            },
+                            child: Container(
+                              child: phoneCard(
+                                phone2.picture,
+                                phone2.title,
+                                phone2.discount_price,
+                                phone2.price_without_discount,
+                                phone2.is_favorites,
+                              ),
                             ),
                           ),
-                          Container(
-                              child: phoneCard(
-                            phone4.picture,
-                            phone4.title,
-                            phone4.discount_price,
-                            phone4.price_without_discount,
-                            phone4.is_favorites,
-                          ))
+                          GestureDetector(
+                            onTap: () {
+                              (() {
+                                Navigator.of(context).push(
+                                  MaterialPageRoute(
+                                    builder: (context) => const SecondScreen(),
+                                  ),
+                                );
+                              });
+                            },
+                            child: Container(
+                                child: phoneCard(
+                              phone4.picture,
+                              phone4.title,
+                              phone4.discount_price,
+                              phone4.price_without_discount,
+                              phone4.is_favorites,
+                            )),
+                          )
                         ],
                       )
                     ],

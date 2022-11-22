@@ -1,7 +1,7 @@
 import 'package:contract_app/common/app_colors.dart';
 import 'package:contract_app/feature/domain/entities/basket_entity.dart';
-import 'package:contract_app/feature/presentation/bloc/phone_list_cubit.dart/phone_list_cubit.dart';
-import 'package:contract_app/feature/presentation/bloc/phone_list_cubit.dart/phone_list_state.dart';
+import 'package:contract_app/feature/presentation/bloc/phone_list_cubit/phone_list_cubit.dart';
+import 'package:contract_app/feature/presentation/bloc/phone_list_cubit/phone_list_state.dart';
 import 'package:contract_app/feature/presentation/widgets/loading.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';

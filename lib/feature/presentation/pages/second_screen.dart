@@ -3,8 +3,8 @@
 import 'package:carousel_slider/carousel_slider.dart';
 import 'package:contract_app/common/app_colors.dart';
 import 'package:contract_app/feature/domain/entities/phone_detail_entity.dart';
-import 'package:contract_app/feature/presentation/bloc/phone_list_cubit.dart/phone_list_cubit.dart';
-import 'package:contract_app/feature/presentation/bloc/phone_list_cubit.dart/phone_list_state.dart';
+import 'package:contract_app/feature/presentation/bloc/phone_list_cubit/phone_list_cubit.dart';
+import 'package:contract_app/feature/presentation/bloc/phone_list_cubit/phone_list_state.dart';
 import 'package:contract_app/feature/presentation/pages/cart.dart';
 import 'package:contract_app/feature/presentation/widgets/loading.dart';
 import 'package:contract_app/feature/presentation/widgets/second_screen/carouse_card.dart';

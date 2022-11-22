@@ -1,7 +1,7 @@
 // ignore_for_file: avoid_print
 
 import 'package:contract_app/feature/presentation/bloc/phone_bloc/phone_bloc.dart';
-import 'package:contract_app/feature/presentation/bloc/phone_list_cubit.dart/phone_list_cubit.dart';
+import 'package:contract_app/feature/presentation/bloc/phone_list_cubit/phone_list_cubit.dart';
 import 'package:contract_app/feature/presentation/pages/home_page.dart';
 import 'package:contract_app/locator_service.dart' as di;
 import 'package:flutter/material.dart';
