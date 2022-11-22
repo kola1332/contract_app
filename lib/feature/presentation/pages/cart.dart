@@ -296,7 +296,7 @@ class Cart extends StatelessWidget {
                       borderRadius: BorderRadius.circular(80))),
                 ),
                 child: const Text(
-                  '- 2 +',
+                  '-  2  +',
                   style: TextStyle(
                     fontFamily: 'MarkPro',
                     fontSize: 15,

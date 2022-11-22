@@ -1,6 +1,5 @@
 // ignore_for_file: avoid_print
 
-import 'package:contract_app/feature/presentation/bloc/phone_bloc/phone_bloc.dart';
 import 'package:contract_app/feature/presentation/bloc/phone_list_cubit/phone_list_cubit.dart';
 import 'package:contract_app/feature/presentation/pages/home_page.dart';
 import 'package:contract_app/locator_service.dart' as di;
@@ -25,7 +24,6 @@ class MyApp extends StatelessWidget {
         providers: [
           BlocProvider<PhoneListCubit>(
               create: (context) => sl<PhoneListCubit>()..loadPhones()),
-          BlocProvider<PhoneBloc>(create: (context) => sl<PhoneBloc>()),
         ],
         child: MaterialApp(
           debugShowCheckedModeBanner: false,
