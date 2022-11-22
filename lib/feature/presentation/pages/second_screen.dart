@@ -12,6 +12,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_svg/flutter_svg.dart';
+import 'package:persistent_bottom_nav_bar/persistent_tab_view.dart';
 
 class SecondScreen extends StatefulWidget {
   const SecondScreen({super.key});
@@ -89,10 +90,12 @@ class _SecondScreenState extends State<SecondScreen> {
                           ),
                           TextButton(
                             onPressed: () {
-                              Navigator.push(
+                              PersistentNavBarNavigator.pushNewScreen(
                                 context,
-                                MaterialPageRoute(
-                                    builder: (context) => const Cart()),
+                                screen: const Cart(),
+                                withNavBar: false,
+                                pageTransitionAnimation:
+                                    PageTransitionAnimation.cupertino,
                               );
                             },
                             style: ButtonStyle(

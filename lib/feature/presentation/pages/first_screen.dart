@@ -10,6 +10,7 @@ import 'package:contract_app/feature/presentation/widgets/loading.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_svg/svg.dart';
+import 'package:persistent_bottom_nav_bar/persistent_tab_view.dart';
 
 import '../widgets/first_screen/card_sales.dart';
 import '../widgets/first_screen/phone_card.dart';
@@ -126,10 +127,17 @@ class FIrstScreen extends StatelessWidget {
                           phone.subtitle,
                           phone.is_new,
                           (() {
-                            Navigator.of(context).push(
-                              MaterialPageRoute(
-                                builder: (context) => const SecondScreen(),
-                              ),
+                            // Navigator.of(context).push(
+                            //   MaterialPageRoute(
+                            //     builder: (context) => const SecondScreen(),
+                            //   ),
+                            // );
+                            PersistentNavBarNavigator.pushNewScreen(
+                              context,
+                              screen: const SecondScreen(),
+                              withNavBar: false,
+                              pageTransitionAnimation:
+                                  PageTransitionAnimation.cupertino,
                             );
                           }),
                         );
