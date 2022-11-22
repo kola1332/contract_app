@@ -4,12 +4,8 @@ import 'package:contract_app/common/app_colors.dart';
 import 'package:contract_app/common/app_text_style.dart';
 import 'package:flutter/material.dart';
 
-Widget listViewViewer(
-  String picture,
-  String text,
-  String context,
-  bool isNew,
-) =>
+Widget listViewViewer(String picture, String text, String context, bool isNew,
+        void function()) =>
     Padding(
       padding: const EdgeInsets.all(9),
       child: Stack(
@@ -73,7 +69,9 @@ Widget listViewViewer(
                   ),
                   const SizedBox(height: 18),
                   TextButton(
-                    onPressed: () {},
+                    onPressed: () {
+                      function();
+                    },
                     style: ButtonStyle(
                       minimumSize:
                           MaterialStateProperty.all(const Size(120, 28)),

@@ -2,9 +2,7 @@
 
 import 'package:contract_app/feature/presentation/bloc/phone_bloc/phone_bloc.dart';
 import 'package:contract_app/feature/presentation/bloc/phone_list_cubit.dart/phone_list_cubit.dart';
-import 'package:contract_app/feature/presentation/pages/cart.dart';
-import 'package:contract_app/feature/presentation/pages/first_screen.dart';
-import 'package:contract_app/feature/presentation/pages/second_screen.dart';
+import 'package:contract_app/feature/presentation/pages/home_page.dart';
 import 'package:contract_app/locator_service.dart' as di;
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -34,7 +32,7 @@ class MyApp extends StatelessWidget {
           theme: ThemeData.light().copyWith(
             backgroundColor: AppColors.mainBackground3,
           ),
-          home: const FirstScreen(),
+          home: const HomePage(),
           // routes: {
           //   '/': (context) => const FirstScreen(),
           //   '/second_screen': (context) => SecondScreen(),

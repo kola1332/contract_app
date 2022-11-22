@@ -5,6 +5,7 @@ import 'package:contract_app/common/app_colors.dart';
 import 'package:contract_app/feature/domain/entities/phone_detail_entity.dart';
 import 'package:contract_app/feature/presentation/bloc/phone_list_cubit.dart/phone_list_cubit.dart';
 import 'package:contract_app/feature/presentation/bloc/phone_list_cubit.dart/phone_list_state.dart';
+import 'package:contract_app/feature/presentation/pages/cart.dart';
 import 'package:contract_app/feature/presentation/widgets/loading.dart';
 import 'package:contract_app/feature/presentation/widgets/second_screen/carouse_card.dart';
 import 'package:flutter/material.dart';
@@ -13,7 +14,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 
 class SecondScreen extends StatefulWidget {
-  SecondScreen({super.key});
+  const SecondScreen({super.key});
 
   @override
   State<SecondScreen> createState() => _SecondScreenState();
@@ -90,7 +91,7 @@ class _SecondScreenState extends State<SecondScreen> {
                               Navigator.push(
                                 context,
                                 MaterialPageRoute(
-                                    builder: (context) => const Card()),
+                                    builder: (context) => const Cart()),
                               );
                             },
                             style: ButtonStyle(
@@ -204,7 +205,7 @@ class _SecondScreenState extends State<SecondScreen> {
                           fontWeight: FontWeight.w600,
                         ),
                       ),
-                      SizedBox(height: 15),
+                      const SizedBox(height: 15),
                       Row(
                         children: [
                           TextButton(
@@ -295,7 +296,7 @@ class _SecondScreenState extends State<SecondScreen> {
                               ),
                             ),
                           ),
-                          SizedBox(width: 15),
+                          const SizedBox(width: 15),
                           TextButton(
                             onPressed: () {
                               setState(() {
@@ -332,7 +333,7 @@ class _SecondScreenState extends State<SecondScreen> {
                           ),
                         ],
                       ),
-                      SizedBox(height: 25),
+                      const SizedBox(height: 25),
                       TextButton(
                           style: ButtonStyle(
                             maximumSize:
@@ -401,9 +402,5 @@ class _SecondScreenState extends State<SecondScreen> {
         )
       ],
     );
-  }
-
-  Widget _svg(String path) {
-    return SvgPicture.asset('lib/assets/images/second_screen/$path.svg');
   }
 }

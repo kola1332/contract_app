@@ -2,7 +2,6 @@ import 'package:contract_app/common/app_colors.dart';
 import 'package:contract_app/feature/domain/entities/basket_entity.dart';
 import 'package:contract_app/feature/presentation/bloc/phone_list_cubit.dart/phone_list_cubit.dart';
 import 'package:contract_app/feature/presentation/bloc/phone_list_cubit.dart/phone_list_state.dart';
-import 'package:contract_app/feature/presentation/pages/home_page.dart';
 import 'package:contract_app/feature/presentation/widgets/loading.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
@@ -27,12 +26,12 @@ class Cart extends StatelessWidget {
         body: BlocBuilder<PhoneListCubit, PhoneListState>(
             builder: (context, state) {
           List<BasketEntity> basket = [];
-          List<BasketItemsEntity> basketItems = [];
+          // List<BasketItemsEntity> basketItems = [];
           if (state is PhoneListLoading) {
             return loadingIndicator();
           } else if (state is PhoneListLoaded) {
             basket = state.baskets;
-            basketItems = state.basketItems;
+            // basketItems = state.basketItems;
           }
           return SafeArea(
               child: Column(
@@ -140,7 +139,6 @@ class Cart extends StatelessWidget {
                         ),
                         Container(
                           height: 82,
-                          // color: Colors.b,
                           child: Row(
                             mainAxisAlignment: MainAxisAlignment.spaceAround,
                             children: [
@@ -169,7 +167,7 @@ class Cart extends StatelessWidget {
                                     style: const TextStyle(color: Colors.white),
                                   ),
                                   Text(
-                                    '${basket[0].delivery}',
+                                    basket[0].delivery,
                                     style: const TextStyle(color: Colors.white),
                                   ),
                                 ],
