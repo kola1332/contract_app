@@ -356,7 +356,7 @@ class _SecondScreenState extends State<SecondScreen> {
                                 color: Colors.white,
                                 fontSize: 19,
                                 fontWeight: FontWeight.w700),
-                          ))
+                          )),
                     ],
                   ),
                 ),

@@ -12,10 +12,7 @@ class Rounded extends StatefulWidget {
 }
 
 class _RoundedState extends State<Rounded> {
-  late bool _focus1 = true;
-  late bool _focus2 = false;
-  late bool _focus3 = false;
-  late bool _focus4 = false;
+  late int _i = 0;
   MaterialStatesController? statesController;
 
   @override
@@ -48,10 +45,7 @@ class _RoundedState extends State<Rounded> {
                           key: const Key('1'),
                           onPressed: () {
                             setState(() {
-                              _focus1 = true;
-                              _focus2 = false;
-                              _focus3 = false;
-                              _focus4 = false;
+                              _i = 0;
                             });
                           },
                           autofocus: true,
@@ -61,7 +55,7 @@ class _RoundedState extends State<Rounded> {
                                 MaterialStateProperty.all(Colors.amber),
                             minimumSize:
                                 MaterialStateProperty.all(const Size(75, 75)),
-                            backgroundColor: _focus1 != false
+                            backgroundColor: _i == 0
                                 ? MaterialStateProperty.all(
                                     (AppColors.accentColorOrange))
                                 : MaterialStateProperty.all((Colors.white)),
@@ -73,9 +67,8 @@ class _RoundedState extends State<Rounded> {
                           ),
                           child: SvgPicture.asset(
                             'lib/assets/images/first_screen/phone.svg',
-                            color: _focus1 != false
-                                ? Colors.white
-                                : AppColors.accentGray,
+                            color:
+                                _i == 0 ? Colors.white : AppColors.accentGray,
                           ),
                         ),
                       ),
@@ -85,7 +78,7 @@ class _RoundedState extends State<Rounded> {
                             fontFamily: 'MarkPro',
                             fontSize: 15,
                             fontWeight: FontWeight.w500,
-                            color: _focus1 != false
+                            color: _i == 0
                                 ? AppColors.accentColorOrange
                                 : AppColors.accentColorBlue),
                       ),
@@ -110,16 +103,13 @@ class _RoundedState extends State<Rounded> {
                           key: const Key('2'),
                           onPressed: () {
                             setState(() {
-                              _focus1 = false;
-                              _focus2 = true;
-                              _focus3 = false;
-                              _focus4 = false;
+                              _i = 1;
                             });
                           },
                           style: ButtonStyle(
                             minimumSize:
                                 MaterialStateProperty.all(const Size(75, 75)),
-                            backgroundColor: _focus2 != false
+                            backgroundColor: _i == 1
                                 ? MaterialStateProperty.all(
                                     (AppColors.accentColorOrange))
                                 : MaterialStateProperty.all((Colors.white)),
@@ -131,9 +121,8 @@ class _RoundedState extends State<Rounded> {
                           ),
                           child: SvgPicture.asset(
                             'lib/assets/images/first_screen/computer.svg',
-                            color: _focus2 != false
-                                ? Colors.white
-                                : AppColors.accentGray,
+                            color:
+                                _i == 1 ? Colors.white : AppColors.accentGray,
                           ),
                         ),
                       ),
@@ -143,7 +132,7 @@ class _RoundedState extends State<Rounded> {
                             fontFamily: 'MarkPro',
                             fontSize: 15,
                             fontWeight: FontWeight.w500,
-                            color: _focus2 != false
+                            color: _i == 1
                                 ? AppColors.accentColorOrange
                                 : AppColors.accentColorBlue),
                       ),
@@ -168,16 +157,13 @@ class _RoundedState extends State<Rounded> {
                           key: const Key('3'),
                           onPressed: () {
                             setState(() {
-                              _focus1 = false;
-                              _focus2 = false;
-                              _focus3 = true;
-                              _focus4 = false;
+                              _i = 2;
                             });
                           },
                           style: ButtonStyle(
                             minimumSize:
                                 MaterialStateProperty.all(const Size(75, 75)),
-                            backgroundColor: _focus3 != false
+                            backgroundColor: _i == 2
                                 ? MaterialStateProperty.all(
                                     (AppColors.accentColorOrange))
                                 : MaterialStateProperty.all((Colors.white)),
@@ -189,9 +175,8 @@ class _RoundedState extends State<Rounded> {
                           ),
                           child: SvgPicture.asset(
                             'lib/assets/images/first_screen/heart.svg',
-                            color: _focus3 != false
-                                ? Colors.white
-                                : AppColors.accentGray,
+                            color:
+                                _i == 2 ? Colors.white : AppColors.accentGray,
                           ),
                         ),
                       ),
@@ -201,7 +186,7 @@ class _RoundedState extends State<Rounded> {
                             fontFamily: 'MarkPro',
                             fontSize: 15,
                             fontWeight: FontWeight.w500,
-                            color: _focus3 != false
+                            color: _i == 2
                                 ? AppColors.accentColorOrange
                                 : AppColors.accentColorBlue),
                       ),
@@ -226,16 +211,13 @@ class _RoundedState extends State<Rounded> {
                           key: const Key('4'),
                           onPressed: () {
                             setState(() {
-                              _focus1 = false;
-                              _focus2 = false;
-                              _focus3 = false;
-                              _focus4 = true;
+                              _i = 3;
                             });
                           },
                           style: ButtonStyle(
                             minimumSize:
                                 MaterialStateProperty.all(const Size(75, 75)),
-                            backgroundColor: _focus4 != false
+                            backgroundColor: _i == 3
                                 ? MaterialStateProperty.all(
                                     (AppColors.accentColorOrange))
                                 : MaterialStateProperty.all((Colors.white)),
@@ -247,9 +229,8 @@ class _RoundedState extends State<Rounded> {
                           ),
                           child: SvgPicture.asset(
                             'lib/assets/images/first_screen/books.svg',
-                            color: _focus4 != false
-                                ? Colors.white
-                                : AppColors.accentGray,
+                            color:
+                                _i == 3 ? Colors.white : AppColors.accentGray,
                           ),
                         ),
                       ),
@@ -259,7 +240,7 @@ class _RoundedState extends State<Rounded> {
                             fontFamily: 'MarkPro',
                             fontSize: 15,
                             fontWeight: FontWeight.w500,
-                            color: _focus4 != false
+                            color: _i == 3
                                 ? AppColors.accentColorOrange
                                 : AppColors.accentColorBlue),
                       ),

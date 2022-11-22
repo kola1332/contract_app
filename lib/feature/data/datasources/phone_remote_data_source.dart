@@ -84,7 +84,7 @@ class PhoneRemoteDataSourceImpl implements PhoneRemoteDataSource {
         'test': [baskets]
       };
       return (m1['test'] as List)
-          .map((phone) => BasketModel.fromJson(phone))
+          .map((basket) => BasketModel.fromJson(basket))
           .toList();
     } else {
       throw ServerException();
@@ -100,7 +100,7 @@ class PhoneRemoteDataSourceImpl implements PhoneRemoteDataSource {
     if (response.statusCode == 200) {
       final basketItems = json.decode(response.body);
       return (basketItems['basket'] as List)
-          .map((phone) => BasketItemsModel.fromJson(phone))
+          .map((basketItem) => BasketItemsModel.fromJson(basketItem))
           .toList();
     } else {
       throw ServerException();
