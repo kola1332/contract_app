@@ -51,12 +51,12 @@ Widget phoneCard(
                     onPressed: () {},
                     child: isFavorite
                         ? SvgPicture.asset(
-                            'lib/assets/images/favorite_splash.svg',
+                            'lib/assets/images/first_screen/favorite_splash.svg',
                             width: 15,
                             height: 15,
                           )
                         : SvgPicture.asset(
-                            'lib/assets/images/favorite.svg',
+                            'lib/assets/images/first_screen/favorite.svg',
                             width: 15,
                             height: 15,
                           ),

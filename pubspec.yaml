@@ -48,6 +48,7 @@ dependencies:
   get_it: ^7.2.0
   flutter_svg: ^1.1.6
   google_nav_bar: ^5.0.6
+  carousel_slider: ^4.1.1
 
 dev_dependencies:
   flutter_test:
@@ -73,14 +74,26 @@ flutter:
 
   # To add assets to your application, add an assets section, like this:
   assets:
-    - lib/assets/images/phone.svg
-    - lib/assets/images/computer.svg
-    - lib/assets/images/heart.svg
-    - lib/assets/images/books.svg
-    - lib/assets/images/favorite.svg
-    - lib/assets/images/favorite_splash.svg
-    - lib/assets/images/search.svg
-    - lib/assets/images/qr.svg
+    - lib/assets/images/first_screen/phone.svg
+    - lib/assets/images/first_screen/computer.svg
+    - lib/assets/images/first_screen/heart.svg
+    - lib/assets/images/first_screen/books.svg
+    - lib/assets/images/first_screen/favorite.svg
+    - lib/assets/images/first_screen/favorite_splash.svg
+    - lib/assets/images/first_screen/search.svg
+    - lib/assets/images/first_screen/qr.svg
+
+    - lib/assets/images/second_screen/back.svg
+    - lib/assets/images/second_screen/market.svg
+    - lib/assets/images/second_screen/favorite2.svg
+    - lib/assets/images/second_screen/star.svg
+    - lib/assets/images/second_screen/cpu.svg
+    - lib/assets/images/second_screen/camera.svg
+    - lib/assets/images/second_screen/ssd.svg
+    - lib/assets/images/second_screen/sd.svg
+    - lib/assets/images/second_screen/ok.svg
+    - lib/assets/images/location.svg
+    - lib/assets/images/delete.svg
   #   - images/a_dot_ham.jpeg
 
   # An image asset can refer to one or more resolution-specific "variants", see
