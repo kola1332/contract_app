@@ -6,10 +6,9 @@ import 'package:contract_app/features/other/domain/usecases/get_basket.dart';
 import 'package:contract_app/features/other/domain/usecases/get_phones_detail.dart';
 import 'package:contract_app/features/other/presentation/bloc/phone_list_cubit/phone_list_state.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import '../../../domain/usecases/get_phonesBestSeller.dart';
 import '/core/error/failure.dart';
-import '../../../domain/entities/phone_entity.dart';
-import '../../../domain/usecases/get_phonesHomeStore.dart';
+import '../../../../home/domain/entities/phone_entity.dart';
+import '../../../../home/domain/usecases/get_phonesHome.dart';
 
 const SERVER_FAILURE_MESSAGE = 'Server Failure';
 const CACHED_FAILURE_MESSAGE = 'Cache Failure';

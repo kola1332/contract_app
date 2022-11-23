@@ -9,8 +9,7 @@ import 'package:contract_app/features/other/data/datasources/phone_remote_data_s
 import 'package:contract_app/features/other/data/models/phone_model.dart';
 import 'package:contract_app/features/other/data/repositories/phone_repository_impl.dart';
 import 'package:contract_app/features/other/domain/repositories/phone_repository.dart';
-import 'package:contract_app/features/other/domain/usecases/get_phonesBestSeller.dart';
-import 'package:contract_app/features/other/domain/usecases/get_phonesHomeStore.dart';
+import 'package:contract_app/features/home/domain/usecases/get_phonesHome.dart';
 import 'package:contract_app/features/other/presentation/bloc/phone_list_cubit/phone_list_cubit.dart';
 import 'package:internet_connection_checker/internet_connection_checker.dart';
 import 'package:shared_preferences/shared_preferences.dart';

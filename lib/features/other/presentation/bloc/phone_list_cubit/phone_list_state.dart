@@ -2,7 +2,7 @@ import 'package:contract_app/features/other/domain/entities/basket_entity.dart';
 import 'package:contract_app/features/other/domain/entities/phone_detail_entity.dart';
 import 'package:equatable/equatable.dart';
 
-import '../../../domain/entities/phone_entity.dart';
+import '../../../../home/domain/entities/phone_entity.dart';
 
 abstract class PhoneListState extends Equatable {
   const PhoneListState();

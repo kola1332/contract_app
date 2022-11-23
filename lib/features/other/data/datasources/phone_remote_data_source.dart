@@ -3,9 +3,9 @@
 import 'dart:convert';
 
 import 'package:contract_app/core/error/exception.dart';
+import 'package:contract_app/features/home/data/models/phone_model.dart';
 import 'package:contract_app/features/other/data/models/basket_model.dart';
 import 'package:contract_app/features/other/data/models/phone_detail_model.dart';
-import 'package:contract_app/features/other/data/models/phone_model.dart';
 import 'package:http/http.dart' as http;
 
 abstract class PhoneRemoteDataSource {

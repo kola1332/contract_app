@@ -1,5 +1,6 @@
 import 'package:contract_app/core/error/exception.dart';
 import 'package:contract_app/core/platform/network_info.dart';
+import 'package:contract_app/features/home/data/models/phone_model.dart';
 import 'package:contract_app/features/other/data/datasources/phone_local_data_source.dart';
 import 'package:contract_app/features/other/data/datasources/phone_remote_data_source.dart';
 import 'package:contract_app/features/other/data/models/basket_model.dart';

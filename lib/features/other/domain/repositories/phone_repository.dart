@@ -5,7 +5,7 @@ import 'package:dartz/dartz.dart';
 
 import 'package:contract_app/features/other/domain/entities/phone_detail_entity.dart';
 import 'package:contract_app/core/error/failure.dart';
-import 'package:contract_app/features/other/domain/entities/phone_entity.dart';
+import 'package:contract_app/features/home/domain/entities/phone_entity.dart';
 
 abstract class PhoneRepository {
   Future<Either<Failure, List<PhoneHomeStoreEntity>>> getPhonesHomeStore();

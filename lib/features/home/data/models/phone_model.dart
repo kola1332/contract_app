@@ -1,11 +1,33 @@
 // ignore_for_file: non_constant_identifier_names
 
-import 'package:contract_app/features/other/domain/entities/phone_entity.dart';
+import 'package:contract_app/features/home/domain/entities/phone_entity.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:flutter/foundation.dart';
 
 part 'phone_model.freezed.dart';
 part 'phone_model.g.dart';
+
+class PhoneModel {
+  List<PhoneHomeStoreModel>? homeStore;
+  List<PhoneBestSellerModel>? bestSeller;
+
+  PhoneModel({required this.homeStore, required this.bestSeller});
+
+  PhoneModel.fromJson(Map<String, dynamic> json) {
+    if (json['home_store'] != null) {
+      homeStore = <PhoneHomeStoreModel>[];
+      json['home_store'].forEach((v) {
+        homeStore!.add(PhoneHomeStoreModel.fromJson(v));
+      });
+    }
+    if (json['best_seller'] != null) {
+      bestSeller = <PhoneBestSellerModel>[];
+      json['best_seller'].forEach((v) {
+        bestSeller!.add(PhoneBestSellerModel.fromJson(v));
+      });
+    }
+  }
+}
 
 @freezed
 class PhoneHomeStoreModel extends PhoneHomeStoreEntity
