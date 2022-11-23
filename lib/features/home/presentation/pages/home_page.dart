@@ -74,25 +74,27 @@ class HomePage extends StatelessWidget {
     return [
       PersistentBottomNavBarItem(
         textStyle: const TextStyle(color: Colors.white),
-        icon: SvgPicture.asset('lib/assets/images/tabs/point.svg'),
+        icon: SvgPicture.asset('lib/components/assets/images/tabs/point.svg'),
         title: ("Explorer"),
         activeColorPrimary: AppColors.accentColorBlue,
         activeColorSecondary: Colors.white,
       ),
       PersistentBottomNavBarItem(
-          icon: SvgPicture.asset('lib/assets/images/tabs/market.svg'),
+          icon:
+              SvgPicture.asset('lib/components/assets/images/tabs/market.svg'),
           title: ("Market"),
           activeColorPrimary: AppColors.accentColorBlue,
           activeColorSecondary: Colors.white,
           onPressed: ((p0) {})),
       PersistentBottomNavBarItem(
           title: ("Favorites"),
-          icon: SvgPicture.asset('lib/assets/images/tabs/favorites.svg'),
+          icon: SvgPicture.asset(
+              'lib/components/assets/images/tabs/favorites.svg'),
           activeColorPrimary: AppColors.accentColorBlue,
           activeColorSecondary: Colors.white,
           onPressed: ((p0) {})),
       PersistentBottomNavBarItem(
-          icon: SvgPicture.asset('lib/assets/images/tabs/user.svg'),
+          icon: SvgPicture.asset('lib/components/assets/images/tabs/user.svg'),
           title: ("User"),
           activeColorPrimary: AppColors.accentColorBlue,
           activeColorSecondary: Colors.white,

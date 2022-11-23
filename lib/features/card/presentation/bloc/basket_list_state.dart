@@ -31,10 +31,10 @@ class BasketListLoaded extends BasketListState {
   List<Object?> get props => [basketItems, baskets];
 }
 
-class PhoneListError extends BasketListState {
+class BasketListError extends BasketListState {
   final String message;
 
-  const PhoneListError({required this.message});
+  const BasketListError({required this.message});
 
   @override
   List<Object?> get props => [message];

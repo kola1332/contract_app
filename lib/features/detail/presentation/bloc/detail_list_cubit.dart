@@ -17,7 +17,7 @@ class DetailListCubit extends Cubit<DetailListState> {
     required this.getPhonesDetail,
   }) : super(DetailListEmpty());
 
-  void loadPhones() async {
+  void loadDetailPhones() async {
     if (state is DetailListLoading) return;
 
     final currentState = state;

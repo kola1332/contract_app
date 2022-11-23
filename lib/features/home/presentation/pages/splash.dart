@@ -20,7 +20,7 @@ class Splash extends StatelessWidget {
     }));
     return Scaffold(
       backgroundColor: AppColors.accentColorBlue,
-      body: Center(child: Image.asset('lib/assets/brand.png')),
+      body: Center(child: Image.asset('lib/components/assets/brand.png')),
     );
   }
 }

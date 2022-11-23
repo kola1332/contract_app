@@ -1,3 +1,7 @@
+import 'package:contract_app/features/card/data/datasources/basket_local_data_source.dart';
+import 'package:contract_app/features/card/data/datasources/basket_remote_data_source.dart';
+import 'package:contract_app/features/detail/data/datasources/detail_local_data_source.dart';
+import 'package:contract_app/features/detail/data/datasources/detail_remote_data_source.dart';
 import 'package:get_it/get_it.dart';
 import 'package:http/http.dart' as http;
 import 'package:internet_connection_checker/internet_connection_checker.dart';
@@ -16,7 +20,7 @@ import 'package:contract_app/features/detail/domain/repositories/detail_reposito
 import 'package:contract_app/features/detail/presentation/bloc/detail_list_cubit.dart';
 import 'package:contract_app/features/card/data/repositories/basket_repository_impl.dart';
 import 'package:contract_app/features/card/domain/repositories/basket_repository.dart';
-import 'package:contract_app/features/card/presentation/bloc/phone_list_cubit.dart';
+import 'package:contract_app/features/card/presentation/bloc/basket_list_cubit.dart';
 import 'package:contract_app/features/card/domain/usecases/get_basket.dart';
 
 final sl = GetIt.instance;
@@ -70,6 +74,18 @@ Future<void> init() async {
 
   sl.registerLazySingleton<PhonesLocalDataSource>(
       () => PhonesLocalDataSourceImpl(sharedPreferences: sl()));
+
+  sl.registerLazySingleton<DetailRemoteDataSource>(
+      () => DetailRemoteDataSourceImpl(client: http.Client()));
+
+  sl.registerLazySingleton<DetailLocalDataSource>(
+      () => DetailLocalDataSourceImpl(sharedPreferences: sl()));
+
+  sl.registerLazySingleton<BasketRemoteDataSource>(
+      () => BasketRemoteDataSourceImpl(client: http.Client()));
+
+  sl.registerLazySingleton<BasketLocalDataSource>(
+      () => BasketLocalDataSourceImpl(sharedPreferences: sl()));
 
   //Core
   sl.registerLazySingleton<NetworkInfo>(() => NetworkInfoImp(sl()));

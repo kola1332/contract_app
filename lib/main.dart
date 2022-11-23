@@ -1,6 +1,6 @@
 // ignore_for_file: avoid_print
 
-import 'package:contract_app/features/card/presentation/bloc/phone_list_cubit.dart';
+import 'package:contract_app/features/card/presentation/bloc/basket_list_cubit.dart';
 import 'package:contract_app/features/detail/presentation/bloc/detail_list_cubit.dart';
 import 'package:contract_app/features/home/presentation/bloc/phone_list_cubit.dart';
 import 'package:contract_app/locator_service.dart' as di;
@@ -27,9 +27,9 @@ class MyApp extends StatelessWidget {
           BlocProvider<PhoneListCubit>(
               create: (context) => sl<PhoneListCubit>()..loadPhones()),
           BlocProvider<DetailListCubit>(
-              create: (context) => sl<DetailListCubit>()..loadPhones()),
+              create: (context) => sl<DetailListCubit>()..loadDetailPhones()),
           BlocProvider<BasketListCubit>(
-              create: (context) => sl<BasketListCubit>()..loadPhones()),
+              create: (context) => sl<BasketListCubit>()..loadBaskets()),
         ],
         child: MaterialApp(
           debugShowCheckedModeBanner: false,

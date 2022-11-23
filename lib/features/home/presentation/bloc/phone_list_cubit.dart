@@ -32,10 +32,7 @@ class PhoneListCubit extends Cubit<PhoneListState> {
       oldPhonesBestSeller = currentState.phonesBestSellerList;
     }
 
-    emit(PhoneListLoading(
-      oldPhonesHomeStore,
-      oldPhonesBestSeller,
-    ));
+    emit(PhoneListLoading(oldPhonesHomeStore, oldPhonesBestSeller));
 
     final failureOrPhoneHomeStore = await getPhonesHomeStore();
     final failureOrPhoneBestSeller = await getPhonesBestSeller();

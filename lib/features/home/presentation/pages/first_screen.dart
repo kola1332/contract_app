@@ -45,7 +45,7 @@ class FIrstScreen extends StatelessWidget {
                           child: Align(
                             alignment: Alignment.centerRight,
                             child: SvgPicture.asset(
-                              'lib/assets/images/first_screen/filter.svg',
+                              'lib/components/assets/images/first_screen/filter.svg',
                               color: Colors.black,
                             ),
                           ),
@@ -117,7 +117,7 @@ class FIrstScreen extends StatelessWidget {
                               ),
                               labelText: 'Search',
                               prefixIcon: SvgPicture.asset(
-                                'lib/assets/images/first_screen/search.svg',
+                                'lib/components/assets/images/first_screen/search.svg',
                                 height: 10,
                                 width: 10,
                                 fit: BoxFit.none,
@@ -139,7 +139,7 @@ class FIrstScreen extends StatelessWidget {
                                       borderRadius: BorderRadius.circular(80))),
                             ),
                             child: SvgPicture.asset(
-                              'lib/assets/images/first_screen/qr.svg',
+                              'lib/components/assets/images/first_screen/qr.svg',
                             ))
                       ],
                     ),

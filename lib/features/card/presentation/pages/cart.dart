@@ -5,8 +5,8 @@ import 'package:flutter_svg/flutter_svg.dart';
 
 import 'package:contract_app/components/common/app_colors.dart';
 import 'package:contract_app/features/card/domain/entities/basket_entity.dart';
-import 'package:contract_app/features/card/presentation/bloc/phone_list_cubit.dart';
-import 'package:contract_app/features/card/presentation/bloc/phone_list_state.dart';
+import 'package:contract_app/features/card/presentation/bloc/basket_list_cubit.dart';
+import 'package:contract_app/features/card/presentation/bloc/basket_list_state.dart';
 import 'package:contract_app/features/card/presentation/widgets/loading.dart';
 
 class Cart extends StatelessWidget {
@@ -57,7 +57,7 @@ class Cart extends StatelessWidget {
                                     borderRadius: BorderRadius.circular(12))),
                           ),
                           child: SvgPicture.asset(
-                              'lib/assets/images/second_screen/back.svg'),
+                              'lib/components/assets/images/second_screen/back.svg'),
                         ),
                       ),
                       const Padding(
@@ -85,7 +85,7 @@ class Cart extends StatelessWidget {
                                     borderRadius: BorderRadius.circular(12))),
                           ),
                           child: SvgPicture.asset(
-                              'lib/assets/images/cart/location.svg'),
+                              'lib/components/assets/images/cart/location.svg'),
                         ),
                       ),
                     ],
@@ -301,7 +301,7 @@ class Cart extends StatelessWidget {
             TextButton(
               onPressed: () {},
               child: SvgPicture.asset(
-                'lib/assets/images/cart/delete.svg',
+                'lib/components/assets/images/cart/delete.svg',
                 height: 20,
                 width: 20,
               ),

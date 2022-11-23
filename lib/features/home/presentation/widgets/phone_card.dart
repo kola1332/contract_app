@@ -39,12 +39,12 @@ Widget phoneCard(
                     onPressed: () {},
                     child: isFavorite
                         ? SvgPicture.asset(
-                            'lib/assets/images/first_screen/favorite_splash.svg',
+                            'lib/components/assets/images/first_screen/favorite_splash.svg',
                             width: 15,
                             height: 15,
                           )
                         : SvgPicture.asset(
-                            'lib/assets/images/first_screen/favorite.svg',
+                            'lib/components/assets/images/first_screen/favorite.svg',
                             width: 15,
                             height: 15,
                           ),

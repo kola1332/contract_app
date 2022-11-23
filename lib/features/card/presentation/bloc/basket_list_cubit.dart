@@ -1,10 +1,11 @@
 // ignore_for_file: constant_identifier_names, avoid_print
 
+import 'package:flutter_bloc/flutter_bloc.dart';
+
+import 'package:contract_app/core/error/failure.dart';
 import 'package:contract_app/features/card/domain/entities/basket_entity.dart';
 import 'package:contract_app/features/card/domain/usecases/get_basket.dart';
-import 'package:contract_app/features/card/presentation/bloc//phone_list_state.dart';
-import 'package:flutter_bloc/flutter_bloc.dart';
-import '/core/error/failure.dart';
+import 'package:contract_app/features/card/presentation/bloc/basket_list_state.dart';
 
 const SERVER_FAILURE_MESSAGE = 'Server Failure';
 const CACHED_FAILURE_MESSAGE = 'Cache Failure';
@@ -18,7 +19,7 @@ class BasketListCubit extends Cubit<BasketListState> {
     required this.getBasket,
   }) : super(BasketListEmpty());
 
-  void loadPhones() async {
+  void loadBaskets() async {
     if (state is BasketListLoading) return;
 
     final currentState = state;
@@ -40,13 +41,13 @@ class BasketListCubit extends Cubit<BasketListState> {
     final baskets = (state as BasketListLoading).oldBasketList;
 
     failureOrBasketItems.fold(
-        (error) => emit(PhoneListError(message: _mapFailureToMessage(error))),
+        (error) => emit(BasketListError(message: _mapFailureToMessage(error))),
         (basketItem) {
       basketItems.addAll(basketItem);
     });
 
     failureOrBasket.fold(
-        (error) => emit(PhoneListError(message: _mapFailureToMessage(error))),
+        (error) => emit(BasketListError(message: _mapFailureToMessage(error))),
         (basket) {
       baskets.addAll(basket);
     });

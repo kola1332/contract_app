@@ -67,7 +67,7 @@ class _RoundedState extends State<Rounded> {
                                     borderRadius: BorderRadius.circular(80))),
                           ),
                           child: SvgPicture.asset(
-                            'lib/assets/images/first_screen/phone.svg',
+                            'lib/components/assets/images/first_screen/phone.svg',
                             color:
                                 _i == 0 ? Colors.white : AppColors.accentGray,
                           ),
@@ -121,7 +121,7 @@ class _RoundedState extends State<Rounded> {
                                     borderRadius: BorderRadius.circular(80))),
                           ),
                           child: SvgPicture.asset(
-                            'lib/assets/images/first_screen/computer.svg',
+                            'lib/components/assets/images/first_screen/computer.svg',
                             color:
                                 _i == 1 ? Colors.white : AppColors.accentGray,
                           ),
@@ -175,7 +175,7 @@ class _RoundedState extends State<Rounded> {
                                     borderRadius: BorderRadius.circular(80))),
                           ),
                           child: SvgPicture.asset(
-                            'lib/assets/images/first_screen/heart.svg',
+                            'lib/components/assets/images/first_screen/heart.svg',
                             color:
                                 _i == 2 ? Colors.white : AppColors.accentGray,
                           ),
@@ -229,7 +229,7 @@ class _RoundedState extends State<Rounded> {
                                     borderRadius: BorderRadius.circular(80))),
                           ),
                           child: SvgPicture.asset(
-                            'lib/assets/images/first_screen/books.svg',
+                            'lib/components/assets/images/first_screen/books.svg',
                             color:
                                 _i == 3 ? Colors.white : AppColors.accentGray,
                           ),

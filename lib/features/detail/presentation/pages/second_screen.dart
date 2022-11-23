@@ -79,7 +79,7 @@ class _SecondScreenState extends State<SecondScreen> {
                                       borderRadius: BorderRadius.circular(12))),
                             ),
                             child: SvgPicture.asset(
-                                'lib/assets/images/second_screen/back.svg'),
+                                'lib/components/assets/images/second_screen/back.svg'),
                           ),
                           const Text(
                             'Product Details',
@@ -109,7 +109,7 @@ class _SecondScreenState extends State<SecondScreen> {
                                       borderRadius: BorderRadius.circular(12))),
                             ),
                             child: SvgPicture.asset(
-                                'lib/assets/images/second_screen/market.svg'),
+                                'lib/components/assets/images/second_screen/market.svg'),
                           ),
                         ],
                       ),
@@ -174,7 +174,7 @@ class _SecondScreenState extends State<SecondScreen> {
                               ),
                               onPressed: () {},
                               child: SvgPicture.asset(
-                                  'lib/assets/images/second_screen/favorite2.svg'),
+                                  'lib/components/assets/images/second_screen/favorite2.svg'),
                             ),
                           ],
                         ),
@@ -267,7 +267,7 @@ class _SecondScreenState extends State<SecondScreen> {
                                               BorderRadius.circular(80))),
                                 ),
                                 child: SvgPicture.asset(
-                                  'lib/assets/images/second_screen/ok.svg',
+                                  'lib/components/assets/images/second_screen/ok.svg',
                                   color: _focus == false
                                       ? Colors.white
                                       : Colors.transparent,
@@ -295,7 +295,7 @@ class _SecondScreenState extends State<SecondScreen> {
                                               BorderRadius.circular(80))),
                                 ),
                                 child: SvgPicture.asset(
-                                  'lib/assets/images/second_screen/ok.svg',
+                                  'lib/components/assets/images/second_screen/ok.svg',
                                   color: _focus == true
                                       ? Colors.white
                                       : Colors.transparent,
@@ -416,7 +416,8 @@ class _SecondScreenState extends State<SecondScreen> {
   }
 
   Widget _star() {
-    return SvgPicture.asset('lib/assets/images/second_screen/star.svg');
+    return SvgPicture.asset(
+        'lib/components/assets/images/second_screen/star.svg');
   }
 
   Widget _tabText(String text) {
@@ -437,8 +438,8 @@ class _SecondScreenState extends State<SecondScreen> {
       children: [
         SizedBox(
             height: 32,
-            child:
-                SvgPicture.asset('lib/assets/images/second_screen/$path.svg')),
+            child: SvgPicture.asset(
+                'lib/components/assets/images/second_screen/$path.svg')),
         Text(
           name,
           style: const TextStyle(
