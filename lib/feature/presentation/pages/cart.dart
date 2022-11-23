@@ -104,7 +104,7 @@ class Cart extends StatelessWidget {
                     ),
                   ),
                   Container(
-                    height: 600,
+                    height: MediaQuery.of(context).size.height * 70 / 100,
                     decoration: const BoxDecoration(
                       borderRadius: BorderRadius.only(
                         topLeft: Radius.circular(30),
@@ -113,7 +113,7 @@ class Cart extends StatelessWidget {
                       color: AppColors.accentColorBlue,
                     ),
                     child: Column(
-                      mainAxisAlignment: MainAxisAlignment.end,
+                      // mainAxisAlignment: MainAxisAlignment.end,
                       children: [
                         const SizedBox(height: 60),
                         bottom(
@@ -127,7 +127,7 @@ class Cart extends StatelessWidget {
                           basket[0].basket[1].title,
                           basket[0].basket[1].price,
                         ),
-                        const SizedBox(height: 130),
+                        const SizedBox(height: 85),
                         Padding(
                           padding: const EdgeInsets.all(4.0),
                           child: Container(
@@ -184,7 +184,7 @@ class Cart extends StatelessWidget {
                           height: 100,
                           child: Padding(
                             padding: const EdgeInsets.all(25.0),
-                            child: ElevatedButton(
+                            child: TextButton(
                                 onPressed: () {},
                                 style: ButtonStyle(
                                   minimumSize: MaterialStateProperty.all(
@@ -201,14 +201,15 @@ class Cart extends StatelessWidget {
                                   ),
                                 ),
                                 child: const SizedBox(
-                                  height: 1111,
-                                  width: 1111,
+                                  height: 990,
+                                  width: 990,
                                   child: Center(
                                       child: Text(
                                     'Checkout',
                                     style: TextStyle(
                                         fontSize: 20,
-                                        fontWeight: FontWeight.w700),
+                                        fontWeight: FontWeight.w700,
+                                        color: Colors.white),
                                   )),
                                 )),
                           ),
@@ -274,6 +275,7 @@ class Cart extends StatelessWidget {
           ],
         ),
         Row(
+          mainAxisAlignment: MainAxisAlignment.spaceAround,
           children: [
             TextButton(
               onPressed: () {},

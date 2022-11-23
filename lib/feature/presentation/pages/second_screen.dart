@@ -118,9 +118,10 @@ class _SecondScreenState extends State<SecondScreen> {
                       child: CarouselSlider.builder(
                         itemCount: phone.images.length,
                         options: CarouselOptions(
+                          // padEnds: false,
                           height: 280,
                           enlargeCenterPage: true,
-                          enlargeStrategy: CenterPageEnlargeStrategy.scale,
+                          enlargeStrategy: CenterPageEnlargeStrategy.height,
                         ),
                         itemBuilder: ((context, index, realIndex) {
                           return carouseCard(phone.images[index]);
