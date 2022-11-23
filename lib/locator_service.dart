@@ -1,17 +1,17 @@
 import 'package:contract_app/core/platform/network_info.dart';
-import 'package:contract_app/feature/data/datasources/phone_local_data_source.dart';
-import 'package:contract_app/feature/domain/usecases/get_basket.dart';
-import 'package:contract_app/feature/domain/usecases/get_phones_detail.dart';
+import 'package:contract_app/features/other/data/datasources/phone_local_data_source.dart';
+import 'package:contract_app/features/other/domain/usecases/get_basket.dart';
+import 'package:contract_app/features/other/domain/usecases/get_phones_detail.dart';
 import 'package:get_it/get_it.dart';
 import 'package:http/http.dart' as http;
 
-import 'package:contract_app/feature/data/datasources/phone_remote_data_source.dart';
-import 'package:contract_app/feature/data/models/phone_model.dart';
-import 'package:contract_app/feature/data/repositories/phone_repository_impl.dart';
-import 'package:contract_app/feature/domain/repositories/phone_repository.dart';
-import 'package:contract_app/feature/domain/usecases/get_phonesBestSeller.dart';
-import 'package:contract_app/feature/domain/usecases/get_phonesHomeStore.dart';
-import 'package:contract_app/feature/presentation/bloc/phone_list_cubit/phone_list_cubit.dart';
+import 'package:contract_app/features/other/data/datasources/phone_remote_data_source.dart';
+import 'package:contract_app/features/other/data/models/phone_model.dart';
+import 'package:contract_app/features/other/data/repositories/phone_repository_impl.dart';
+import 'package:contract_app/features/other/domain/repositories/phone_repository.dart';
+import 'package:contract_app/features/other/domain/usecases/get_phonesBestSeller.dart';
+import 'package:contract_app/features/other/domain/usecases/get_phonesHomeStore.dart';
+import 'package:contract_app/features/other/presentation/bloc/phone_list_cubit/phone_list_cubit.dart';
 import 'package:internet_connection_checker/internet_connection_checker.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
