@@ -5,7 +5,7 @@ import 'package:persistent_bottom_nav_bar/persistent_tab_view.dart';
 
 import 'package:contract_app/components/common/app_colors.dart';
 import 'package:contract_app/features/home/presentation/pages/first_screen.dart';
-import 'package:contract_app/features/other/presentation/pages/second_screen.dart'; //need change
+import 'package:contract_app/features/detail/presentation/pages/second_screen.dart';
 
 class HomePage extends StatelessWidget {
   const HomePage({super.key});

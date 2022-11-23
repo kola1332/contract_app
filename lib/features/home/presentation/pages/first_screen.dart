@@ -10,7 +10,7 @@ import 'package:contract_app/components/common/app_text_style.dart';
 import 'package:contract_app/features/home/domain/entities/phone_entity.dart';
 import 'package:contract_app/features/home/presentation/bloc/phone_list_cubit.dart';
 import 'package:contract_app/features/home/presentation/bloc/phone_list_state.dart';
-import 'package:contract_app/features/other/presentation/pages/second_screen.dart'; //need change
+import 'package:contract_app/features/detail/presentation/pages/second_screen.dart';
 import 'package:contract_app/features/home/presentation/widgets/loading.dart';
 import 'package:contract_app/features/home/presentation/widgets/card_sales.dart';
 import 'package:contract_app/features/home/presentation/widgets/phone_card.dart';

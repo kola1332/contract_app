@@ -1,12 +1,13 @@
-import 'package:contract_app/components/common/app_colors.dart';
-import 'package:contract_app/features/other/domain/entities/basket_entity.dart';
-import 'package:contract_app/features/other/presentation/bloc/phone_list_cubit/phone_list_cubit.dart';
-import 'package:contract_app/features/other/presentation/bloc/phone_list_cubit/phone_list_state.dart';
-import 'package:contract_app/features/other/presentation/widgets/loading.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_svg/flutter_svg.dart';
+
+import 'package:contract_app/components/common/app_colors.dart';
+import 'package:contract_app/features/card/domain/entities/basket_entity.dart';
+import 'package:contract_app/features/card/presentation/bloc/phone_list_cubit.dart';
+import 'package:contract_app/features/card/presentation/bloc/phone_list_state.dart';
+import 'package:contract_app/features/card/presentation/widgets/loading.dart';
 
 class Cart extends StatelessWidget {
   const Cart({super.key});
@@ -23,12 +24,12 @@ class Cart extends StatelessWidget {
           elevation: 0,
           backgroundColor: Colors.transparent,
         ),
-        body: BlocBuilder<PhoneListCubit, PhoneListState>(
+        body: BlocBuilder<BasketListCubit, BasketListState>(
             builder: (context, state) {
           List<BasketEntity> basket = [];
-          if (state is PhoneListLoading) {
+          if (state is BasketListLoading) {
             return loadingIndicator();
-          } else if (state is PhoneListLoaded) {
+          } else if (state is BasketListLoaded) {
             basket = state.baskets;
           }
           return SafeArea(
