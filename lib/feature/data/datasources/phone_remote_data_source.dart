@@ -30,7 +30,7 @@ class PhoneRemoteDataSourceImpl implements PhoneRemoteDataSource {
     if (response.statusCode == 200) {
       final phonesHomeStore = json.decode(response.body);
       return (phonesHomeStore['home_store'] as List)
-          .map((phone) => PhoneHomeStoreModel.fromJson(phone))
+          .map((phoneHomeStore) => PhoneHomeStoreModel.fromJson(phoneHomeStore))
           .toList();
     } else {
       throw ServerException();
@@ -46,7 +46,8 @@ class PhoneRemoteDataSourceImpl implements PhoneRemoteDataSource {
     if (response.statusCode == 200) {
       final phonesBestSeller = json.decode(response.body);
       return (phonesBestSeller['best_seller'] as List)
-          .map((phone) => PhoneBestSellerModel.fromJson(phone))
+          .map((phoneBestSeller) =>
+              PhoneBestSellerModel.fromJson(phoneBestSeller))
           .toList();
     } else {
       throw ServerException();
@@ -65,7 +66,7 @@ class PhoneRemoteDataSourceImpl implements PhoneRemoteDataSource {
         'test': [phonesDetail]
       };
       return (m['test'] as List)
-          .map((phone) => PhoneDetailModel.fromJson(phone))
+          .map((phoneDetail) => PhoneDetailModel.fromJson(phoneDetail))
           .toList();
     } else {
       throw ServerException();

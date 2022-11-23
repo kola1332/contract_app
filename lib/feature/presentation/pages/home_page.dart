@@ -54,11 +54,11 @@ class HomePage extends StatelessWidget {
       ),
       body: const FIrstScreen(),
       bottomNavigationBar: PersistentTabView(
-        context, screens: _buildScreens(),
+        context,
+        screens: _buildScreens(),
         items: _navBarsItems(),
         confineInSafeArea: true,
-        backgroundColor: AppColors
-            .accentColorBlue, // Default is Colors.white.efault is true.
+        backgroundColor: AppColors.accentColorBlue,
         decoration: NavBarDecoration(
           border: Border.all(),
           borderRadius: BorderRadius.circular(15),

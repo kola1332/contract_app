@@ -28,14 +28,9 @@ class MyApp extends StatelessWidget {
         child: MaterialApp(
           debugShowCheckedModeBanner: false,
           theme: ThemeData.light().copyWith(
-            backgroundColor: AppColors.mainBackground3,
+            backgroundColor: AppColors.mainBackground,
           ),
           home: const HomePage(),
-          // routes: {
-          //   '/': (context) => const FirstScreen(),
-          //   '/second_screen': (context) => SecondScreen(),
-          //   '/cart': (context) => const Cart(),
-          // },
         ));
   }
 }

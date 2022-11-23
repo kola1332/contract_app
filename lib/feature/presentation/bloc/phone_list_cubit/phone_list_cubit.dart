@@ -68,35 +68,30 @@ class PhoneListCubit extends Cubit<PhoneListState> {
         (error) => emit(PhoneListError(message: _mapFailureToMessage(error))),
         (phoneHomeStore) {
       phonesHomeStore.addAll(phoneHomeStore);
-      // print('List length: ${phonesHomeStore.length.toString()}');
     });
 
     failureOrPhoneBestSeller.fold(
         (error) => emit(PhoneListError(message: _mapFailureToMessage(error))),
         (phoneBestSeller) {
       phonesBestSeller.addAll(phoneBestSeller);
-      // print('List length: ${phonesBestSeller.length.toString()}');
     });
 
     failureOrPhoneDetail.fold(
         (error) => emit(PhoneListError(message: _mapFailureToMessage(error))),
         (phoneDetail) {
       phoneDetails.addAll(phoneDetail);
-      // print('List length: ${phonesBestSeller.length.toString()}');
     });
 
     failureOrBasketItems.fold(
         (error) => emit(PhoneListError(message: _mapFailureToMessage(error))),
         (basketItem) {
       basketItems.addAll(basketItem);
-      // print('List length: ${phonesBestSeller.length.toString()}');
     });
 
     failureOrBasket.fold(
         (error) => emit(PhoneListError(message: _mapFailureToMessage(error))),
         (basket) {
       baskets.addAll(basket);
-      // print('List length: ${phonesBestSeller.length.toString()}');
     });
 
     emit(PhoneListLoaded(
