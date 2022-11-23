@@ -76,34 +76,34 @@ flutter:
   # To add assets to your application, add an assets section, like this:
   assets:
 
-    - lib/assets/images/first_screen/phone.svg
-    - lib/assets/images/first_screen/computer.svg
-    - lib/assets/images/first_screen/heart.svg
-    - lib/assets/images/first_screen/books.svg
-    - lib/assets/images/first_screen/favorite.svg
-    - lib/assets/images/first_screen/favorite_splash.svg
-    - lib/assets/images/first_screen/search.svg
-    - lib/assets/images/first_screen/qr.svg
-    - lib/assets/images/first_screen/filter.svg
+    - lib/components/assets/images/first_screen/phone.svg
+    - lib/components/assets/images/first_screen/computer.svg
+    - lib/components/assets/images/first_screen/heart.svg
+    - lib/components/assets/images/first_screen/books.svg
+    - lib/components/assets/images/first_screen/favorite.svg
+    - lib/components/assets/images/first_screen/favorite_splash.svg
+    - lib/components/assets/images/first_screen/search.svg
+    - lib/components/assets/images/first_screen/qr.svg
+    - lib/components/assets/images/first_screen/filter.svg
 
-    - lib/assets/images/second_screen/back.svg
-    - lib/assets/images/second_screen/market.svg
-    - lib/assets/images/second_screen/favorite2.svg
-    - lib/assets/images/second_screen/star.svg
-    - lib/assets/images/second_screen/cpu.svg
-    - lib/assets/images/second_screen/camera.svg
-    - lib/assets/images/second_screen/ssd.svg
-    - lib/assets/images/second_screen/sd.svg
-    - lib/assets/images/second_screen/ok.svg
+    - lib/components/assets/images/second_screen/back.svg
+    - lib/components/assets/images/second_screen/market.svg
+    - lib/components/assets/images/second_screen/favorite2.svg
+    - lib/components/assets/images/second_screen/star.svg
+    - lib/components/assets/images/second_screen/cpu.svg
+    - lib/components/assets/images/second_screen/camera.svg
+    - lib/components/assets/images/second_screen/ssd.svg
+    - lib/components/assets/images/second_screen/sd.svg
+    - lib/components/assets/images/second_screen/ok.svg
 
-    - lib/assets/images/location.svg
-    - lib/assets/images/delete.svg
-    - lib/assets/brand.png
+    - lib/components/assets/images/location.svg
+    - lib/components/assets/images/delete.svg
+    - lib/components/assets/brand.png
 
-    - lib/assets/images/tabs/point.svg
-    - lib/assets/images/tabs/favorites.svg
-    - lib/assets/images/tabs/user.svg
-    - lib/assets/images/tabs/market.svg
+    - lib/components/assets/images/tabs/point.svg
+    - lib/components/assets/images/tabs/favorites.svg
+    - lib/components/assets/images/tabs/user.svg
+    - lib/components/assets/images/tabs/market.svg
   #   - images/a_dot_ham.jpeg
 
   # An image asset can refer to one or more resolution-specific "variants", see
@@ -121,7 +121,7 @@ flutter:
   fonts:
     - family: MarkPro
       fonts:
-          - asset: lib/assets/fonts/Mark-Pro.ttf
+          - asset: lib/components/assets/fonts/Mark-Pro.ttf
 
   #       - asset: fonts/Schyler-Italic.ttf
   #         style: italic
