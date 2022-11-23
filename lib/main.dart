@@ -1,12 +1,12 @@
 // ignore_for_file: avoid_print
 
 import 'package:contract_app/feature/presentation/bloc/phone_list_cubit/phone_list_cubit.dart';
-import 'package:contract_app/feature/presentation/pages/home_page.dart';
 import 'package:contract_app/locator_service.dart' as di;
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
 import 'common/app_colors.dart';
+import 'feature/presentation/pages/splash.dart';
 import 'locator_service.dart';
 
 void main() async {
@@ -30,7 +30,7 @@ class MyApp extends StatelessWidget {
           theme: ThemeData.light().copyWith(
             backgroundColor: AppColors.mainBackground,
           ),
-          home: const HomePage(),
+          home: const Splash(),
         ));
   }
 }

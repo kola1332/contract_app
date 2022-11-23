@@ -50,7 +50,6 @@ dependencies:
   google_nav_bar: ^5.0.6
   carousel_slider: ^4.1.1
   persistent_bottom_nav_bar: ^5.0.2
-  flutter_native_splash: ^2.2.15
 
 dev_dependencies:
   flutter_test:
@@ -76,6 +75,7 @@ flutter:
 
   # To add assets to your application, add an assets section, like this:
   assets:
+
     - lib/assets/images/first_screen/phone.svg
     - lib/assets/images/first_screen/computer.svg
     - lib/assets/images/first_screen/heart.svg
@@ -95,8 +95,11 @@ flutter:
     - lib/assets/images/second_screen/ssd.svg
     - lib/assets/images/second_screen/sd.svg
     - lib/assets/images/second_screen/ok.svg
+
     - lib/assets/images/location.svg
     - lib/assets/images/delete.svg
+    - lib/assets/brand.png
+
     - lib/assets/images/tabs/point.svg
     - lib/assets/images/tabs/favorites.svg
     - lib/assets/images/tabs/user.svg
@@ -130,18 +133,3 @@ flutter:
   #
   # For details regarding fonts from package dependencies,
   # see https://flutter.dev/custom-fonts/#from-packages
-flutter_native_splash:
-  color: "#42a5f5"
-  image: lib/assets/back.png
-  # background_image: 'lib/assets/back.png'
-  # branding: 'lib/assets/brand.png'
-  # android_12:
-  # background_image: 'lib/assets/back.png'
-  # image_android: lib/assets/back.png
-  # branding: 'lib/assets/brand.png'
-    # image_android: lib/assets/back.png
-  # flutter_native_splash:
-  # image: lib/assets/back.png
-  # color: "#010035"
-  # image: assets/logo-acceptance.png
-  # branding: 'lib/assets/brand.png'
