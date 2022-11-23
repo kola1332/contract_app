@@ -1,8 +1,9 @@
 // ignore_for_file: non_constant_identifier_names
 
-import 'package:contract_app/features/other/domain/entities/phone_detail_entity.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:flutter/foundation.dart';
+
+import 'package:contract_app/features/detail/domain/entities/phone_detail_entity.dart';
 
 part 'phone_detail_model.freezed.dart';
 part 'phone_detail_model.g.dart';

@@ -2,7 +2,7 @@
 
 import 'package:carousel_slider/carousel_slider.dart';
 import 'package:contract_app/components/common/app_colors.dart';
-import 'package:contract_app/features/other/domain/entities/phone_detail_entity.dart';
+import 'package:contract_app/features/detail/domain/entities/phone_detail_entity.dart';
 import 'package:contract_app/features/other/presentation/bloc/phone_list_cubit/phone_list_cubit.dart';
 import 'package:contract_app/features/other/presentation/bloc/phone_list_cubit/phone_list_state.dart';
 import 'package:contract_app/features/other/presentation/pages/cart.dart';

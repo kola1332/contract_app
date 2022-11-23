@@ -1,9 +1,9 @@
 // ignore_for_file: constant_identifier_names, avoid_print
 
 import 'package:contract_app/features/other/domain/entities/basket_entity.dart';
-import 'package:contract_app/features/other/domain/entities/phone_detail_entity.dart';
+import 'package:contract_app/features/detail/domain/entities/phone_detail_entity.dart';
 import 'package:contract_app/features/other/domain/usecases/get_basket.dart';
-import 'package:contract_app/features/other/domain/usecases/get_phones_detail.dart';
+import 'package:contract_app/features/detail/domain/usecases/get_phones_detail.dart';
 import 'package:contract_app/features/other/presentation/bloc/phone_list_cubit/phone_list_state.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import '/core/error/failure.dart';

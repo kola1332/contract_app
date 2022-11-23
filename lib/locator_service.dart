@@ -1,7 +1,7 @@
 import 'package:contract_app/core/platform/network_info.dart';
 import 'package:contract_app/features/other/data/datasources/phone_local_data_source.dart';
 import 'package:contract_app/features/other/domain/usecases/get_basket.dart';
-import 'package:contract_app/features/other/domain/usecases/get_phones_detail.dart';
+import 'package:contract_app/features/detail/domain/usecases/get_phones_detail.dart';
 import 'package:get_it/get_it.dart';
 import 'package:http/http.dart' as http;
 
