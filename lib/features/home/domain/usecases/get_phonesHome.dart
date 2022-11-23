@@ -1,11 +1,11 @@
 // ignore_for_file: file_names
 
+import 'package:dartz/dartz.dart';
+
+import 'package:contract_app/core/usecases/usecase.dart';
 import 'package:contract_app/core/error/failure.dart';
 import 'package:contract_app/features/home/data/models/phone_model.dart';
 import 'package:contract_app/features/home/domain/repositories/phone_repository.dart';
-import 'package:dartz/dartz.dart';
-
-import '../../../../core/usecases/usecase.dart';
 
 class GetPhonesHomeStore extends Usecase<List<PhoneHomeStoreModel>> {
   final PhoneRepository phoneRepository;
