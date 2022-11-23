@@ -110,7 +110,6 @@ class PhonesLocalDataSourceImpl implements PhonesLocalDataSource {
 
     sharedPreferences.setStringList(
         CACHED_PHONESHOMESTORE_LIST, jsonPhonesHomeStoreList);
-    print('PhonesHomeStore to write cache: ${jsonPhonesHomeStoreList.length}');
     return Future.value(jsonPhonesHomeStoreList);
   }
 
@@ -122,8 +121,6 @@ class PhonesLocalDataSourceImpl implements PhonesLocalDataSource {
 
     sharedPreferences.setStringList(
         CACHED_PHONESBESTSELLER_LIST, jsonPhonesBestSellerList);
-    print(
-        'PhonesBestSeller to write cache: ${jsonPhonesBestSellerList.length}');
     return Future.value(jsonPhonesBestSellerList);
   }
 
@@ -134,7 +131,6 @@ class PhonesLocalDataSourceImpl implements PhonesLocalDataSource {
 
     sharedPreferences.setStringList(
         CACHED_PHONESDETAIL_LIST, jsonPhonesDetailList);
-    print('PhonesDetail to write cache: ${jsonPhonesDetailList.length}');
     return Future.value(jsonPhonesDetailList);
   }
 
@@ -145,7 +141,6 @@ class PhonesLocalDataSourceImpl implements PhonesLocalDataSource {
 
     sharedPreferences.setStringList(
         CACHED_BASKETITEMS_LIST, jsonBasketItemsList);
-    print('BasketItems to write cache: ${jsonBasketItemsList.length}');
     return Future.value(jsonBasketItemsList);
   }
 
@@ -155,7 +150,6 @@ class PhonesLocalDataSourceImpl implements PhonesLocalDataSource {
         baskets.map((phone) => json.encode(phone.toJson())).toList();
 
     sharedPreferences.setStringList(CACHED_BASKET_LIST, jsonBasketsList);
-    print('Baskets to write cache: ${jsonBasketsList.length}');
     return Future.value(jsonBasketsList);
   }
 }

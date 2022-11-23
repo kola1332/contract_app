@@ -36,6 +36,46 @@ class FIrstScreen extends StatelessWidget {
             Expanded(
               child: ListView(
                 children: [
+                  const SizedBox(height: 15),
+                  Padding(
+                    padding: const EdgeInsets.symmetric(horizontal: 17),
+                    child: Stack(
+                      children: [
+                        Positioned.fill(
+                          child: Align(
+                            alignment: Alignment.centerRight,
+                            child: SvgPicture.asset(
+                              'lib/assets/images/first_screen/filter.svg',
+                              color: Colors.black,
+                            ),
+                          ),
+                        ),
+                        Row(
+                          mainAxisAlignment: MainAxisAlignment.center,
+                          children: const [
+                            Icon(
+                              Icons.location_on_outlined,
+                              color: AppColors.accentColorOrange,
+                            ),
+                            Text(
+                              'Zihuatanejo, Gro',
+                              style: TextStyle(
+                                color: AppColors.accentColorBlue,
+                                fontFamily: 'MarkPro',
+                                fontSize: 15,
+                                fontWeight: FontWeight.w500,
+                              ),
+                            ),
+                            Icon(
+                              Icons.keyboard_arrow_down,
+                              color: Color(0xFFB3B3B3),
+                            ),
+                          ],
+                        ),
+                      ],
+                    ),
+                  ),
+                  const SizedBox(height: 15),
                   Row(
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: const [
