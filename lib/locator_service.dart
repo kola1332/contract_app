@@ -11,10 +11,9 @@ import 'package:contract_app/feature/data/repositories/phone_repository_impl.dar
 import 'package:contract_app/feature/domain/repositories/phone_repository.dart';
 import 'package:contract_app/feature/domain/usecases/get_phonesBestSeller.dart';
 import 'package:contract_app/feature/domain/usecases/get_phonesHomeStore.dart';
-import 'package:contract_app/feature/presentation/bloc/phone_list_cubit.dart/phone_list_cubit.dart';
+import 'package:contract_app/feature/presentation/bloc/phone_list_cubit/phone_list_cubit.dart';
 import 'package:internet_connection_checker/internet_connection_checker.dart';
 import 'package:shared_preferences/shared_preferences.dart';
-import 'feature/presentation/bloc/phone_bloc/phone_bloc.dart';
 
 final sl = GetIt.instance;
 
@@ -28,9 +27,6 @@ Future<void> init() async {
       getBasketItems: sl(),
       getBasket: sl(),
     ),
-  );
-  sl.registerFactory(
-    () => PhoneBloc(getPhonesHomeStore: sl()),
   );
 
   //Freezed

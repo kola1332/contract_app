@@ -3,13 +3,14 @@
 import 'package:contract_app/common/app_colors.dart';
 import 'package:contract_app/common/app_text_style.dart';
 import 'package:contract_app/feature/domain/entities/phone_entity.dart';
-import 'package:contract_app/feature/presentation/bloc/phone_list_cubit.dart/phone_list_cubit.dart';
-import 'package:contract_app/feature/presentation/bloc/phone_list_cubit.dart/phone_list_state.dart';
+import 'package:contract_app/feature/presentation/bloc/phone_list_cubit/phone_list_cubit.dart';
+import 'package:contract_app/feature/presentation/bloc/phone_list_cubit/phone_list_state.dart';
 import 'package:contract_app/feature/presentation/pages/second_screen.dart';
 import 'package:contract_app/feature/presentation/widgets/loading.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_svg/svg.dart';
+import 'package:persistent_bottom_nav_bar/persistent_tab_view.dart';
 
 import '../widgets/first_screen/card_sales.dart';
 import '../widgets/first_screen/phone_card.dart';
@@ -30,15 +31,51 @@ class FIrstScreen extends StatelessWidget {
           phonesHomeStore = state.phonesHomeStoreList;
           phonesBestSeller = state.phonesBestSellerList;
         }
-        final phone1 = phonesBestSeller[0];
-        final phone2 = phonesBestSeller[1];
-        final phone3 = phonesBestSeller[2];
-        final phone4 = phonesBestSeller[3];
         return Column(
           children: [
             Expanded(
               child: ListView(
                 children: [
+                  const SizedBox(height: 15),
+                  Padding(
+                    padding: const EdgeInsets.symmetric(horizontal: 17),
+                    child: Stack(
+                      children: [
+                        Positioned.fill(
+                          child: Align(
+                            alignment: Alignment.centerRight,
+                            child: SvgPicture.asset(
+                              'lib/assets/images/first_screen/filter.svg',
+                              color: Colors.black,
+                            ),
+                          ),
+                        ),
+                        Row(
+                          mainAxisAlignment: MainAxisAlignment.center,
+                          children: const [
+                            Icon(
+                              Icons.location_on_outlined,
+                              color: AppColors.accentColorOrange,
+                            ),
+                            Text(
+                              'Zihuatanejo, Gro',
+                              style: TextStyle(
+                                color: AppColors.accentColorBlue,
+                                fontFamily: 'MarkPro',
+                                fontSize: 15,
+                                fontWeight: FontWeight.w500,
+                              ),
+                            ),
+                            Icon(
+                              Icons.keyboard_arrow_down,
+                              color: Color(0xFFB3B3B3),
+                            ),
+                          ],
+                        ),
+                      ],
+                    ),
+                  ),
+                  const SizedBox(height: 15),
                   Row(
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: const [
@@ -66,34 +103,45 @@ class FIrstScreen extends StatelessWidget {
                   const Rounded(),
                   Padding(
                     padding: const EdgeInsets.symmetric(horizontal: 15),
-                    child: TextField(
-                      decoration: InputDecoration(
-                        filled: true,
-                        fillColor: Colors.white,
-                        border: OutlineInputBorder(
-                          borderRadius: BorderRadius.circular(30),
-                          borderSide: BorderSide.none,
-                          gapPadding: 15,
+                    child: Row(
+                      children: [
+                        Expanded(
+                          child: TextField(
+                            decoration: InputDecoration(
+                              filled: true,
+                              fillColor: Colors.white,
+                              border: OutlineInputBorder(
+                                borderRadius: BorderRadius.circular(30),
+                                borderSide: BorderSide.none,
+                                gapPadding: 15,
+                              ),
+                              labelText: 'Search',
+                              prefixIcon: SvgPicture.asset(
+                                'lib/assets/images/first_screen/search.svg',
+                                height: 10,
+                                width: 10,
+                                fit: BoxFit.none,
+                              ),
+                            ),
+                          ),
                         ),
-                        // border: const OutlineInputBorder(
-                        //     borderSide: BorderSide(
-                        //   width: 0.3,
-                        //   strokeAlign: StrokeAlign.center,
-                        // )),
-                        // disabledBorder: InputBorder.none,
-                        // border: OutlineInputBorder(),
-                        labelText: 'Search',
-                        prefixIcon: SvgPicture.asset(
-                          'lib/assets/images/first_screen/search.svg',
-                          height: 10,
-                          width: 10,
-                          fit: BoxFit.none,
-                        ),
-                        suffixIcon: SvgPicture.asset(
-                          'lib/assets/images/first_screen/search.svg',
-                          fit: BoxFit.none,
-                        ),
-                      ),
+                        TextButton(
+                            onPressed: () {},
+                            style: ButtonStyle(
+                              minimumSize:
+                                  MaterialStateProperty.all(const Size(45, 45)),
+                              backgroundColor: MaterialStateProperty.all(
+                                  (AppColors.accentColorOrange)),
+                              foregroundColor: MaterialStateProperty.all(
+                                  AppColors.accentColorBlue),
+                              shape: MaterialStateProperty.all(
+                                  RoundedRectangleBorder(
+                                      borderRadius: BorderRadius.circular(80))),
+                            ),
+                            child: SvgPicture.asset(
+                              'lib/assets/images/first_screen/qr.svg',
+                            ))
+                      ],
                     ),
                   ),
                   Container(
@@ -126,10 +174,12 @@ class FIrstScreen extends StatelessWidget {
                           phone.subtitle,
                           phone.is_new,
                           (() {
-                            Navigator.of(context).push(
-                              MaterialPageRoute(
-                                builder: (context) => const SecondScreen(),
-                              ),
+                            PersistentNavBarNavigator.pushNewScreen(
+                              context,
+                              screen: const SecondScreen(),
+                              withNavBar: false,
+                              pageTransitionAnimation:
+                                  PageTransitionAnimation.cupertino,
                             );
                           }),
                         );
@@ -157,52 +207,89 @@ class FIrstScreen extends StatelessWidget {
                     children: [
                       Column(
                         children: [
-                          Container(
-                            child: phoneCard(
-                              phone1.picture,
-                              phone1.title,
-                              phone1.discount_price,
-                              phone1.price_without_discount,
-                              phone1.is_favorites,
-                              // (() {
-                              //   Navigator.of(context).push(
-                              //     MaterialPageRoute(
-                              //       builder: (context) => const SecondScreen(),
-                              //     ),
-                              //   );
-                              // }),
+                          GestureDetector(
+                            onTap: () {
+                              (() {
+                                Navigator.of(context).push(
+                                  MaterialPageRoute(
+                                    builder: (context) => const SecondScreen(),
+                                  ),
+                                );
+                              });
+                            },
+                            child: Container(
+                              child: phoneCard(
+                                phonesBestSeller[0].picture,
+                                phonesBestSeller[0].title,
+                                phonesBestSeller[0].discount_price,
+                                phonesBestSeller[0].price_without_discount,
+                                phonesBestSeller[0].is_favorites,
+                              ),
                             ),
                           ),
-                          Container(
-                            child: phoneCard(
-                              phone4.picture,
-                              phone3.title,
-                              phone3.discount_price,
-                              phone3.price_without_discount,
-                              phone3.is_favorites,
+                          GestureDetector(
+                            onTap: () {
+                              (() {
+                                Navigator.of(context).push(
+                                  MaterialPageRoute(
+                                    builder: (context) => const SecondScreen(),
+                                  ),
+                                );
+                              });
+                            },
+                            child: Container(
+                              child: phoneCard(
+                                phonesBestSeller[3].picture,
+                                phonesBestSeller[2].title,
+                                phonesBestSeller[2].discount_price,
+                                phonesBestSeller[2].price_without_discount,
+                                phonesBestSeller[2].is_favorites,
+                              ),
                             ),
                           )
                         ],
                       ),
                       Column(
                         children: [
-                          Container(
-                            child: phoneCard(
-                              phone2.picture,
-                              phone2.title,
-                              phone2.discount_price,
-                              phone2.price_without_discount,
-                              phone2.is_favorites,
+                          GestureDetector(
+                            onTap: () {
+                              (() {
+                                Navigator.of(context).push(
+                                  MaterialPageRoute(
+                                    builder: (context) => const SecondScreen(),
+                                  ),
+                                );
+                              });
+                            },
+                            child: Container(
+                              child: phoneCard(
+                                phonesBestSeller[1].picture,
+                                phonesBestSeller[1].title,
+                                phonesBestSeller[1].discount_price,
+                                phonesBestSeller[1].price_without_discount,
+                                phonesBestSeller[1].is_favorites,
+                              ),
                             ),
                           ),
-                          Container(
-                              child: phoneCard(
-                            phone4.picture,
-                            phone4.title,
-                            phone4.discount_price,
-                            phone4.price_without_discount,
-                            phone4.is_favorites,
-                          ))
+                          GestureDetector(
+                            onTap: () {
+                              (() {
+                                Navigator.of(context).push(
+                                  MaterialPageRoute(
+                                    builder: (context) => const SecondScreen(),
+                                  ),
+                                );
+                              });
+                            },
+                            child: Container(
+                                child: phoneCard(
+                              phonesBestSeller[3].picture,
+                              phonesBestSeller[3].title,
+                              phonesBestSeller[3].discount_price,
+                              phonesBestSeller[3].price_without_discount,
+                              phonesBestSeller[3].is_favorites,
+                            )),
+                          )
                         ],
                       )
                     ],
@@ -210,23 +297,6 @@ class FIrstScreen extends StatelessWidget {
                 ],
               ),
             ),
-            // Expanded(
-            //   child: ListView.separated(
-            //     itemBuilder: (context, index) {
-            //       // return Text('${phonesHomeStore[index]}');
-            //       return PhoneCard(phoneHomeStore: phonesHomeStore[index]);
-            //     },
-            //     scrollDirection: Axis.vertical,
-            //     itemCount: phonesHomeStore.length,
-            //     separatorBuilder: (BuildContext context, int index) {
-            //       return const Divider(
-            //         height: 10,
-            //         color: Colors.grey,
-            //       );
-            //     },
-            //   ),
-            // ),
-            // Cont(phoneHomeStore: phonesHomeStore),
           ],
         );
       },

@@ -11,10 +11,7 @@ abstract class PhoneListState extends Equatable {
   List<Object?> get props => [];
 }
 
-class PhoneListEmpty extends PhoneListState {
-  @override
-  List<Object?> get props => [];
-}
+class PhoneListEmpty extends PhoneListState {}
 
 class PhoneListLoading extends PhoneListState {
   final List<PhoneHomeStoreEntity> oldPhonesHomeStoreList;

@@ -1,7 +1,7 @@
 import 'package:contract_app/common/app_colors.dart';
 import 'package:contract_app/feature/domain/entities/basket_entity.dart';
-import 'package:contract_app/feature/presentation/bloc/phone_list_cubit.dart/phone_list_cubit.dart';
-import 'package:contract_app/feature/presentation/bloc/phone_list_cubit.dart/phone_list_state.dart';
+import 'package:contract_app/feature/presentation/bloc/phone_list_cubit/phone_list_cubit.dart';
+import 'package:contract_app/feature/presentation/bloc/phone_list_cubit/phone_list_state.dart';
 import 'package:contract_app/feature/presentation/widgets/loading.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
@@ -26,12 +26,10 @@ class Cart extends StatelessWidget {
         body: BlocBuilder<PhoneListCubit, PhoneListState>(
             builder: (context, state) {
           List<BasketEntity> basket = [];
-          // List<BasketItemsEntity> basketItems = [];
           if (state is PhoneListLoading) {
             return loadingIndicator();
           } else if (state is PhoneListLoaded) {
             basket = state.baskets;
-            // basketItems = state.basketItems;
           }
           return SafeArea(
               child: Column(
@@ -86,7 +84,7 @@ class Cart extends StatelessWidget {
                                     borderRadius: BorderRadius.circular(12))),
                           ),
                           child: SvgPicture.asset(
-                              'lib/assets/images/location.svg'),
+                              'lib/assets/images/cart/location.svg'),
                         ),
                       ),
                     ],
@@ -106,7 +104,7 @@ class Cart extends StatelessWidget {
                     ),
                   ),
                   Container(
-                    height: 600,
+                    height: MediaQuery.of(context).size.height * 70 / 100,
                     decoration: const BoxDecoration(
                       borderRadius: BorderRadius.only(
                         topLeft: Radius.circular(30),
@@ -115,7 +113,7 @@ class Cart extends StatelessWidget {
                       color: AppColors.accentColorBlue,
                     ),
                     child: Column(
-                      mainAxisAlignment: MainAxisAlignment.end,
+                      // mainAxisAlignment: MainAxisAlignment.end,
                       children: [
                         const SizedBox(height: 60),
                         bottom(
@@ -129,7 +127,7 @@ class Cart extends StatelessWidget {
                           basket[0].basket[1].title,
                           basket[0].basket[1].price,
                         ),
-                        const SizedBox(height: 130),
+                        const SizedBox(height: 85),
                         Padding(
                           padding: const EdgeInsets.all(4.0),
                           child: Container(
@@ -137,7 +135,7 @@ class Cart extends StatelessWidget {
                             color: Colors.grey,
                           ),
                         ),
-                        Container(
+                        SizedBox(
                           height: 82,
                           child: Row(
                             mainAxisAlignment: MainAxisAlignment.spaceAround,
@@ -182,11 +180,11 @@ class Cart extends StatelessWidget {
                             color: Colors.grey,
                           ),
                         ),
-                        Container(
+                        SizedBox(
                           height: 100,
                           child: Padding(
                             padding: const EdgeInsets.all(25.0),
-                            child: ElevatedButton(
+                            child: TextButton(
                                 onPressed: () {},
                                 style: ButtonStyle(
                                   minimumSize: MaterialStateProperty.all(
@@ -194,29 +192,24 @@ class Cart extends StatelessWidget {
                                   ),
                                   backgroundColor: MaterialStateProperty.all(
                                       AppColors.accentColorOrange),
-                                  // foregroundColor:
-                                  //     MaterialStateProperty.all(
-                                  //         Color.fromARGB(
-                                  //             255, 32, 45, 101)),
                                   overlayColor: MaterialStateProperty.all(
                                       const Color.fromARGB(255, 255, 77, 0)),
                                   shape: MaterialStateProperty.all(
                                     RoundedRectangleBorder(
-                                      // side:BorderSide(color: Colors.black,width: 0.5,style:BorderStyle.solid,strokeAlign: StrokeAlign.center),
-
                                       borderRadius: BorderRadius.circular(13),
                                     ),
                                   ),
                                 ),
-                                child: Container(
-                                  height: 1111,
-                                  width: 1111,
-                                  child: const Center(
+                                child: const SizedBox(
+                                  height: 990,
+                                  width: 990,
+                                  child: Center(
                                       child: Text(
                                     'Checkout',
                                     style: TextStyle(
                                         fontSize: 20,
-                                        fontWeight: FontWeight.w700),
+                                        fontWeight: FontWeight.w700,
+                                        color: Colors.white),
                                   )),
                                 )),
                           ),
@@ -238,85 +231,83 @@ class Cart extends StatelessWidget {
   }
 
   Widget bottom(String pic, String name, int price) {
-    return Container(
-      child: Row(
-        // mainAxisAlignment: MainAxisAlignment.spaceAround,
-        children: [
-          const Padding(padding: EdgeInsets.only(top: 25, left: 25)), //left 30
-          Container(
-            height: 80,
-            width: 80,
-            decoration: BoxDecoration(
-              borderRadius: const BorderRadius.all(
-                Radius.circular(10),
-              ),
-              image: DecorationImage(
-                image: NetworkImage(pic),
-                fit: BoxFit.cover,
-              ),
+    return Row(
+      children: [
+        const Padding(padding: EdgeInsets.only(top: 25, left: 25)), //left 30
+        Container(
+          height: 80,
+          width: 80,
+          decoration: BoxDecoration(
+            borderRadius: const BorderRadius.all(
+              Radius.circular(10),
+            ),
+            image: DecorationImage(
+              image: NetworkImage(pic),
+              fit: BoxFit.cover,
             ),
           ),
-          const SizedBox(width: 20),
-          Column(
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: [
-              SizedBox(
-                width: 150,
-                child: Text(
-                  name,
-                  style: const TextStyle(
-                    fontFamily: 'MarkPro',
-                    fontSize: 18,
-                    fontWeight: FontWeight.w700,
-                    color: Colors.white,
-                  ),
-                ),
-              ),
-              Text(
-                '\$$price.00',
+        ),
+        const SizedBox(width: 20),
+        Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            SizedBox(
+              width: 150,
+              child: Text(
+                name,
                 style: const TextStyle(
                   fontFamily: 'MarkPro',
                   fontSize: 18,
                   fontWeight: FontWeight.w700,
-                  color: AppColors.accentColorOrange,
+                  color: Colors.white,
                 ),
               ),
-            ],
-          ),
-          Row(
-            children: [
-              TextButton(
-                onPressed: () {},
-                style: ButtonStyle(
-                  maximumSize: MaterialStateProperty.all(const Size(25, 80)),
-                  minimumSize: MaterialStateProperty.all(const Size(25, 80)),
-                  backgroundColor:
-                      MaterialStateProperty.all(const Color(0xFF282843)),
-                  shape: MaterialStateProperty.all(RoundedRectangleBorder(
-                      borderRadius: BorderRadius.circular(80))),
-                ),
-                child: const Text(
-                  '- 2 +',
-                  style: TextStyle(
-                    fontFamily: 'MarkPro',
-                    fontSize: 15,
-                    fontWeight: FontWeight.bold,
-                    color: Colors.white,
-                  ),
+            ),
+            Text(
+              '\$$price.00',
+              style: const TextStyle(
+                fontFamily: 'MarkPro',
+                fontSize: 18,
+                fontWeight: FontWeight.w700,
+                color: AppColors.accentColorOrange,
+              ),
+            ),
+          ],
+        ),
+        Row(
+          mainAxisAlignment: MainAxisAlignment.spaceAround,
+          children: [
+            TextButton(
+              onPressed: () {},
+              style: ButtonStyle(
+                maximumSize: MaterialStateProperty.all(const Size(25, 80)),
+                minimumSize: MaterialStateProperty.all(const Size(25, 80)),
+                backgroundColor:
+                    MaterialStateProperty.all(const Color(0xFF282843)),
+                shape: MaterialStateProperty.all(RoundedRectangleBorder(
+                    borderRadius: BorderRadius.circular(80))),
+              ),
+              child: const Text(
+                '-  2  +',
+                style: TextStyle(
+                  fontFamily: 'MarkPro',
+                  fontSize: 15,
+                  fontWeight: FontWeight.bold,
+                  color: Colors.white,
                 ),
               ),
-              TextButton(
-                onPressed: () {},
-                child: SvgPicture.asset(
-                  'lib/assets/images/delete.svg',
-                  height: 20,
-                  width: 20,
-                ),
+            ),
+            TextButton(
+              onPressed: () {},
+              child: SvgPicture.asset(
+                'lib/assets/images/cart/delete.svg',
+                height: 20,
+                width: 20,
               ),
-            ],
-          ),
-        ],
-      ),
+            ),
+          ],
+        ),
+      ],
     );
   }
 }

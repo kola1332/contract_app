@@ -89,9 +89,6 @@ Widget listViewViewer(String picture, String text, String context, bool isNew,
                   ),
                 ]),
           ),
-          // is_new
-          // ? TextButton(onPressed: () {}, child: )
-          // : Container(),
         ],
       ),
     );

@@ -3,8 +3,8 @@
 import 'package:carousel_slider/carousel_slider.dart';
 import 'package:contract_app/common/app_colors.dart';
 import 'package:contract_app/feature/domain/entities/phone_detail_entity.dart';
-import 'package:contract_app/feature/presentation/bloc/phone_list_cubit.dart/phone_list_cubit.dart';
-import 'package:contract_app/feature/presentation/bloc/phone_list_cubit.dart/phone_list_state.dart';
+import 'package:contract_app/feature/presentation/bloc/phone_list_cubit/phone_list_cubit.dart';
+import 'package:contract_app/feature/presentation/bloc/phone_list_cubit/phone_list_state.dart';
 import 'package:contract_app/feature/presentation/pages/cart.dart';
 import 'package:contract_app/feature/presentation/widgets/loading.dart';
 import 'package:contract_app/feature/presentation/widgets/second_screen/carouse_card.dart';
@@ -12,6 +12,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_svg/flutter_svg.dart';
+import 'package:persistent_bottom_nav_bar/persistent_tab_view.dart';
 
 class SecondScreen extends StatefulWidget {
   const SecondScreen({super.key});
@@ -52,14 +53,15 @@ class _SecondScreenState extends State<SecondScreen> {
           paint.add(Color(int.parse(g[i]) as int));
         }
         return SafeArea(
-          child: Padding(
-            padding: const EdgeInsets.symmetric(horizontal: 32, vertical: 12),
-            child: Column(
-              children: [
-                Expanded(
-                  child: ListView(
-                    children: [
-                      Row(
+          child: Column(
+            children: [
+              Expanded(
+                child: ListView(
+                  children: [
+                    Padding(
+                      padding: const EdgeInsets.symmetric(
+                          horizontal: 15, vertical: 8),
+                      child: Row(
                         mainAxisAlignment: MainAxisAlignment.spaceBetween,
                         children: [
                           TextButton(
@@ -81,17 +83,19 @@ class _SecondScreenState extends State<SecondScreen> {
                           const Text(
                             'Product Details',
                             style: TextStyle(
-                              fontFamily: 'MArkPro',
+                              fontFamily: 'MarkPro',
                               fontSize: 18,
                               fontWeight: FontWeight.w600,
                             ),
                           ),
                           TextButton(
                             onPressed: () {
-                              Navigator.push(
+                              PersistentNavBarNavigator.pushNewScreen(
                                 context,
-                                MaterialPageRoute(
-                                    builder: (context) => const Cart()),
+                                screen: const Cart(),
+                                withNavBar: false,
+                                pageTransitionAnimation:
+                                    PageTransitionAnimation.cupertino,
                               );
                             },
                             style: ButtonStyle(
@@ -108,260 +112,302 @@ class _SecondScreenState extends State<SecondScreen> {
                           ),
                         ],
                       ),
-                      const SizedBox(height: 15),
-                      Container(
-                        child: CarouselSlider.builder(
-                          itemCount: phone.images.length,
-                          options: CarouselOptions(
-                            height: 270, //265
-                            enlargeCenterPage: true,
+                    ),
+                    const SizedBox(height: 15),
+                    Container(
+                      child: CarouselSlider.builder(
+                        itemCount: phone.images.length,
+                        options: CarouselOptions(
+                          // padEnds: false,
+                          height: 280,
+                          enlargeCenterPage: true,
+                          enlargeStrategy: CenterPageEnlargeStrategy.height,
+                        ),
+                        itemBuilder: ((context, index, realIndex) {
+                          return carouseCard(phone.images[index]);
+                        }),
+                      ),
+                    ),
+                    const SizedBox(height: 15),
+                    Container(
+                      decoration: BoxDecoration(
+                        boxShadow: <BoxShadow>[
+                          BoxShadow(
+                            color: Colors.grey.shade300,
+                            blurRadius: 6,
+                            blurStyle: BlurStyle.normal,
+                            spreadRadius: 1,
+                            offset: const Offset(0, -6),
                           ),
-                          itemBuilder: ((context, index, realIndex) {
-                            return carouseCard(phone.images[index]);
-                          }),
+                        ],
+                        borderRadius: const BorderRadius.only(
+                          topLeft: Radius.circular(30),
+                          topRight: Radius.circular(30),
+                        ),
+                        color: Colors.grey.shade50,
+                      ),
+                      child: Padding(
+                        padding:
+                            const EdgeInsets.only(left: 26, right: 26, top: 12),
+                        child: Row(
+                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                          children: [
+                            Text(
+                              phone.title,
+                              style: const TextStyle(
+                                fontFamily: 'MarkPro',
+                                fontSize: 24,
+                                fontWeight: FontWeight.w600,
+                              ),
+                            ),
+                            TextButton(
+                              style: ButtonStyle(
+                                minimumSize: MaterialStateProperty.all(
+                                    const Size(40, 40)),
+                                backgroundColor: MaterialStateProperty.all(
+                                    AppColors.accentColorBlue),
+                                shape: MaterialStateProperty.all(
+                                    RoundedRectangleBorder(
+                                        borderRadius:
+                                            BorderRadius.circular(12))),
+                              ),
+                              onPressed: () {},
+                              child: SvgPicture.asset(
+                                  'lib/assets/images/second_screen/favorite2.svg'),
+                            ),
+                          ],
                         ),
                       ),
-                      const SizedBox(height: 15),
-                      Row(
-                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    ),
+                    Padding(
+                      padding: const EdgeInsets.symmetric(horizontal: 26),
+                      child: Column(
                         children: [
-                          Text(
-                            phone.title,
-                            style: const TextStyle(
-                              fontFamily: 'markPro',
-                              fontSize: 24,
-                              fontWeight: FontWeight.w600,
-                            ),
-                          ),
-                          TextButton(
-                            style: ButtonStyle(
-                              minimumSize:
-                                  MaterialStateProperty.all(const Size(40, 40)),
-                              backgroundColor: MaterialStateProperty.all(
-                                  AppColors.accentColorBlue),
-                              shape: MaterialStateProperty.all(
-                                  RoundedRectangleBorder(
-                                      borderRadius: BorderRadius.circular(12))),
-                            ),
-                            onPressed: () {},
-                            child: SvgPicture.asset(
-                                'lib/assets/images/second_screen/favorite2.svg'),
-                          ),
-                        ],
-                      ),
-                      Row(
-                        mainAxisAlignment: MainAxisAlignment.start,
-                        children: [
-                          _star(),
-                          const SizedBox(width: 7),
-                          _star(),
-                          const SizedBox(width: 7),
-                          _star(),
-                          const SizedBox(width: 7),
-                          _star(),
-                          const SizedBox(width: 7),
-                          _star(),
-                          const SizedBox(width: 7),
-                        ],
-                      ),
-                      const SizedBox(height: 23),
-                      DefaultTabController(
-                        length: 3,
-                        child: SizedBox(
-                          height: 40,
-                          child: TabBar(
-                            indicatorPadding: const EdgeInsets.symmetric(
-                              horizontal: 14,
-                              vertical: 7,
-                            ),
-                            indicatorColor: AppColors.accentColorOrange,
-                            indicatorWeight: 3,
-                            unselectedLabelColor: Colors.grey,
-                            labelColor: Colors.black,
-                            tabs: [
-                              _tabText('Shop'),
-                              _tabText('Details'),
-                              _tabText('Features'),
+                          Row(
+                            mainAxisAlignment: MainAxisAlignment.start,
+                            children: [
+                              _star(),
+                              const SizedBox(width: 7),
+                              _star(),
+                              const SizedBox(width: 7),
+                              _star(),
+                              const SizedBox(width: 7),
+                              _star(),
+                              const SizedBox(width: 7),
+                              _star(),
+                              const SizedBox(width: 7),
                             ],
                           ),
-                        ),
-                      ),
-                      const SizedBox(height: 15),
-                      Row(
-                        mainAxisAlignment: MainAxisAlignment.spaceAround,
-                        children: [
-                          _icon('cpu', phone.CPU),
-                          _icon('camera', phone.camera),
-                          _icon('ssd', phone.ssd),
-                          _icon('sd', phone.sd),
-                        ],
-                      ),
-                      const SizedBox(height: 20),
-                      const Text(
-                        'Select color and capacity',
-                        style: TextStyle(
-                          fontFamily: 'MarkPro',
-                          fontSize: 18,
-                          fontWeight: FontWeight.w600,
-                        ),
-                      ),
-                      const SizedBox(height: 15),
-                      Row(
-                        children: [
-                          TextButton(
-                            onPressed: () {
-                              setState(() {
-                                _focus = false;
-                              });
-                            },
-                            style: ButtonStyle(
-                              minimumSize:
-                                  MaterialStateProperty.all(const Size(50, 50)),
-                              backgroundColor:
-                                  MaterialStateProperty.all(paint[0]),
-                              foregroundColor: MaterialStateProperty.all(
-                                  AppColors.accentColorBlue),
-                              shape: MaterialStateProperty.all(
-                                  RoundedRectangleBorder(
-                                      borderRadius: BorderRadius.circular(80))),
-                            ),
-                            child: SvgPicture.asset(
-                              'lib/assets/images/second_screen/ok.svg',
-                              color: _focus == false
-                                  ? Colors.white
-                                  : Colors.transparent,
-                              height: 18,
-                              width: 18,
-                            ),
-                          ),
-                          const SizedBox(width: 15),
-                          TextButton(
-                            onPressed: () {
-                              setState(() {
-                                _focus = true;
-                              });
-                            },
-                            style: ButtonStyle(
-                              minimumSize:
-                                  MaterialStateProperty.all(const Size(50, 50)),
-                              backgroundColor:
-                                  MaterialStateProperty.all(paint[1]),
-                              foregroundColor: MaterialStateProperty.all(
-                                  AppColors.accentColorBlue),
-                              shape: MaterialStateProperty.all(
-                                  RoundedRectangleBorder(
-                                      borderRadius: BorderRadius.circular(80))),
-                            ),
-                            child: SvgPicture.asset(
-                              'lib/assets/images/second_screen/ok.svg',
-                              color: _focus == true
-                                  ? Colors.white
-                                  : Colors.transparent,
-                              height: 18,
-                              width: 18,
-                            ),
-                          ),
-                          const SizedBox(width: 30),
-                          TextButton(
-                            onPressed: () {
-                              setState(() {
-                                _focus1 = false;
-                              });
-                            },
-                            style: ButtonStyle(
-                              maximumSize: MaterialStateProperty.all(
-                                  const Size(120, 40)),
-                              minimumSize:
-                                  MaterialStateProperty.all(const Size(80, 40)),
-                              backgroundColor: _focus1 == false
-                                  ? MaterialStateProperty.all(
-                                      AppColors.accentColorOrange)
-                                  : MaterialStateProperty.all(
-                                      Colors.transparent),
-                              foregroundColor: MaterialStateProperty.all(
-                                  AppColors.accentColorBlue),
-                              shape: MaterialStateProperty.all(
-                                  RoundedRectangleBorder(
-                                      borderRadius: BorderRadius.circular(15))),
-                            ),
-                            child: Text(
-                              '128 GB',
-                              style: TextStyle(
-                                fontFamily: 'MarkPro',
-                                fontSize: 16,
-                                fontWeight: FontWeight.w600,
-                                color: _focus1 == false
-                                    ? Colors.white
-                                    : Colors.grey,
+                          const SizedBox(height: 23),
+                          DefaultTabController(
+                            length: 3,
+                            child: SizedBox(
+                              height: 40,
+                              child: TabBar(
+                                indicatorPadding: const EdgeInsets.symmetric(
+                                  horizontal: 14,
+                                  vertical: 7,
+                                ),
+                                indicatorColor: AppColors.accentColorOrange,
+                                indicatorWeight: 3,
+                                unselectedLabelColor: Colors.grey,
+                                labelColor: Colors.black,
+                                tabs: [
+                                  _tabText('Shop'),
+                                  _tabText('Details'),
+                                  _tabText('Features'),
+                                ],
                               ),
                             ),
                           ),
-                          const SizedBox(width: 15),
-                          TextButton(
-                            onPressed: () {
-                              setState(() {
-                                _focus1 = true;
-                              });
-                            },
-                            style: ButtonStyle(
-                              maximumSize: MaterialStateProperty.all(
-                                  const Size(120, 40)),
-                              minimumSize:
-                                  MaterialStateProperty.all(const Size(80, 40)),
-                              backgroundColor: _focus1 == true
-                                  ? MaterialStateProperty.all(
-                                      AppColors.accentColorOrange)
-                                  : MaterialStateProperty.all(
-                                      Colors.transparent),
-                              foregroundColor: MaterialStateProperty.all(
-                                  AppColors.accentColorBlue),
-                              shape: MaterialStateProperty.all(
-                                  RoundedRectangleBorder(
-                                      borderRadius: BorderRadius.circular(15))),
-                            ),
-                            child: Text(
-                              '256 GB',
-                              style: TextStyle(
-                                fontFamily: 'MarkPro',
-                                fontSize: 16,
-                                fontWeight: FontWeight.w600,
-                                color: _focus1 == true
-                                    ? Colors.white
-                                    : Colors.grey,
-                              ),
-                            ),
+                          const SizedBox(height: 15),
+                          Row(
+                            mainAxisAlignment: MainAxisAlignment.spaceAround,
+                            children: [
+                              _icon('cpu', phone.CPU),
+                              _icon('camera', phone.camera),
+                              _icon('ssd', phone.ssd),
+                              _icon('sd', phone.sd),
+                            ],
                           ),
+                          const SizedBox(height: 20),
+                          Row(
+                            // ignore: prefer_const_literals_to_create_immutables
+                            children: [
+                              const Text(
+                                'Select color and capacity',
+                                style: TextStyle(
+                                  fontFamily: 'MarkPro',
+                                  fontSize: 18,
+                                  fontWeight: FontWeight.w600,
+                                ),
+                              ),
+                            ],
+                          ),
+                          const SizedBox(height: 15),
+                          Row(
+                            children: [
+                              TextButton(
+                                onPressed: () {
+                                  setState(() {
+                                    _focus = false;
+                                  });
+                                },
+                                style: ButtonStyle(
+                                  minimumSize: MaterialStateProperty.all(
+                                      const Size(50, 50)),
+                                  backgroundColor:
+                                      MaterialStateProperty.all(paint[0]),
+                                  foregroundColor: MaterialStateProperty.all(
+                                      AppColors.accentColorBlue),
+                                  shape: MaterialStateProperty.all(
+                                      RoundedRectangleBorder(
+                                          borderRadius:
+                                              BorderRadius.circular(80))),
+                                ),
+                                child: SvgPicture.asset(
+                                  'lib/assets/images/second_screen/ok.svg',
+                                  color: _focus == false
+                                      ? Colors.white
+                                      : Colors.transparent,
+                                  height: 18,
+                                  width: 18,
+                                ),
+                              ),
+                              const SizedBox(width: 15),
+                              TextButton(
+                                onPressed: () {
+                                  setState(() {
+                                    _focus = true;
+                                  });
+                                },
+                                style: ButtonStyle(
+                                  minimumSize: MaterialStateProperty.all(
+                                      const Size(50, 50)),
+                                  backgroundColor:
+                                      MaterialStateProperty.all(paint[1]),
+                                  foregroundColor: MaterialStateProperty.all(
+                                      AppColors.accentColorBlue),
+                                  shape: MaterialStateProperty.all(
+                                      RoundedRectangleBorder(
+                                          borderRadius:
+                                              BorderRadius.circular(80))),
+                                ),
+                                child: SvgPicture.asset(
+                                  'lib/assets/images/second_screen/ok.svg',
+                                  color: _focus == true
+                                      ? Colors.white
+                                      : Colors.transparent,
+                                  height: 18,
+                                  width: 18,
+                                ),
+                              ),
+                              const SizedBox(width: 30),
+                              TextButton(
+                                onPressed: () {
+                                  setState(() {
+                                    _focus1 = false;
+                                  });
+                                },
+                                style: ButtonStyle(
+                                  maximumSize: MaterialStateProperty.all(
+                                      const Size(120, 40)),
+                                  minimumSize: MaterialStateProperty.all(
+                                      const Size(80, 40)),
+                                  backgroundColor: _focus1 == false
+                                      ? MaterialStateProperty.all(
+                                          AppColors.accentColorOrange)
+                                      : MaterialStateProperty.all(
+                                          Colors.transparent),
+                                  foregroundColor: MaterialStateProperty.all(
+                                      AppColors.accentColorBlue),
+                                  shape: MaterialStateProperty.all(
+                                      RoundedRectangleBorder(
+                                          borderRadius:
+                                              BorderRadius.circular(15))),
+                                ),
+                                child: Text(
+                                  '128 GB',
+                                  style: TextStyle(
+                                    fontFamily: 'MarkPro',
+                                    fontSize: 16,
+                                    fontWeight: FontWeight.w600,
+                                    color: _focus1 == false
+                                        ? Colors.white
+                                        : Colors.grey,
+                                  ),
+                                ),
+                              ),
+                              const SizedBox(width: 15),
+                              TextButton(
+                                onPressed: () {
+                                  setState(() {
+                                    _focus1 = true;
+                                  });
+                                },
+                                style: ButtonStyle(
+                                  maximumSize: MaterialStateProperty.all(
+                                      const Size(120, 40)),
+                                  minimumSize: MaterialStateProperty.all(
+                                      const Size(80, 40)),
+                                  backgroundColor: _focus1 == true
+                                      ? MaterialStateProperty.all(
+                                          AppColors.accentColorOrange)
+                                      : MaterialStateProperty.all(
+                                          Colors.transparent),
+                                  foregroundColor: MaterialStateProperty.all(
+                                      AppColors.accentColorBlue),
+                                  shape: MaterialStateProperty.all(
+                                      RoundedRectangleBorder(
+                                          borderRadius:
+                                              BorderRadius.circular(15))),
+                                ),
+                                child: Text(
+                                  '256 GB',
+                                  style: TextStyle(
+                                    fontFamily: 'MarkPro',
+                                    fontSize: 16,
+                                    fontWeight: FontWeight.w600,
+                                    color: _focus1 == true
+                                        ? Colors.white
+                                        : Colors.grey,
+                                  ),
+                                ),
+                              ),
+                            ],
+                          ),
+                          const SizedBox(height: 20),
+                          TextButton(
+                              style: ButtonStyle(
+                                maximumSize: MaterialStateProperty.all(
+                                    const Size(370, 60)),
+                                minimumSize: MaterialStateProperty.all(
+                                    const Size(370, 60)),
+                                backgroundColor: MaterialStateProperty.all(
+                                    AppColors.accentColorOrange),
+                                foregroundColor: MaterialStateProperty.all(
+                                    AppColors.accentColorBlue),
+                                shape: MaterialStateProperty.all(
+                                    RoundedRectangleBorder(
+                                        borderRadius:
+                                            BorderRadius.circular(9))),
+                              ),
+                              onPressed: () {},
+                              child: Text(
+                                'Add to Card            \$${phone.price}.00',
+                                style: const TextStyle(
+                                    fontFamily: 'MarkPro',
+                                    color: Colors.white,
+                                    fontSize: 19,
+                                    fontWeight: FontWeight.w700),
+                              )),
                         ],
                       ),
-                      const SizedBox(height: 25),
-                      TextButton(
-                          style: ButtonStyle(
-                            maximumSize:
-                                MaterialStateProperty.all(const Size(120, 60)),
-                            minimumSize:
-                                MaterialStateProperty.all(const Size(80, 50)),
-                            backgroundColor: MaterialStateProperty.all(
-                                AppColors.accentColorOrange),
-                            foregroundColor: MaterialStateProperty.all(
-                                AppColors.accentColorBlue),
-                            shape: MaterialStateProperty.all(
-                                RoundedRectangleBorder(
-                                    borderRadius: BorderRadius.circular(9))),
-                          ),
-                          onPressed: () {},
-                          child: Text(
-                            'Add to Card            \$${phone.price}.00',
-                            style: const TextStyle(
-                                fontFamily: 'MarkPro',
-                                color: Colors.white,
-                                fontSize: 19,
-                                fontWeight: FontWeight.w700),
-                          ))
-                    ],
-                  ),
+                    ),
+                  ],
                 ),
-              ],
-            ),
+              ),
+            ],
           ),
         );
       }),
