@@ -21,21 +21,30 @@ class PhoneRepositoryImpl implements PhoneRepository {
   @override
   Future<Either<Failure, List<PhoneHomeStoreModel>>>
       getPhonesHomeStore() async {
-    if (await networkInfo.isConnected) {
-      try {
-        final remotePhoneHD = await remoteDataSource.getPhonesHomeStore();
-        localDataSource.phonesHomeStoreToCache(remotePhoneHD); //
-        return Right(remotePhoneHD);
-      } on ServerFailure {
-        return Left(ServerFailure());
-      }
-    } else {
-      try {
-        final localPhonesHomeStore =
-            await localDataSource.getLastPhonesHomeStoreFromCache();
-        return Right(localPhonesHomeStore);
-      } on CacheException {
-        return Left(CacheFailure());
+    try {
+      final localPhonesHomeStore =
+          await localDataSource.getLastPhonesHomeStoreFromCache();
+      // print('1');
+      return Right(localPhonesHomeStore);
+    } on CacheException {
+      if (await networkInfo.isConnected) {
+        try {
+          final remotePhoneHD = await remoteDataSource.getPhonesHomeStore();
+          localDataSource.phonesHomeStoreToCache(remotePhoneHD); //
+          // print('2');
+          return Right(remotePhoneHD);
+        } on ServerFailure {
+          return Left(ServerFailure());
+        }
+      } else {
+        try {
+          final localPhonesHomeStore =
+              await localDataSource.getLastPhonesHomeStoreFromCache();
+          // print('3');
+          return Right(localPhonesHomeStore);
+        } on CacheException {
+          return Left(CacheFailure());
+        }
       }
     }
   }
@@ -43,22 +52,28 @@ class PhoneRepositoryImpl implements PhoneRepository {
   @override
   Future<Either<Failure, List<PhoneBestSellerModel>>>
       getPhonesBestSeller() async {
-    if (await networkInfo.isConnected) {
-      try {
-        List<PhoneBestSellerModel> remotePhoneBestSeller =
-            await remoteDataSource.getPhonesBestSellers();
-        localDataSource.phonesBestSellerToCache(remotePhoneBestSeller);
-        return Right(remotePhoneBestSeller);
-      } on ServerFailure {
-        return Left(ServerFailure());
-      }
-    } else {
-      try {
-        final localPhonesBestSeller =
-            await localDataSource.getLastPhonesBestSellerFromCache();
-        return Right(localPhonesBestSeller);
-      } on CacheException {
-        return Left(CacheFailure());
+    try {
+      final localPhonesBestSeller =
+          await localDataSource.getLastPhonesBestSellerFromCache();
+      return Right(localPhonesBestSeller);
+    } on CacheException {
+      if (await networkInfo.isConnected) {
+        try {
+          List<PhoneBestSellerModel> remotePhoneBestSeller =
+              await remoteDataSource.getPhonesBestSellers();
+          localDataSource.phonesBestSellerToCache(remotePhoneBestSeller);
+          return Right(remotePhoneBestSeller);
+        } on ServerFailure {
+          return Left(ServerFailure());
+        }
+      } else {
+        try {
+          final localPhonesBestSeller =
+              await localDataSource.getLastPhonesBestSellerFromCache();
+          return Right(localPhonesBestSeller);
+        } on CacheException {
+          return Left(CacheFailure());
+        }
       }
     }
   }

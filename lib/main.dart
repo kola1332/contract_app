@@ -33,8 +33,9 @@ class MyApp extends StatelessWidget {
         ],
         child: MaterialApp(
           debugShowCheckedModeBanner: false,
-          theme: ThemeData.light().copyWith(
+          theme: ThemeData(
             backgroundColor: AppColors.mainBackground,
+            fontFamily: 'MarkPro',
           ),
           home: const Splash(),
         ));

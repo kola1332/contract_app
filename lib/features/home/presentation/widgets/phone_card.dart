@@ -3,6 +3,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 
+import 'package:contract_app/components/lang/assets.dart';
+
 Widget phoneCard(
   String picture,
   String title,
@@ -39,12 +41,12 @@ Widget phoneCard(
                     onPressed: () {},
                     child: isFavorite
                         ? SvgPicture.asset(
-                            'lib/components/assets/images/first_screen/favorite_splash.svg',
+                            Assets.favoriteSplash,
                             width: 15,
                             height: 15,
                           )
                         : SvgPicture.asset(
-                            'lib/components/assets/images/first_screen/favorite.svg',
+                            Assets.favorite,
                             width: 15,
                             height: 15,
                           ),
@@ -58,7 +60,6 @@ Widget phoneCard(
               Text(
                 '\$$priceDiscount',
                 style: const TextStyle(
-                  fontFamily: 'MarkPro',
                   fontSize: 17,
                   fontWeight: FontWeight.w700,
                 ),
@@ -67,7 +68,6 @@ Widget phoneCard(
               Text(
                 '\$$priceWithoutDiscount',
                 style: const TextStyle(
-                  fontFamily: 'MarkPro',
                   fontSize: 12,
                   color: Colors.grey,
                   decoration: TextDecoration.lineThrough,
@@ -82,7 +82,6 @@ Widget phoneCard(
                 title,
                 textAlign: TextAlign.left,
                 style: const TextStyle(
-                  fontFamily: 'MarkPro',
                   fontSize: 10,
                 ),
               ),

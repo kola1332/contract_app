@@ -1,8 +1,10 @@
 import 'package:flutter/material.dart';
-import 'package:flutter/services.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:persistent_bottom_nav_bar/persistent_tab_view.dart';
 
+import 'package:contract_app/components/common/app_statusbar_style.dart';
+import 'package:contract_app/components/lang/assets.dart';
+import 'package:contract_app/components/lang/locale_eng.dart';
 import 'package:contract_app/components/common/app_colors.dart';
 import 'package:contract_app/features/home/presentation/pages/first_screen.dart';
 import 'package:contract_app/features/detail/presentation/pages/second_screen.dart';
@@ -16,12 +18,7 @@ class HomePage extends StatelessWidget {
       child: Scaffold(
         appBar: AppBar(
           elevation: 0,
-          systemOverlayStyle: const SystemUiOverlayStyle(
-            statusBarColor: AppColors.mainBackground,
-            statusBarBrightness: Brightness.dark,
-            statusBarIconBrightness: Brightness.dark,
-            systemStatusBarContrastEnforced: true,
-          ),
+          systemOverlayStyle: StatusBsrStyle.lightHome,
           backgroundColor: Colors.transparent,
           actions: const [
             Padding(
@@ -74,28 +71,26 @@ class HomePage extends StatelessWidget {
     return [
       PersistentBottomNavBarItem(
         textStyle: const TextStyle(color: Colors.white),
-        icon: SvgPicture.asset('lib/components/assets/images/tabs/point.svg'),
-        title: ("Explorer"),
+        icon: SvgPicture.asset(Assets.pointTab),
+        title: (LocalizationEng.explorer),
         activeColorPrimary: AppColors.accentColorBlue,
         activeColorSecondary: Colors.white,
       ),
       PersistentBottomNavBarItem(
-          icon:
-              SvgPicture.asset('lib/components/assets/images/tabs/market.svg'),
-          title: ("Market"),
+          icon: SvgPicture.asset(Assets.marketTab),
+          title: (LocalizationEng.market),
           activeColorPrimary: AppColors.accentColorBlue,
           activeColorSecondary: Colors.white,
           onPressed: ((p0) {})),
       PersistentBottomNavBarItem(
-          title: ("Favorites"),
-          icon: SvgPicture.asset(
-              'lib/components/assets/images/tabs/favorites.svg'),
+          title: (LocalizationEng.favorites),
+          icon: SvgPicture.asset(Assets.favoritesTab),
           activeColorPrimary: AppColors.accentColorBlue,
           activeColorSecondary: Colors.white,
           onPressed: ((p0) {})),
       PersistentBottomNavBarItem(
-          icon: SvgPicture.asset('lib/components/assets/images/tabs/user.svg'),
-          title: ("User"),
+          icon: SvgPicture.asset(Assets.userTab),
+          title: (LocalizationEng.user),
           activeColorPrimary: AppColors.accentColorBlue,
           activeColorSecondary: Colors.white,
           onPressed: ((p0) {}))

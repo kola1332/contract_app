@@ -1,9 +1,10 @@
-// ignore_for_file: avoid_unnecessary_containers, sized_box_for_whitespace
+// ignore_for_file: avoid_unnecessary_containers, sized_box_for_whitespace, use_function_type_syntax_for_parameters
 
 import 'package:flutter/material.dart';
 
 import 'package:contract_app/components/common/app_colors.dart';
 import 'package:contract_app/components/common/app_text_style.dart';
+import 'package:contract_app/components/lang/locale_eng.dart';
 
 Widget listViewViewer(String picture, String text, String context, bool isNew,
         void function()) =>
@@ -18,7 +19,6 @@ Widget listViewViewer(String picture, String text, String context, bool isNew,
               height: 200,
               child: Image.network(
                 picture,
-                // fit: BoxFit.fitHeight,
                 fit: BoxFit.cover,
               ),
             ),
@@ -36,11 +36,11 @@ Widget listViewViewer(String picture, String text, String context, bool isNew,
                     ),
                     child: const Center(
                       child: Text(
-                        'New',
+                        LocalizationEng.newPhone,
                         style: TextStyle(
-                            color: Colors.white,
-                            fontSize: 10,
-                            fontFamily: 'MarkPro'),
+                          color: Colors.white,
+                          fontSize: 10,
+                        ),
                       ),
                     ),
                   )
@@ -65,7 +65,6 @@ Widget listViewViewer(String picture, String text, String context, bool isNew,
                       color: Colors.white,
                       fontWeight: FontWeight.w400,
                       fontSize: 11,
-                      fontFamily: 'MarkPro',
                     ),
                   ),
                   const SizedBox(height: 18),
@@ -79,9 +78,8 @@ Widget listViewViewer(String picture, String text, String context, bool isNew,
                       backgroundColor: MaterialStateProperty.all(Colors.white),
                     ),
                     child: const Text(
-                      'Buy Now!',
+                      LocalizationEng.buy,
                       style: TextStyle(
-                        fontFamily: 'MarkPro',
                         fontWeight: FontWeight.bold,
                         color: AppColors.accentColorBlue,
                         fontSize: 13,

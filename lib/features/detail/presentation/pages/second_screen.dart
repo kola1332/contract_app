@@ -1,12 +1,12 @@
 // ignore_for_file: avoid_unnecessary_containers, prefer_interpolation_to_compose_strings, unnecessary_cast
 
 import 'package:flutter/material.dart';
-import 'package:flutter/services.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:persistent_bottom_nav_bar/persistent_tab_view.dart';
 import 'package:carousel_slider/carousel_slider.dart';
 
+import 'package:contract_app/components/common/app_statusbar_style.dart';
 import 'package:contract_app/components/common/app_colors.dart';
 import 'package:contract_app/features/detail/domain/entities/phone_detail_entity.dart';
 import 'package:contract_app/features/card/presentation/pages/cart.dart';
@@ -29,10 +29,7 @@ class _SecondScreenState extends State<SecondScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        systemOverlayStyle: const SystemUiOverlayStyle(
-          statusBarColor: Colors.transparent,
-          statusBarIconBrightness: Brightness.dark,
-        ),
+        systemOverlayStyle: StatusBsrStyle.light,
         toolbarHeight: 0,
         elevation: 0,
         backgroundColor: Colors.transparent,
@@ -84,7 +81,7 @@ class _SecondScreenState extends State<SecondScreen> {
                           const Text(
                             'Product Details',
                             style: TextStyle(
-                              fontFamily: 'MarkPro',
+                              // fontFamily: 'MarkPro',
                               fontSize: 18,
                               fontWeight: FontWeight.w600,
                             ),

@@ -20,42 +20,53 @@ class BasketRepositoryImpl implements BasketRepository {
 
   @override
   Future<Either<Failure, List<BasketItemsModel>>> getBasketItem() async {
-    if (await networkInfo.isConnected) {
-      try {
-        List<BasketItemsModel> remoteBasketItems =
-            await remoteDataSource.getBasketItem();
-        localDataSource.basketItemToCache(remoteBasketItems);
-        return Right(remoteBasketItems);
-      } on ServerFailure {
-        return Left(ServerFailure());
-      }
-    } else {
-      try {
-        final localBasketItems =
-            await localDataSource.getLastBasketItemFromCache();
-        return Right(localBasketItems);
-      } on CacheException {
-        return Left(CacheFailure());
+    try {
+      final localBasketItems =
+          await localDataSource.getLastBasketItemFromCache();
+      return Right(localBasketItems);
+    } on CacheException {
+      if (await networkInfo.isConnected) {
+        try {
+          List<BasketItemsModel> remoteBasketItems =
+              await remoteDataSource.getBasketItem();
+          localDataSource.basketItemToCache(remoteBasketItems);
+          return Right(remoteBasketItems);
+        } on ServerFailure {
+          return Left(ServerFailure());
+        }
+      } else {
+        try {
+          final localBasketItems =
+              await localDataSource.getLastBasketItemFromCache();
+          return Right(localBasketItems);
+        } on CacheException {
+          return Left(CacheFailure());
+        }
       }
     }
   }
 
   @override
   Future<Either<Failure, List<BasketModel>>> getBasket() async {
-    if (await networkInfo.isConnected) {
-      try {
-        List<BasketModel> remoteBasket = await remoteDataSource.getBasket();
-        localDataSource.basketToCache(remoteBasket);
-        return Right(remoteBasket);
-      } on ServerFailure {
-        return Left(ServerFailure());
-      }
-    } else {
-      try {
-        final localBasket = await localDataSource.getLastBasketFromCache();
-        return Right(localBasket);
-      } on CacheException {
-        return Left(CacheFailure());
+    try {
+      final localBasket = await localDataSource.getLastBasketFromCache();
+      return Right(localBasket);
+    } on CacheException {
+      if (await networkInfo.isConnected) {
+        try {
+          List<BasketModel> remoteBasket = await remoteDataSource.getBasket();
+          localDataSource.basketToCache(remoteBasket);
+          return Right(remoteBasket);
+        } on ServerFailure {
+          return Left(ServerFailure());
+        }
+      } else {
+        try {
+          final localBasket = await localDataSource.getLastBasketFromCache();
+          return Right(localBasket);
+        } on CacheException {
+          return Left(CacheFailure());
+        }
       }
     }
   }

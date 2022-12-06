@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:flutter/services.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 
+import 'package:contract_app/components/common/app_statusbar_style.dart';
 import 'package:contract_app/components/common/app_colors.dart';
 import 'package:contract_app/features/card/domain/entities/basket_entity.dart';
 import 'package:contract_app/features/card/presentation/bloc/basket_list_cubit.dart';
@@ -16,10 +16,7 @@ class Cart extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
         appBar: AppBar(
-          systemOverlayStyle: const SystemUiOverlayStyle(
-            statusBarColor: Colors.transparent,
-            statusBarIconBrightness: Brightness.dark,
-          ),
+          systemOverlayStyle: StatusBsrStyle.light,
           toolbarHeight: 0,
           elevation: 0,
           backgroundColor: Colors.transparent,

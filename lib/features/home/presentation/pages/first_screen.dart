@@ -5,6 +5,8 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:persistent_bottom_nav_bar/persistent_tab_view.dart';
 
+import 'package:contract_app/components/lang/assets.dart';
+import 'package:contract_app/components/lang/locale_eng.dart';
 import 'package:contract_app/components/common/app_colors.dart';
 import 'package:contract_app/components/common/app_text_style.dart';
 import 'package:contract_app/features/home/domain/entities/phone_entity.dart';
@@ -45,7 +47,7 @@ class FIrstScreen extends StatelessWidget {
                           child: Align(
                             alignment: Alignment.centerRight,
                             child: SvgPicture.asset(
-                              'lib/components/assets/images/first_screen/filter.svg',
+                              Assets.filter,
                               color: Colors.black,
                             ),
                           ),
@@ -58,10 +60,9 @@ class FIrstScreen extends StatelessWidget {
                               color: AppColors.accentColorOrange,
                             ),
                             Text(
-                              'Zihuatanejo, Gro',
+                              LocalizationEng.location,
                               style: TextStyle(
                                 color: AppColors.accentColorBlue,
-                                fontFamily: 'MarkPro',
                                 fontSize: 15,
                                 fontWeight: FontWeight.w500,
                               ),
@@ -82,7 +83,7 @@ class FIrstScreen extends StatelessWidget {
                       Padding(
                         padding: EdgeInsets.only(left: 15),
                         child: Text(
-                          'Select Category',
+                          LocalizationEng.category,
                           style: AppTextStyle.header,
                           textAlign: TextAlign.start,
                         ),
@@ -90,11 +91,9 @@ class FIrstScreen extends StatelessWidget {
                       Padding(
                         padding: EdgeInsets.only(right: 15),
                         child: Text(
-                          'view all',
+                          LocalizationEng.view,
                           style: TextStyle(
-                              fontFamily: 'MarkPro',
-                              fontSize: 15,
-                              color: AppColors.accentColorOrange),
+                              fontSize: 15, color: AppColors.accentColorOrange),
                           textAlign: TextAlign.end,
                         ),
                       ),
@@ -115,9 +114,9 @@ class FIrstScreen extends StatelessWidget {
                                 borderSide: BorderSide.none,
                                 gapPadding: 15,
                               ),
-                              labelText: 'Search',
+                              labelText: LocalizationEng.search,
                               prefixIcon: SvgPicture.asset(
-                                'lib/components/assets/images/first_screen/search.svg',
+                                Assets.search,
                                 height: 10,
                                 width: 10,
                                 fit: BoxFit.none,
@@ -138,9 +137,7 @@ class FIrstScreen extends StatelessWidget {
                                   RoundedRectangleBorder(
                                       borderRadius: BorderRadius.circular(80))),
                             ),
-                            child: SvgPicture.asset(
-                              'lib/components/assets/images/first_screen/qr.svg',
-                            ))
+                            child: SvgPicture.asset(Assets.qr))
                       ],
                     ),
                   ),
@@ -151,11 +148,11 @@ class FIrstScreen extends StatelessWidget {
                       mainAxisAlignment: MainAxisAlignment.spaceBetween,
                       children: const [
                         Text(
-                          'Hot sales',
+                          LocalizationEng.sales,
                           style: AppTextStyle.header,
                         ),
                         Text(
-                          'see more',
+                          LocalizationEng.see,
                           style: AppTextStyle.standard,
                         ),
                       ],
@@ -178,8 +175,6 @@ class FIrstScreen extends StatelessWidget {
                               context,
                               screen: const SecondScreen(),
                               withNavBar: false,
-                              pageTransitionAnimation:
-                                  PageTransitionAnimation.cupertino,
                             );
                           }),
                         );
@@ -192,11 +187,11 @@ class FIrstScreen extends StatelessWidget {
                       mainAxisAlignment: MainAxisAlignment.spaceBetween,
                       children: const [
                         Text(
-                          'Best Seller',
+                          LocalizationEng.seller,
                           style: AppTextStyle.header,
                         ),
                         Text(
-                          'see more',
+                          LocalizationEng.see,
                           style: AppTextStyle.standard,
                         ),
                       ],

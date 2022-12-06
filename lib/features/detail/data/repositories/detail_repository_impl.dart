@@ -20,22 +20,29 @@ class DetailRepositoryImpl implements DetailRepository {
 
   @override
   Future<Either<Failure, List<PhoneDetailModel>>> getPhonesDetail() async {
-    if (await networkInfo.isConnected) {
-      try {
-        List<PhoneDetailModel> remotePhoneDetail =
-            await remoteDataSource.getPhonesDetail();
-        localDataSource.phonesDetailToCache(remotePhoneDetail);
-        return Right(remotePhoneDetail);
-      } on ServerFailure {
-        return Left(ServerFailure());
-      }
-    } else {
-      try {
-        final localPhoneDetail =
-            await localDataSource.getLastPhonesDetailFromCache();
-        return Right(localPhoneDetail);
-      } on CacheException {
-        return Left(CacheFailure());
+    try {
+      final localPhonesHomeStore =
+          await localDataSource.getLastPhonesDetailFromCache();
+      // print('1');
+      return Right(localPhonesHomeStore);
+    } on CacheException {
+      if (await networkInfo.isConnected) {
+        try {
+          List<PhoneDetailModel> remotePhoneDetail =
+              await remoteDataSource.getPhonesDetail();
+          localDataSource.phonesDetailToCache(remotePhoneDetail);
+          return Right(remotePhoneDetail);
+        } on ServerFailure {
+          return Left(ServerFailure());
+        }
+      } else {
+        try {
+          final localPhoneDetail =
+              await localDataSource.getLastPhonesDetailFromCache();
+          return Right(localPhoneDetail);
+        } on CacheException {
+          return Left(CacheFailure());
+        }
       }
     }
   }

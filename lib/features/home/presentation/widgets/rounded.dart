@@ -3,7 +3,10 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 
+import 'package:contract_app/components/common/app_text_style.dart';
 import 'package:contract_app/components/common/app_colors.dart';
+import 'package:contract_app/components/lang/assets.dart';
+import 'package:contract_app/components/lang/locale_eng.dart';
 
 class Rounded extends StatefulWidget {
   const Rounded({super.key});
@@ -43,7 +46,7 @@ class _RoundedState extends State<Rounded> {
                           ],
                         ),
                         child: TextButton(
-                          key: const Key('1'),
+                          key: const Key('0'),
                           onPressed: () {
                             setState(() {
                               _i = 0;
@@ -67,19 +70,67 @@ class _RoundedState extends State<Rounded> {
                                     borderRadius: BorderRadius.circular(80))),
                           ),
                           child: SvgPicture.asset(
-                            'lib/components/assets/images/first_screen/phone.svg',
+                            Assets.phone,
                             color:
                                 _i == 0 ? Colors.white : AppColors.accentGray,
                           ),
                         ),
                       ),
                       Text(
-                        'Phones',
-                        style: TextStyle(
-                            fontFamily: 'MarkPro',
-                            fontSize: 15,
-                            fontWeight: FontWeight.w500,
+                        LocalizationEng.phones,
+                        style: AppTextStyle.title.copyWith(
                             color: _i == 0
+                                ? AppColors.accentColorOrange
+                                : AppColors.accentColorBlue),
+                      ),
+                    ],
+                  ),
+                ),
+                Padding(
+                  padding: const EdgeInsets.all(8),
+                  child: Column(
+                    children: [
+                      Container(
+                        decoration: BoxDecoration(
+                          shape: BoxShape.circle,
+                          boxShadow: <BoxShadow>[
+                            BoxShadow(
+                              color: Colors.grey.shade300,
+                              blurRadius: 1,
+                            ),
+                          ],
+                        ),
+                        child: TextButton(
+                          key: const Key('1'),
+                          onPressed: () {
+                            setState(() {
+                              _i = 1;
+                            });
+                          },
+                          style: ButtonStyle(
+                            minimumSize:
+                                MaterialStateProperty.all(const Size(75, 75)),
+                            backgroundColor: _i == 1
+                                ? MaterialStateProperty.all(
+                                    (AppColors.accentColorOrange))
+                                : MaterialStateProperty.all((Colors.white)),
+                            foregroundColor: MaterialStateProperty.all(
+                                AppColors.accentColorBlue),
+                            shape: MaterialStateProperty.all(
+                                RoundedRectangleBorder(
+                                    borderRadius: BorderRadius.circular(80))),
+                          ),
+                          child: SvgPicture.asset(
+                            Assets.computer,
+                            color:
+                                _i == 1 ? Colors.white : AppColors.accentGray,
+                          ),
+                        ),
+                      ),
+                      Text(
+                        LocalizationEng.computer,
+                        style: AppTextStyle.title.copyWith(
+                            color: _i == 1
                                 ? AppColors.accentColorOrange
                                 : AppColors.accentColorBlue),
                       ),
@@ -104,13 +155,13 @@ class _RoundedState extends State<Rounded> {
                           key: const Key('2'),
                           onPressed: () {
                             setState(() {
-                              _i = 1;
+                              _i = 2;
                             });
                           },
                           style: ButtonStyle(
                             minimumSize:
                                 MaterialStateProperty.all(const Size(75, 75)),
-                            backgroundColor: _i == 1
+                            backgroundColor: _i == 2
                                 ? MaterialStateProperty.all(
                                     (AppColors.accentColorOrange))
                                 : MaterialStateProperty.all((Colors.white)),
@@ -121,19 +172,16 @@ class _RoundedState extends State<Rounded> {
                                     borderRadius: BorderRadius.circular(80))),
                           ),
                           child: SvgPicture.asset(
-                            'lib/components/assets/images/first_screen/computer.svg',
+                            Assets.heart,
                             color:
-                                _i == 1 ? Colors.white : AppColors.accentGray,
+                                _i == 2 ? Colors.white : AppColors.accentGray,
                           ),
                         ),
                       ),
                       Text(
-                        'Computer',
-                        style: TextStyle(
-                            fontFamily: 'MarkPro',
-                            fontSize: 15,
-                            fontWeight: FontWeight.w500,
-                            color: _i == 1
+                        LocalizationEng.health,
+                        style: AppTextStyle.title.copyWith(
+                            color: _i == 2
                                 ? AppColors.accentColorOrange
                                 : AppColors.accentColorBlue),
                       ),
@@ -158,60 +206,6 @@ class _RoundedState extends State<Rounded> {
                           key: const Key('3'),
                           onPressed: () {
                             setState(() {
-                              _i = 2;
-                            });
-                          },
-                          style: ButtonStyle(
-                            minimumSize:
-                                MaterialStateProperty.all(const Size(75, 75)),
-                            backgroundColor: _i == 2
-                                ? MaterialStateProperty.all(
-                                    (AppColors.accentColorOrange))
-                                : MaterialStateProperty.all((Colors.white)),
-                            foregroundColor: MaterialStateProperty.all(
-                                AppColors.accentColorBlue),
-                            shape: MaterialStateProperty.all(
-                                RoundedRectangleBorder(
-                                    borderRadius: BorderRadius.circular(80))),
-                          ),
-                          child: SvgPicture.asset(
-                            'lib/components/assets/images/first_screen/heart.svg',
-                            color:
-                                _i == 2 ? Colors.white : AppColors.accentGray,
-                          ),
-                        ),
-                      ),
-                      Text(
-                        'Health',
-                        style: TextStyle(
-                            fontFamily: 'MarkPro',
-                            fontSize: 15,
-                            fontWeight: FontWeight.w500,
-                            color: _i == 2
-                                ? AppColors.accentColorOrange
-                                : AppColors.accentColorBlue),
-                      ),
-                    ],
-                  ),
-                ),
-                Padding(
-                  padding: const EdgeInsets.all(8),
-                  child: Column(
-                    children: [
-                      Container(
-                        decoration: BoxDecoration(
-                          shape: BoxShape.circle,
-                          boxShadow: <BoxShadow>[
-                            BoxShadow(
-                              color: Colors.grey.shade300,
-                              blurRadius: 1,
-                            ),
-                          ],
-                        ),
-                        child: TextButton(
-                          key: const Key('4'),
-                          onPressed: () {
-                            setState(() {
                               _i = 3;
                             });
                           },
@@ -229,18 +223,15 @@ class _RoundedState extends State<Rounded> {
                                     borderRadius: BorderRadius.circular(80))),
                           ),
                           child: SvgPicture.asset(
-                            'lib/components/assets/images/first_screen/books.svg',
+                            Assets.books,
                             color:
                                 _i == 3 ? Colors.white : AppColors.accentGray,
                           ),
                         ),
                       ),
                       Text(
-                        'Books',
-                        style: TextStyle(
-                            fontFamily: 'MarkPro',
-                            fontSize: 15,
-                            fontWeight: FontWeight.w500,
+                        LocalizationEng.books,
+                        style: AppTextStyle.title.copyWith(
                             color: _i == 3
                                 ? AppColors.accentColorOrange
                                 : AppColors.accentColorBlue),
